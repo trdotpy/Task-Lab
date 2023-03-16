@@ -7,24 +7,24 @@ export default function NewTaskModal({ handleAddTask, newTask, setNewTask }) {
     <>
       <div
         id="hs-large-modal"
-        class="hs-overlay fixed top-0 left-0 z-[60] hidden h-full w-full overflow-y-auto overflow-x-hidden"
+        className="hs-overlay fixed top-0 left-0 z-[60] hidden h-full w-full overflow-y-auto overflow-x-hidden"
       >
-        <div class="m-3 mt-0 opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 lg:mx-auto lg:w-full lg:max-w-4xl">
-          <div class="flex flex-col rounded border bg-white shadow-sm">
-            <div class="flex items-center justify-between border-b py-3 px-4">
-              <h3 class="text-xl font-semibold text-gray-700">
+        <div className="m-3 mt-0 opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:w-full sm:max-w-5xl lg:mx-auto lg:w-full">
+          <div className="flex flex-col rounded-lg border bg-white py-3 px-4 shadow-sm">
+            <div className="flex items-center justify-between border-b py-3 px-4">
+              <h3 className="text-xl font-semibold text-gray-700">
                 Create New Task
               </h3>
               <button
                 type="button"
-                class="hs-dropdown-toggle inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-sm text-gray-500 transition-all hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white "
+                className="hs-dropdown-toggle inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-sm text-gray-500 transition-all hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white "
                 data-hs-overlay="#hs-large-modal"
               >
-                <span class="sr-only">Close</span>
+                <span className="sr-only">Close</span>
                 <IconX />
               </button>
             </div>
-            <div class="overflow-y-auto p-4">
+            <div className="overflow-y-auto p-4">
               <div className="mb-4 flex">
                 <div className="mr-2 w-1/2">
                   <label
@@ -123,9 +123,9 @@ export default function NewTaskModal({ handleAddTask, newTask, setNewTask }) {
               </div>
             </div>
 
-            <div class="flex items-center justify-end gap-x-2 py-3 px-4">
+            <div className="flex items-center justify-end gap-x-2 py-3 px-4">
               <button
-                class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 type="button"
               >
                 Create Task

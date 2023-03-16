@@ -55,12 +55,12 @@ export default function Sidebar() {
     <>
       <div
         id="docs-sidebar"
-        className="hs-overlay scrollbar-y dark:scrollbar-y fixed top-0 left-0 bottom-0 z-[60] hidden w-64 -translate-x-full transform overflow-y-auto bg-white pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 dark:border-gray-700 dark:bg-gray-800 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
+        className="hs-overlay scrollbar-y dark:scrollbar-y fixed top-0 left-0 bottom-0 z-[60] -translate-x-full transform overflow-y-auto bg-gray-800 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
       >
         <div className="px-6">
           <Link className="flex items-center space-x-4" href="/">
             <IconCircleDashed className="h-8 w-auto text-violet-400" />
-            <h1 className="text-xl font-bold tracking-tight text-white">
+            <h1 className="text-xl font-semibold tracking-tight text-gray-700">
               Task Lab
             </h1>
           </Link>
@@ -107,6 +107,30 @@ export default function Sidebar() {
               text="Documentation"
               href="https://github.com/trdotpy/tasklab"
             />
+          </ul>
+
+          <h2 className="mt-8 mb-4 text-sm font-medium text-gray-400">Tags</h2>
+          <ul className="grid">
+            <li className="flex items-center rounded-lg py-2 px-4 text-center dark:bg-gray-800 dark:text-slate-400 dark:hover:bg-gray-900 dark:hover:text-slate-300">
+              <span className="mr-2 h-2 w-2 rounded-sm bg-red-500"></span>
+              <span className="text-sm text-gray-400">Red</span>
+            </li>
+            <li className="flex items-center rounded-lg py-2 px-4 text-center dark:bg-gray-800 dark:text-slate-400 dark:hover:bg-gray-900 dark:hover:text-slate-300">
+              <span className="mr-2 h-2 w-2 rounded-sm bg-green-500"></span>
+              <span className="text-sm text-gray-400">Green</span>
+            </li>
+            <li className="flex items-center rounded-lg py-2 px-4 text-center dark:bg-gray-800 dark:text-slate-400 dark:hover:bg-gray-900 dark:hover:text-slate-300">
+              <span className="mr-2 h-2 w-2 rounded-sm bg-purple-500"></span>
+              <span className="text-sm text-gray-400">Purple</span>
+            </li>
+            <li className="flex items-center rounded-lg py-2 px-4 text-center dark:bg-gray-800 dark:text-slate-400 dark:hover:bg-gray-900 dark:hover:text-slate-300">
+              <span className="mr-2 h-2 w-2 rounded-sm bg-yellow-500"></span>
+              <span className="text-sm text-gray-400">Review</span>
+            </li>
+            <li className="flex items-center rounded-lg py-2 px-4 text-center dark:bg-gray-800 dark:text-slate-400 dark:hover:bg-gray-900 dark:hover:text-slate-300">
+              <span className="mr-2 h-2 w-2 rounded-sm bg-orange-500"></span>
+              <span className="text-sm text-gray-400">Meetings</span>
+            </li>
           </ul>
         </nav>
       </div>
