@@ -150,10 +150,10 @@ function TaskCard({ task }) {
     <>
       <Draggable>
         <div
-          className="mb-4 min-w-[250px] max-w-[300px] cursor-pointer bg-white p-4 shadow-md hover:bg-gray-200"
+          className="mb-4 min-w-[250px] max-w-[300px]  cursor-pointer bg-white p-4 shadow-md hover:bg-gray-200"
           onClick={() => setShowModal(true)}
         >
-          <div className="space-y-2">
+          <div className="max-h-[250px] min-h-[180px] space-y-2">
             <div>
               <div className="flex justify-between">
                 <h3 className="text-sm font-medium text-gray-700">{title}</h3>
@@ -165,16 +165,15 @@ function TaskCard({ task }) {
                 <p>❗️</p>
               </div>
             </div>
-
-            <div className="flex justify-end">
-              <button
-                type="button"
-                class="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-xs font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
-                data-hs-overlay="#hs-vertically-centered-modal"
-              >
-                Details
-              </button>
-            </div>
+          </div>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              class="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-xs font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+              data-hs-overlay="#hs-vertically-centered-modal"
+            >
+              Details
+            </button>
           </div>
         </div>
       </Draggable>
