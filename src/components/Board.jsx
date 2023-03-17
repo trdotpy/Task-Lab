@@ -1,62 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
-import { IconGridDots } from "@tabler/icons-react";
 import TaskModal from "./TaskModal";
 import NewTaskModal from "./NewTaskModal";
 import TaskCard from "./TaskCard";
+import axios from "axios";
 
 export default function Board() {
-  const columns = [
-    { id: "backlog", title: "Backlog 📖" },
-    { id: "in-progress", title: "In Progress 💪" },
-    { id: "testing", title: "Testing 🔬" },
-    { id: "completed", title: "Completed ✅" },
-  ];
-
-  const tasks = [
-    {
-      id: "task1",
-      title: "Refactor Codebase",
-      description:
-        "Refactor the codebase to use hooks. This will make the codebase more maintainable and easier to understand.",
-      status: "backlog",
-      priority: "high",
-    },
-    {
-      id: "task2",
-      title: "Lead Generation",
-      description: "Generate leads for the company. This will increase sales.",
-      status: "in-progress",
-      priority: "low",
-    },
-    {
-      id: "task3",
-      title: "Marketing Campaigns",
-      description: "Create marketing campaigns for the company.",
-      status: "completed",
-      priority: "medium",
-    },
-    {
-      id: "task4",
-      title: "Test backend API",
-      description: "Test the backend API for the company.",
-      status: "testing",
-      priority: "high",
-    },
-  ];
-
-  const [tasksData, setTasksData] = useState(tasks);
+  const [tasks, setTasks] = useState([]);
   const [newTaskModal, setNewTaskModal] = useState(false);
+
+  const columns = [
+    { id: "Backlog", title: "Backlog 📖" },
+    { id: "In Progress", title: "In Progress 💪" },
+    { id: "Testing", title: "Testing 🔬" },
+    { id: "Completed", title: "Completed ✅" },
+  ];
+
+  useEffect(() => {
+    axios.get("/api/tasks").then((res) => {
+      setTasks(res.data);
+      console.log(tasks);
+    });
+  }, []);
 
   const getColumnClass = (columnId) => {
     switch (columnId) {
-      case "backlog":
+      case "Backlog":
         return "bg-blue-500";
-      case "in-progress":
+      case "In Progress":
         return "bg-orange-500";
-      case "testing":
+      case "Testing":
         return "bg-violet-500";
-      case "completed":
+      case "Completed":
         return "bg-green-500";
       default:
         return "";
@@ -90,7 +65,7 @@ export default function Board() {
                   key={column.id}
                   className="min-w-[300px] max-w-[350px] rounded py-4 px-3"
                 >
-                  <div className="mx-1 mb-2 flex flex-row items-center justify-between">
+                  <div className="mx-1 mb-2">
                     <div className="grid px-4">
                       <h2
                         className={`mr-2 mb-4 rounded px-4 py-1.5 text-base font-medium uppercase text-white ${getColumnClass(
@@ -99,12 +74,18 @@ export default function Board() {
                       >
                         {column.title}
                       </h2>
-
-                      {tasksData
-                        .filter((task) => task.status === column.id)
-                        .map((task) => (
-                          <TaskCard key={task.id} task={task} />
-                        ))}
+                      {tasks.map((task) => {
+                        if (task.status === column.id) {
+                          return (
+                            <TaskCard
+                              key={task.id}
+                              title={task.title}
+                              description={task.description}
+                              status={task.status}
+                            />
+                          );
+                        }
+                      })}
                     </div>
                   </div>
                 </div>

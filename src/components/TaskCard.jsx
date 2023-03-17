@@ -3,9 +3,8 @@ import { useState } from "react";
 import Draggable from "react-draggable";
 import TaskModal from "./TaskModal";
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ title, description, status }) {
   const [showModal, setShowModal] = useState(false);
-  const { title, description, status } = task;
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -25,13 +24,17 @@ export default function TaskCard({ task }) {
                 <IconGridDots className="handle mb-2 h-4 w-4 cursor-move text-gray-400" />
               </div>
               <p className="text-sm text-gray-400">{description}</p>
+
               <div className="mt-4 flex items-center">
                 <h3 className="text-sm font-medium text-gray-700">Priority:</h3>
                 <p>❗️</p>
               </div>
             </div>
           </div>
-          <div className="flex justify-end">
+          <div className="flex items-center justify-between">
+            <h3 className="rounded bg-yellow-200 py-1.5 px-2 text-xs font-medium text-gray-800">
+              {status}
+            </h3>
             <button
               type="button"
               className="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-xs font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"

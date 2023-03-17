@@ -16,6 +16,7 @@ export default function Home() {
       <main>
         <Layout>
           <BoardTest />
+          {/* <Board /> */}
         </Layout>
       </main>
     </>
