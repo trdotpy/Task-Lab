@@ -55,13 +55,13 @@ export default function Sidebar() {
     <>
       <div
         id="docs-sidebar"
-        className="hs-overlay scrollbar-y dark:scrollbar-y fixed top-0 left-0 bottom-0 z-[60] -translate-x-full transform overflow-y-auto bg-gray-800 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
+        className="hs-overlay scrollbar-y fixed top-0 left-0 bottom-0 z-[60] w-60 -translate-x-full transform overflow-y-auto bg-gray-800 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
       >
         <div className="px-6">
           <Link className="flex items-center space-x-4" href="/">
             <IconCircleDashed className="h-8 w-auto text-violet-400" />
-            <h1 className="text-xl font-semibold tracking-tight text-gray-700">
-              Task Lab
+            <h1 className="text-xl font-semibold tracking-tight text-gray-300">
+              TaskLab
             </h1>
           </Link>
         </div>
@@ -75,28 +75,27 @@ export default function Sidebar() {
             <SidebarAccordion titleIcon={IconBrandAsana} title="Projects">
               <SidebarItem
                 icon={IconLayoutKanban}
-                text="Task Management"
+                text="Project Boards"
                 href="/projects"
               />
               <SidebarItem
                 icon={IconSettings}
                 text="Project Settings"
-                href="/project-settings"
+                href="/projects/settings"
               />
             </SidebarAccordion>
 
             <SidebarAccordion titleIcon={IconUser} title="Account">
-              <SidebarItem icon={IconSettings} text="Account Settings" />
               <SidebarItem
-                icon={IconUserCircle}
-                text="Profile"
+                icon={IconSettings}
+                text="Account Settings"
                 href="/account"
               />
 
               <SidebarItem
                 icon={IconCreditCard}
-                text="Billing"
-                href="/billing"
+                text="Billing Information"
+                href="/account/billing"
               />
             </SidebarAccordion>
 
@@ -105,7 +104,7 @@ export default function Sidebar() {
             <SidebarItem
               icon={IconBook}
               text="Documentation"
-              href="https://github.com/trdotpy/tasklab"
+              href="https://github.com/trdotpy/Task-Lab"
             />
           </ul>
 

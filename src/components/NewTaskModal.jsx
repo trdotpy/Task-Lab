@@ -1,8 +1,25 @@
 import React, { useState } from "react";
 import { IconX } from "@tabler/icons-react";
-import Comments from "./Comments";
 
-export default function NewTaskModal({ handleAddTask, newTask, setNewTask }) {
+export default function NewTaskModal() {
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
+  const createTask = async (e) => {
+    e.preventDefault();
+    const title = e.target.title.value;
+    const description = e.target.description.value;
+    const status = e.target.status.value;
+    const board = "6413767b2dd0de4e18538e12";
+
+    try {
+      await axios.post("/api/tasks", { title, status, description, board });
+      closeModal();
+    } catch (error) {
+      console.error("Error creating task:", error);
+    }
+  };
+
   return (
     <>
       <div
@@ -24,7 +41,8 @@ export default function NewTaskModal({ handleAddTask, newTask, setNewTask }) {
                 <IconX />
               </button>
             </div>
-            <div className="overflow-y-auto p-4">
+
+            <form className="overflow-y-auto p-4" onSubmit={createTask}>
               <div className="mb-4 flex">
                 <div className="mr-2 w-1/2">
                   <label
@@ -56,9 +74,10 @@ export default function NewTaskModal({ handleAddTask, newTask, setNewTask }) {
                     id="status"
                   >
                     <option value="">Select Status</option>
-                    <option value="To Do">To Do</option>
+                    <option value="Backlog">Backlog</option>
                     <option value="In Progress">In Progress</option>
-                    <option value="Done">Done</option>
+                    <option value="Testing">Testing</option>
+                    <option value="Completed">Completed</option>
                   </select>
                 </div>
               </div>
@@ -121,12 +140,12 @@ export default function NewTaskModal({ handleAddTask, newTask, setNewTask }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
 
             <div className="flex items-center justify-end gap-x-2 py-3 px-4">
               <button
                 className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                type="button"
+                type="submit"
               >
                 Create Task
               </button>

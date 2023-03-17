@@ -14,7 +14,7 @@ export default function Layout({ children }) {
           <Navbar />
         </header>
 
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow px-20">{children}</main>
       </div>
     </div>
   );

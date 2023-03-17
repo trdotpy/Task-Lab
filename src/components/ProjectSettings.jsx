@@ -11,7 +11,7 @@ export default function ProjectSettings() {
   };
 
   return (
-    <div className="p-4">
+    <div>
       <h2 className="mb-4 text-xl font-semibold uppercase text-gray-700">
         Project Settings
       </h2>

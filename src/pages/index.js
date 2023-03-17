@@ -3,6 +3,7 @@ import { useState } from "react";
 import Board from "@/components/Board";
 import BoardTest from "@/components/BoardTest";
 import Layout from "@/components/Layout";
+import KanbanBoard from "@/components/KanbanBoard";
 
 export default function Home() {
   return (
@@ -15,8 +16,9 @@ export default function Home() {
       </Head>
       <main>
         <Layout>
-          <BoardTest />
+          {/* <BoardTest /> */}
           {/* <Board /> */}
+          <KanbanBoard />
         </Layout>
       </main>
     </>
