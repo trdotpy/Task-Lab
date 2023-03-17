@@ -2,11 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Task = require("../models/Task");
 
-// Add a board to a specific user
-// Add a task to a specific board
-// Remove a board from a specific user
-// Remove a task from a specific board
-
 // Get all tasks
 router.get("/", async (req, res) => {
   try {

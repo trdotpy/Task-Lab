@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { IconGridDots } from "@tabler/icons-react";
 import NewTaskModal from "./NewTaskModal";
 import TaskModal from "./TaskModal";
+import axios from "axios";
 
 export default function BoardTest() {
+  const [tasks, setTasks] = useState([]);
+  const [newTaskModal, setNewTaskModal] = useState(false);
+
   const columns = [
     { id: "backlog", title: "Backlog 📖" },
     { id: "in-progress", title: "In Progress 💪" },
@@ -12,40 +16,16 @@ export default function BoardTest() {
     { id: "completed", title: "Completed ✅" },
   ];
 
-  const tasks = [
-    {
-      id: "task1",
-      title: "Refactor Codebase",
-      description:
-        "Refactor the codebase to use hooks. This will make the codebase more maintainable and easier to understand.",
-      status: "backlog",
-      priority: "high",
-    },
-    {
-      id: "task2",
-      title: "Lead Generation",
-      description: "Generate leads for the company. This will increase sales.",
-      status: "in-progress",
-      priority: "low",
-    },
-    {
-      id: "task3",
-      title: "Marketing Campaigns",
-      description: "Create marketing campaigns for the company.",
-      status: "completed",
-      priority: "medium",
-    },
-    {
-      id: "task4",
-      title: "Test backend API",
-      description: "Test the backend API for the company.",
-      status: "testing",
-      priority: "high",
-    },
-  ];
+  useEffect(() => {
+    axios.get("/api/tasks").then((res) => {
+      setTasks(res.data);
+      // console.log(tasks);
+    });
+  }, []);
 
-  const [tasksData, setTasksData] = useState(tasks);
-  const [newTaskModal, setNewTaskModal] = useState(false);
+  // setTimeout(() => {
+  //   console.log(tasks);
+  // }, 3000);
 
   const getColumnClass = (columnId) => {
     switch (columnId) {
@@ -99,11 +79,11 @@ export default function BoardTest() {
                         {column.title}
                       </h2>
 
-                      {tasksData
+                      {/* {tasks
                         .filter((task) => task.status === column.id)
                         .map((task) => (
                           <TaskCard key={task.id} task={task} />
-                        ))}
+                        ))} */}
                     </div>
                   </div>
                 </div>

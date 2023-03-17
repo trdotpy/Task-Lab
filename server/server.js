@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 // Load environment variables
 require("dotenv").config();
@@ -13,6 +14,7 @@ const taskRoutes = require("./routes/Task");
 // Initialize Express app
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB database
@@ -25,7 +27,7 @@ mongoose
   .catch((error) => console.error(error));
 
 // Define the port to listen on
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 // Use routes
 app.use("/api/users", userRoutes);

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "nodemon --watch server.js --watch controllers --watch db --watch routes"
+		"start": "node server.js"
   },
   "keywords": [],
   "author": "",
