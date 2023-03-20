@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
-import Layout from "@/layouts/Layout";
 import KanbanBoard from "@/components/KanbanBoard";
+import NewLayout from "@/layouts/NewLayout";
+import Login from "@/components/Login";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Layout>{/* <NewBoard /> */}</Layout>
+        <NewLayout>
+          <Login />
+        </NewLayout>
       </main>
     </>
   );
