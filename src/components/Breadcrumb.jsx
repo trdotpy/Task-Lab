@@ -22,12 +22,12 @@ export default function Breadcrumb({ title }) {
             className="flex items-center text-gray-500 hover:text-blue-600"
             href="#"
           >
-            Tasks
+            Projects
             <IconChevronRight className="mx-3 h-3.5 w-3.5 flex-shrink-0 overflow-visible text-gray-400" />
           </a>
         </li>
         <li
-          className="truncate text-sm font-medium text-gray-800"
+          className="truncate text-sm font-medium text-gray-600"
           aria-current="page"
         >
           {title}

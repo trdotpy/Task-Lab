@@ -1,11 +1,11 @@
-import Layout from "@/components/Layout";
+import AccountSettings from "@/components/AccountSettings";
+import Layout from "@/layouts/Layout";
 import React from "react";
 
 export default function AccountPage() {
   return (
-    //
     <Layout>
-			AccountPage
-		</Layout>
+      <AccountSettings />
+    </Layout>
   );
 }

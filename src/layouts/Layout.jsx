@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 export default function Layout({ children }) {
   return (
-    <div className="flex min-h-screen bg-gray-900">
+    <div className="flex min-h-screen bg-gray-50">
       <aside className="w-64 bg-white p-4">
         <Sidebar />
       </aside>
@@ -14,7 +14,7 @@ export default function Layout({ children }) {
           <Navbar />
         </header>
 
-        <main className="flex-grow px-20">{children}</main>
+        <main className="flex-grow px-20 py-8">{children}</main>
       </div>
     </div>
   );

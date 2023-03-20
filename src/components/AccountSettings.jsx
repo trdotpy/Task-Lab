@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ProjectSettings() {
+export default function AccountSettings() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");

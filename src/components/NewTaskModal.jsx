@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import { IconX } from "@tabler/icons-react";
+import axios from "axios";
 
-export default function NewTaskModal() {
-  const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
+export default function NewTaskModal({ newTaskModal, setNewTaskModal }) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("");
 
   const createTask = async (e) => {
     e.preventDefault();
-    const title = e.target.title.value;
-    const description = e.target.description.value;
-    const status = e.target.status.value;
-    const board = "6413767b2dd0de4e18538e12";
-
     try {
-      await axios.post("/api/tasks", { title, status, description, board });
-      closeModal();
+      await axios.post("/api/tasks", { title, description, status });
+      setNewTaskModal(false);
     } catch (error) {
       console.error("Error creating task:", error);
     }
@@ -22,11 +19,8 @@ export default function NewTaskModal() {
 
   return (
     <>
-      <div
-        id="hs-large-modal"
-        className="hs-overlay fixed top-0 left-0 z-[60] hidden h-full w-full overflow-y-auto overflow-x-hidden"
-      >
-        <div className="m-3 mt-0 opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:w-full sm:max-w-5xl lg:mx-auto lg:w-full">
+      <div className="fixed top-0 left-0 z-50 h-full w-full overflow-y-auto overflow-x-hidden">
+        <div className="m-3 mt-0 flex min-h-[calc(100%-3.5rem)] items-center justify-center transition-all ease-out sm:mx-auto sm:w-full sm:max-w-5xl">
           <div className="flex flex-col rounded-lg border bg-white py-3 px-4 shadow-sm">
             <div className="flex items-center justify-between border-b py-3 px-4">
               <h3 className="text-xl font-semibold text-gray-700">
@@ -34,8 +28,8 @@ export default function NewTaskModal() {
               </h3>
               <button
                 type="button"
-                className="hs-dropdown-toggle inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-sm text-gray-500 transition-all hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white "
-                data-hs-overlay="#hs-large-modal"
+                className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-sm text-gray-500 outline-1 transition-all hover:text-gray-400 hover:outline focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white"
+                onClick={() => setNewTaskModal(false)}
               >
                 <span className="sr-only">Close</span>
                 <IconX />
@@ -58,6 +52,8 @@ export default function NewTaskModal() {
                     id="title"
                     type="text"
                     placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div className="ml-2 w-1/2">
@@ -72,6 +68,8 @@ export default function NewTaskModal() {
                   <select
                     className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     id="status"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
                   >
                     <option value="">Select Status</option>
                     <option value="Backlog">Backlog</option>
@@ -95,6 +93,8 @@ export default function NewTaskModal() {
                   className="focus:shadow-outline h-32 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                   id="description"
                   placeholder="Description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
               </div>
               <div className="mt-2 grid grid-cols-2 gap-2">
@@ -123,7 +123,10 @@ export default function NewTaskModal() {
                       Priority
                     </h3>
                   </label>
-                  <select className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none">
+                  <select
+                    className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                    id="priority"
+                  >
                     <option value="">Select Priority</option>
                     <option value="❗️">❗️</option>
                     <option value="❗️❗️">❗️❗️</option>
@@ -140,19 +143,24 @@ export default function NewTaskModal() {
                   </div>
                 </div>
               </div>
+              <div className="flex items-center justify-end gap-x-2 py-3 px-4">
+                <button
+                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  type="submit"
+                >
+                  Create Task
+                </button>
+              </div>
             </form>
-
-            <div className="flex items-center justify-end gap-x-2 py-3 px-4">
-              <button
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                type="submit"
-              >
-                Create Task
-              </button>
-            </div>
           </div>
         </div>
       </div>
+      {/* Overlay element */}
+      <div
+        className={`fixed top-0 left-0 z-40 h-full w-full bg-gray-800 bg-opacity-20 transition-opacity ${
+          newTaskModal ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
     </>
   );
 }

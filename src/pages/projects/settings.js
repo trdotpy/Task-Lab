@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+import Layout from "@/layouts/Layout";
 import ProjectSettings from "@/components/ProjectSettings";
 import React from "react";
 
