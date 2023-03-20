@@ -80,7 +80,7 @@ export default function Register() {
 
         <p class="mt-8 text-center text-xs font-light text-gray-400">
           {" "}
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <a href="#" class="font-medium text-gray-700 hover:underline ">
             Sign up
           </a>
