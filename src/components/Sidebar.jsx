@@ -92,11 +92,11 @@ export default function Sidebar() {
                 href="/account"
               />
 
-              <SidebarItem
+              {/* <SidebarItem
                 icon={IconCreditCard}
                 text="Billing Information"
                 href="/account/billing"
-              />
+              /> */}
             </SidebarAccordion>
 
             <SidebarItem icon={IconCalendar} text="Calendar" href="/calendar" />
