@@ -1,27 +1,31 @@
-import nextConnect from "next-connect";
-import clientPromise from "../../../../lib/mongodb";
+import mongoose from "mongoose";
+import Task from "../../../../models/Task";
+import dbConnect from "../../../../utils/dbConnect";
 
-const handler = nextConnect(); // Create a new NextConnect instance
+export default async function handler(req, res) {
+  const { method, body } = req;
 
-// GET /api/tasks
-handler.get(async (req, res) => {
-  const client = await clientPromise;
-  const db = client.db();
-  const tasksCollection = db.collection("tasks");
-  const tasks = await tasksCollection.find({}).toArray();
+  await dbConnect();
 
-  res.status(200).json({ tasks });
-});
-
-// POST /api/tasks
-handler.post(async (req, res) => {
-  const client = await clientPromise;
-  const db = client.db();
-  const tasksCollection = db.collection("tasks");
-  const task = req.body;
-
-  const result = await tasksCollection.insertOne(task);
-  res.status(201).json(result.ops[0]);
-});
-
-export default handler;
+  switch (method) {
+    case "POST":
+      try {
+        const task = await Task.create(body);
+        res.status(201).json({ success: true, data: task });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+    case "GET":
+      try {
+        const tasks = await Task.find({});
+        res.status(200).json({ success: true, data: tasks });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+    default:
+      res.status(400).json({ success: false });
+      break;
+  }
+}

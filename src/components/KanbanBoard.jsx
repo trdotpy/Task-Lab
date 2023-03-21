@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Breadcrumb from "./Breadcrumb";
-import Draggable from "react-draggable";
-import TaskModal from "./TaskModal";
-import { IconTrash } from "@tabler/icons-react";
 import Column from "./Column";
 import NewTaskModal from "./NewTaskModal";
 
@@ -48,7 +44,7 @@ export default function KanbanBoard() {
 
   useEffect(() => {
     axios.get("/api/tasks").then((res) => {
-      setTasks(res.data.tasks);
+      setTasks(res.data.data);
     });
   }, []);
 

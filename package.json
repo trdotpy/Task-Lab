@@ -11,20 +11,24 @@
   "dependencies": {
     "@tabler/icons-react": "^2.10.0",
     "axios": "^1.3.4",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "firebase": "^9.18.0",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.2",
     "next": "13.2.4",
+    "next-auth": "^4.20.1",
     "next-connect": "^0.13.0",
     "preline": "^1.7.0",
     "react": "18.2.0",
-    "react-beautiful-dnd": "^13.1.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "18.2.0",
-    "react-draggable": "^4.4.5"
+    "react-draggable": "^4.4.5",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

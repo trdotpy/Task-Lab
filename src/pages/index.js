@@ -3,6 +3,7 @@ import { useState } from "react";
 import KanbanBoard from "@/components/KanbanBoard";
 import NewLayout from "@/layouts/NewLayout";
 import Login from "@/components/Login";
+import Landing from "@/components/Landing";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
       </Head>
       <main>
         <NewLayout>
-          <Login />
+          <Landing />
         </NewLayout>
       </main>
     </>
