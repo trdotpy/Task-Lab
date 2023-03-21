@@ -13,11 +13,12 @@ export default function TaskModal({
   taskId,
   priority,
 }) {
+  const [comments, setComments] = useState([]); // state to hold comments
+  // const [newComment, setNewComment] = useState(""); // state to hold new comment
+
   const closeModal = () => {
     setShowModal(false);
   };
-
-  const [comments, setComments] = useState([]); // state to hold comments
 
   useEffect(() => {
     // Fetch comments for the current task
@@ -31,7 +32,18 @@ export default function TaskModal({
     fetchComments();
   }, [taskId]); // re-fetch comments whenever the task ID changes
 
-  console.log(comments);
+  // const createComment = async (e) => {
+  //   e.preventDefault();
+  //   const res = await axios.post("/api/comments", {
+  //     task: taskId, // task ID
+  //     comment: newComment, // comment text
+  //     createdBy: user,
+  //   });
+  //   if (res.data.success) {
+  //     setComments((prev) => [...prev, res.data.data]);
+  //     setNewComment("");
+  //   }
+  // };
 
   return (
     <div className="flex justify-center">

@@ -12,6 +12,7 @@ import {
   IconSettings,
   IconUser,
   IconUserCircle,
+  IconLogout,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -140,35 +141,51 @@ export default function Sidebar() {
               </li>
             </ul>
           </div>
-        </nav>
 
-        <div>
-          <ul className="absolute bottom-0 w-full border-t border-gray-800 bg-gray-800 py-3">
-            <div className="flex items-center justify-center">
-              <img
-                src={user?.picture}
-                alt=""
-                className="mr-4 h-6 w-6 rounded-full"
+          <ul className="absolute bottom-0 w-full border-t border-gray-200 py-3">
+            <UserAccordion title="Account" user={user}>
+              <SidebarItem
+                icon={IconLogout}
+                text="Logout"
+                href="/api/auth/logout"
               />
-              <div className="grid">
-                <span className="text-sm font-medium text-gray-100">
-                  {user?.name}
-                </span>
-                <span className="text-xs text-gray-400">{user?.email}</span>
-              </div>
-            </div>
+            </UserAccordion>
           </ul>
-          {/* <ul className="absolute bottom-0">
-            <div className="grid cursor-pointer rounded px-4 text-left hover:bg-gray-300">
-              <span className="text-sm text-gray-800">{user?.name}</span>
-              <span className="text-xs text-gray-500">{user?.email}</span>
-            </div>
-            <button className="w-full px-6" onClick={handleLogout}>
-              <SidebarItem icon={IconUserCircle} text="Logout" />
-            </button>
-          </ul> */}
-        </div>
+        </nav>
       </div>
     </>
   );
 }
+
+const UserAccordion = ({ title, children, user }) => (
+  <li
+    className="hs-accordion"
+    id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}
+  >
+    <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3.5 rounded-md py-2 px-2.5 text-sm text-slate-700 hover:bg-gray-100 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent ">
+      <Image
+        src={user?.picture}
+        alt=""
+        className="rounded"
+        height={24}
+        width={24}
+      />
+      <div className="grid">
+        <p className="text-sm font-medium text-gray-700">{user?.name}</p>
+      </div>
+      <IconChevronUp className="ml-3 hidden h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:block dark:text-gray-400" />
+      <IconChevronDown className="ml-3 block h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:hidden dark:text-gray-400" />
+    </div>
+    <div
+      id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}
+      className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+    >
+      <ul
+        className="hs-accordion-group pl-3 pt-2"
+        data-hs-accordion-always-open
+      >
+        {children}
+      </ul>
+    </div>
+  </li>
+);
