@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
 
 export default function AccountSettings() {
   const { user } = useUser();
@@ -12,7 +13,13 @@ export default function AccountSettings() {
         </h1>
         <div className="mb-4">
           <div className="items-center">
-            <img src={user?.picture} alt="" />
+            <Image
+              src={user?.picture}
+              alt={user?.name}
+              className="rounded"
+              height={48}
+              width={48}
+            />
           </div>
         </div>
       </div>
