@@ -10,7 +10,7 @@ export default function Boards({ boards }) {
 
   const handleDeleteBoard = async (boardId) => {
     try {
-      await axios.delete(`${process.env.BASE_URL}/api/boards/${boardId}`);
+      await axios.delete(`/api/boards/${boardId}`);
       setBoardList(boardList.filter((board) => board._id !== boardId));
     } catch (error) {
       console.error(error);
@@ -41,14 +41,12 @@ export default function Boards({ boards }) {
                   <p className="text-xs text-gray-400">Board ID: {board._id}</p>
                 </div>
               </Link>
-              <div className="flex justify-end">
-                <button
-                  className="rounded-md bg-red-500 px-4 py-2 text-sm text-white shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  onClick={() => handleDeleteBoard(board._id)}
-                >
-                  Delete
-                </button>
-              </div>
+              <button
+                className="rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                onClick={() => handleDeleteBoard(board._id)}
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
