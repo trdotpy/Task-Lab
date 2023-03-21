@@ -11,6 +11,7 @@ export default function NewTaskModal({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
+  const [priority, setPriority] = useState("");
 
   const createTask = async (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ export default function NewTaskModal({
         title,
         description,
         status,
+        priority,
       });
       setNewTaskModal(false);
     } catch (error) {
@@ -65,7 +67,45 @@ export default function NewTaskModal({
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
-                <div className="ml-2 w-1/2">
+
+                <div className="col-span-1">
+                  <label
+                    className="mb-2 mr-2 block text-sm font-bold text-gray-700"
+                    htmlFor="date"
+                  >
+                    <h3 className="text-sm font-medium uppercase text-gray-700">
+                      Date
+                    </h3>
+                  </label>
+                  <input
+                    className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                    id="date"
+                    type="text"
+                    placeholder="Date"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <label
+                  className="mb-2 block text-sm font-bold text-gray-700"
+                  htmlFor="description"
+                >
+                  <h3 className="text-sm font-medium uppercase text-gray-700">
+                    Description
+                  </h3>
+                </label>
+                <textarea
+                  className="focus:shadow-outline h-32 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                  id="description"
+                  placeholder="Description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></textarea>
+              </div>
+
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <div className="col-span-1">
                   <label
                     className="mb-2 block text-sm font-bold text-gray-700"
                     htmlFor="status"
@@ -87,42 +127,7 @@ export default function NewTaskModal({
                     <option value="Completed">Completed</option>
                   </select>
                 </div>
-              </div>
 
-              <div className="mb-4">
-                <label
-                  className="mb-2 block text-sm font-bold text-gray-700"
-                  htmlFor="description"
-                >
-                  <h3 className="text-sm font-medium uppercase text-gray-700">
-                    Description
-                  </h3>
-                </label>
-                <textarea
-                  className="focus:shadow-outline h-32 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  id="description"
-                  placeholder="Description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-              </div>
-              <div className="mt-2 grid grid-cols-2 gap-2">
-                <div className="col-span-1">
-                  <label
-                    className="mb-2 mr-2 block text-sm font-bold text-gray-700"
-                    htmlFor="date"
-                  >
-                    <h3 className="text-sm font-medium uppercase text-gray-700">
-                      Date
-                    </h3>
-                  </label>
-                  <input
-                    className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="date"
-                    type="text"
-                    placeholder="Date"
-                  />
-                </div>
                 <div className="col-span-1">
                   <label
                     className="mb-2 mr-2 block text-sm font-bold text-gray-700"
@@ -135,6 +140,8 @@ export default function NewTaskModal({
                   <select
                     className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     id="priority"
+                    value={priority}
+                    onChange={(e) => setPriority(e.target.value)}
                   >
                     <option value="">Select Priority</option>
                     <option value="Low">Low</option>
