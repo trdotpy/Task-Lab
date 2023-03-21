@@ -2,7 +2,7 @@ import { IconX } from "@tabler/icons-react";
 import React from "react";
 import Breadcrumb from "./Breadcrumb";
 import Comments from "./Comments";
-import Dropdown from "./Dropdown";
+import Dropdown from "./StatusDropdown";
 
 export default function TaskModal({
   title,

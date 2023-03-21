@@ -24,8 +24,7 @@ export default function Home() {
   if (error) return <div>{error.message}</div>;
 
   if (user) {
-    router.push("/dashboard");
-    // router.push("/projects");
+    router.push("/boards");
   }
 
   if (!user) {

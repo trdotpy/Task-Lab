@@ -10,7 +10,7 @@ export default function Column({
   return (
     <div className={`h-full min-h-screen w-1/4 rounded p-4`}>
       <h2
-        className={`mr-2 mb-4 rounded px-4 py-1.5 text-base font-medium uppercase text-white ${getColumnClass(
+        className={`mr-2 mb-4 rounded px-4 py-1.5 text-lg font-medium uppercase text-white ${getColumnClass(
           title
         )}`}
       >
@@ -27,6 +27,7 @@ export default function Column({
           status={task.status}
           index={index}
           setTasks={setTasks}
+          priority={task.priority}
         />
       ))}
     </div>

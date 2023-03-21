@@ -20,31 +20,35 @@ export default function Boards({ boards }) {
   return (
     <>
       <Layout>
-        <div className="mb-4 flex justify-end">
+        <div className="mb-4 flex items-center justify-between">
+          <h1 className="mb-4 text-2xl font-semibold">All Project Boards</h1>
           <button
-            className="rounded-md bg-green-500 px-4 py-2 font-bold text-white shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="rounded-md bg-blue-400 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
             onClick={() => setShowBoardModal(true)}
           >
             New Board
           </button>
         </div>
-        <h1 className="mb-4 text-2xl font-bold">Boards</h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {boardList.map((board) => (
             <div key={board._id} className="rounded-lg bg-white p-4 shadow-md">
               <Link href={`/boards/${board._id}`}>
                 <div>
-                  <h2 className="mb-2 text-lg font-semibold">{board.title}</h2>
+                  <h2 className="mb-2 text-lg font-medium text-gray-800">
+                    {board.title}
+                  </h2>
                   <p className="text-sm text-gray-500">{board.description}</p>
-                  <p>Board ID: {board._id}</p>
+                  <p className="text-xs text-gray-400">Board ID: {board._id}</p>
                 </div>
               </Link>
-              <button
-                className="rounded-md bg-red-500 px-4 py-2 font-bold text-white shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-                onClick={() => handleDeleteBoard(board._id)}
-              >
-                Delete
-              </button>
+              <div className="flex justify-end">
+                <button
+                  className="rounded-md bg-red-500 px-4 py-2 text-sm text-white shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  onClick={() => handleDeleteBoard(board._id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>

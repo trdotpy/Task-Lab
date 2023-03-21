@@ -49,66 +49,26 @@ export default function KanbanBoard({ title, description, boardId }) {
     });
   }, [boardId]);
 
-  const handleBoardNameClick = () => {
-    setEditingBoardName(true);
-  };
-
-  const handleBoardNameChange = (e) => {
-    setBoardName(e.target.value);
-  };
-
-  const handleBoardDescriptionClick = () => {
-    setEditingBoardDescription(true);
-  };
-
-  const handleBoardDescriptionChange = (e) => {
-    setBoardDescription(e.target.value);
-  };
-
   return (
     <>
       <div className="pt-6">
         <div className="py-4">
           <div className="mb-2 flex justify-between">
-            {editingBoardName ? (
-              <input
-                type="text"
-                className="bg-gray-50 text-2xl font-semibold uppercase text-gray-800 focus:outline-none"
-                value={title}
-                onChange={handleBoardNameChange}
-              />
-            ) : (
-              <h2
-                className="cursor-pointer text-2xl font-semibold uppercase text-gray-800"
-                onClick={handleBoardNameClick}
-              >
-                {title}
-              </h2>
-            )}
+            <h2 className="cursor-pointer text-2xl font-semibold  text-gray-800">
+              {title}
+            </h2>
             <button
               type="button"
-              className="rounded bg-blue-400 py-2 px-4 text-xs font-medium text-white hover:bg-blue-500"
+              className="rounded bg-blue-400 py-2 px-4 text-sm font-medium text-white hover:bg-blue-500"
               onClick={openNewTaskModal}
             >
               New Task
             </button>
           </div>
           <div>
-            {editingBoardDescription ? (
-              <input
-                type="text"
-                className="w-full bg-gray-50 text-sm text-gray-500 focus:outline-none"
-                value={boardDescription}
-                onChange={handleBoardDescriptionChange}
-              />
-            ) : (
-              <p
-                className="w-full cursor-pointer bg-gray-50 text-sm text-gray-500"
-                onClick={handleBoardDescriptionClick}
-              >
-                {boardDescription}
-              </p>
-            )}
+            <p className="w-full cursor-pointer bg-gray-50 text-sm text-gray-500">
+              {description}
+            </p>
           </div>
         </div>
         <div className="flex">

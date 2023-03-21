@@ -1,7 +1,7 @@
 import { IconChevronDown } from "@tabler/icons-react";
 import React from "react";
 
-export default function Dropdown({ status }) {
+export default function StatusDropdown({ status }) {
   return (
     <div className="hs-dropdown relative inline-flex">
       <button

@@ -12,6 +12,7 @@ export default function Card({
   index,
   taskId,
   setTasks,
+  priority,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [trashHover, setTrashHover] = useState(false);
@@ -39,8 +40,20 @@ export default function Card({
           onMouseLeave={() => setTrashHover(false)}
         >
           <div className="max-h-[240px] space-y-2">
+            <span
+              className={`rounded px-2 py-1 text-sm text-white ${
+                priority === "High"
+                  ? "bg-red-400"
+                  : priority === "Medium"
+                  ? "bg-yellow-400"
+                  : "bg-blue-400"
+              }`}
+            >
+              {priority}
+            </span>
+
             <div className="flex justify-between">
-              <h3 className="text-sm font-medium text-gray-700">{title}</h3>
+              <h3 className="text-lg font-medium text-gray-700">{title}</h3>
               {trashHover && (
                 <IconTrash
                   size={20}
@@ -50,7 +63,7 @@ export default function Card({
                 />
               )}
             </div>
-            <p className="text-xs text-gray-400">{description}</p>
+            <p className="text-sm text-gray-400">{description}</p>
             <div className="flex items-center justify-end">
               <button
                 type="button"

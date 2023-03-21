@@ -24,7 +24,7 @@ export default function NewBoardModal({ showBoardModal, setShowBoardModal }) {
           <div className="flex flex-col rounded-lg border bg-white py-3 px-4 shadow-sm">
             <div className="flex items-center justify-between border-b py-3 px-4">
               <h3 className="text-xl font-semibold text-gray-700">
-                Create New Board
+                New Project Board
               </h3>
               <button
                 type="button"
@@ -68,7 +68,7 @@ export default function NewBoardModal({ showBoardModal, setShowBoardModal }) {
                   </h3>
                 </label>
                 <textarea
-                  className="focus:shadow-outline h-32 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                  className="focus:shadow-outline h-32 w-96 appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                   id="description"
                   placeholder="Description"
                   value={description}
@@ -81,7 +81,7 @@ export default function NewBoardModal({ showBoardModal, setShowBoardModal }) {
                   className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   type="submit"
                 >
-                  Create Board
+                  Create
                 </button>
               </div>
             </form>

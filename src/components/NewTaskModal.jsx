@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IconX } from "@tabler/icons-react";
+import { IconChevronDown, IconX } from "@tabler/icons-react";
 import axios from "axios";
 
 export default function NewTaskModal({
@@ -32,8 +32,8 @@ export default function NewTaskModal({
         <div className="m-3 mt-0 flex min-h-[calc(100%-3.5rem)] items-center justify-center transition-all ease-out sm:mx-auto sm:w-full sm:max-w-5xl">
           <div className="flex flex-col rounded-lg border bg-white py-3 px-4 shadow-sm">
             <div className="flex items-center justify-between border-b py-3 px-4">
-              <h3 className="text-xl font-semibold text-gray-700">
-                Create New Task in {boardTitle}
+              <h3 className="text-lg font-semibold text-gray-700">
+                New Task: {boardTitle}
               </h3>
               <button
                 type="button"
@@ -137,27 +137,21 @@ export default function NewTaskModal({
                     id="priority"
                   >
                     <option value="">Select Priority</option>
-                    <option value="❗️">❗️</option>
-                    <option value="❗️❗️">❗️❗️</option>
-                    <option value="❗️❗️❗️">❗️❗️❗️</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                   </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg
-                      className="h-4 w-4 fill-current"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 12l-5-5 1.41-1.42L10 9.17l4.59-4.59L15 7l-5 5z" />
-                    </svg>
-                  </div>
                 </div>
               </div>
-              <div className="flex items-center justify-end gap-x-2 py-3 px-4">
+              <div
+                className="mt-3 flex items-center justify-end gap-x-2 py-3 
+							px-4"
+              >
                 <button
                   className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   type="submit"
                 >
-                  Create Task
+                  Create
                 </button>
               </div>
             </form>
