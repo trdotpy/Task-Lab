@@ -12,7 +12,7 @@ import React from "react";
 export default function Header() {
   return (
     <div>
-      <header className="z-50 flex w-full flex-wrap border-b border-gray-700 bg-[#2A324B] py-3 text-sm sm:flex-nowrap sm:justify-start">
+      <header className="z-50 flex w-full flex-wrap border-b border-gray-700 bg-jet-800 py-3 text-sm sm:flex-nowrap sm:justify-start">
         <nav
           className="relative mx-auto w-full max-w-7xl px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
           aria-label="Global"

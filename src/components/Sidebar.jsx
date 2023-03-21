@@ -21,7 +21,7 @@ import { useRouter } from "next/router";
 const SidebarItem = ({ icon: Icon, text, href }) => (
   <li>
     <Link href={href || "#"}>
-      <div className="flex items-center gap-x-3.5 rounded-md py-2 px-2.5 text-sm text-slate-700 hover:bg-gray-300">
+      <div className="flex items-center gap-x-3.5 rounded-md py-2 px-2.5 text-sm text-jet-100 hover:bg-jet-600">
         <Icon className="h-4 w-auto" />
         {text}
       </div>
@@ -34,7 +34,7 @@ const SidebarAccordion = ({ titleIcon: TitleIcon, title, children }) => (
     className="hs-accordion"
     id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}
   >
-    <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3.5 rounded-md py-2 px-2.5 text-sm text-slate-700 hover:bg-gray-100 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent ">
+    <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3.5 rounded-md py-2 px-2.5 text-sm text-jet-100 hover:bg-jet-600 hs-accordion-active:text-bitter-500 hs-accordion-active:hover:bg-transparent">
       <TitleIcon className="h-4 w-auto" />
       {title}
       <IconChevronUp className="ml-auto hidden h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:block dark:text-gray-400" />
@@ -67,12 +67,12 @@ export default function Sidebar() {
     <>
       <div
         id="docs-sidebar"
-        className="hs-overlay scrollbar-y fixed top-0 left-0 bottom-0 z-[60] w-60 -translate-x-full transform overflow-y-auto bg-gray-100 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
+        className="hs-overlay scrollbar-y fixed top-0 left-0 bottom-0 z-[60] w-60 -translate-x-full transform overflow-y-auto bg-jet-800 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
       >
         <div className="px-6">
           <Link className="flex items-center" href="/">
             <IconCircleDashed className="h-8 w-auto text-bitter-500" />
-            <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-gray-800 hover:bg-gray-600">
+            <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-snow-100 hover:bg-gray-600">
               TaskLab
             </h1>
           </Link>
@@ -82,8 +82,11 @@ export default function Sidebar() {
           className="hs-accordion-group flex w-full flex-col flex-wrap p-6"
           data-hs-accordion-always-open
         >
+          <h2 className="mt-8 mb-4 text-sm font-medium text-jet-100">
+            Dashboard
+          </h2>
           <ul className="space-y-1.5">
-            <SidebarItem icon={IconHome} text="Dashboard" href="/" />
+            {/* <SidebarItem icon={IconHome} text="Dashboard" href="/" /> */}
 
             <SidebarAccordion titleIcon={IconBrandAsana} title="Projects">
               <SidebarItem
@@ -116,34 +119,32 @@ export default function Sidebar() {
           </ul>
 
           <div>
-            <h2 className="mt-8 mb-4 text-sm font-medium text-gray-400">
-              Tags
-            </h2>
+            <h2 className="mt-8 mb-4 text-sm font-medium text-jet-100">Tags</h2>
             <ul className="grid">
-              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-jet-600">
                 <span className="mr-2 h-2 w-2 rounded-sm bg-red-500"></span>
-                <span className="text-sm text-gray-500">Red</span>
+                <span className="text-sm text-jet-200">Red</span>
               </li>
-              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-jet-600">
                 <span className="mr-2 h-2 w-2 rounded-sm bg-green-500"></span>
-                <span className="text-sm text-gray-500">Green</span>
+                <span className="text-sm text-jet-200">Green</span>
               </li>
-              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-jet-600">
                 <span className="mr-2 h-2 w-2 rounded-sm bg-purple-500"></span>
-                <span className="text-sm text-gray-500">Purple</span>
+                <span className="text-sm text-jet-200">Purple</span>
               </li>
-              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-jet-600">
                 <span className="mr-2 h-2 w-2 rounded-sm bg-yellow-500"></span>
-                <span className="text-sm text-gray-500">Review</span>
+                <span className="text-sm text-jet-200">Review</span>
               </li>
-              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-jet-600">
                 <span className="mr-2 h-2 w-2 rounded-sm bg-orange-500"></span>
-                <span className="text-sm text-gray-500">Meetings</span>
+                <span className="text-sm text-jet-200">Meetings</span>
               </li>
             </ul>
           </div>
 
-          <ul className="absolute bottom-0 w-full border-t border-gray-200 py-3">
+          <ul className="absolute bottom-0 w-full border-t border-jet-700 py-3">
             <UserAccordion title="Account" user={user}>
               <SidebarItem
                 icon={IconLogout}
@@ -163,7 +164,7 @@ const UserAccordion = ({ title, children, user }) => (
     className="hs-accordion"
     id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}
   >
-    <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3.5 rounded-md py-2 px-2.5 text-sm text-slate-700 hover:bg-gray-100 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent ">
+    <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3 rounded-md py-2 px-2 text-sm text-jet-100 hover:bg-jet-600 ">
       <Image
         src={user?.picture}
         alt={user?.name}
@@ -172,10 +173,10 @@ const UserAccordion = ({ title, children, user }) => (
         width={20}
       />
       <div className="grid">
-        <p className="text-sm font-medium text-gray-700">{user?.name}</p>
+        <p className="text-sm font-medium text-jet-100">{user?.name}</p>
       </div>
-      <IconChevronUp className="ml-4 hidden h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:block dark:text-gray-400" />
-      <IconChevronDown className="ml-4 block h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:hidden dark:text-gray-400" />
+      <IconChevronUp className="ml-4 hidden h-5 w-5 text-jet-200 hs-accordion-active:block " />
+      <IconChevronDown className="ml-4 block h-5 w-5 text-jet-200  hs-accordion-active:hidden " />
     </div>
     <div
       id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}

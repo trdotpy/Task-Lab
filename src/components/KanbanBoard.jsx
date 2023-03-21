@@ -49,7 +49,7 @@ export default function KanbanBoard({ title, description, boardId }) {
         <Breadcrumb title={title} />
         <div className="py-4">
           <div className="mb-2 flex justify-between">
-            <h2 className="cursor-pointer text-2xl font-semibold  text-gray-800">
+            <h2 className="cursor-pointer text-2xl font-semibold text-gray-800">
               {title}
             </h2>
             <div className="flex items-center">
