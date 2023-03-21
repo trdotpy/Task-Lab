@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Comments() {
+export default function Comments({ comments }) {
   return (
     <>
       <div className="mt-4 flex items-center">
@@ -19,26 +19,28 @@ export default function Comments() {
         </div>
       </div>
 
-      <div className="mt-3 flex items-center">
-        <img
-          className="mr-3 h-6 w-6 rounded-lg"
-          src="https://randomuser.me/api/portraits/men/11.jpg"
-          alt="User avatar"
-        />
+      {comments.map((comment) => (
+        <div className="mt-3 flex items-center" key={comment._id}>
+          <img
+            className="mr-3 h-6 w-6 rounded-lg"
+            src="https://randomuser.me/api/portraits/men/11.jpg"
+            alt="User avatar"
+          />
 
-        <div className="flex-1">
-          <div className="flex"></div>
-          <div className="rounded-lg border p-3">
-            <p className="text-xs text-gray-600">
-              Nice work! This task is coming along well.
-            </p>
-          </div>
+          <div className="flex-1">
+            <div className="flex">{comment.createdBy.name}</div>
+            <div className="rounded-lg border p-3">
+              <p className="text-xs text-gray-600">{comment.text}</p>
+            </div>
 
-          <div className="mt-2 flex justify-end">
-            <span className="text-xs text-gray-400">2m ago</span>
+            <div className="mt-2 flex justify-end">
+              <span className="text-xs text-gray-400">
+                {comment.createdAt.toLocaleString()}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </>
   );
 }

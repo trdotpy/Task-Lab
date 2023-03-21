@@ -1,3 +1,4 @@
+import { useUser } from "@auth0/nextjs-auth0/client";
 import {
   IconBook,
   IconBrandAsana,
@@ -12,6 +13,7 @@ import {
   IconUser,
   IconUserCircle,
 } from "@tabler/icons-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -58,6 +60,8 @@ export default function Sidebar() {
     router.push("/api/auth/logout");
   };
 
+  const { user } = useUser();
+
   return (
     <>
       <div
@@ -98,12 +102,6 @@ export default function Sidebar() {
                 text="Account Settings"
                 href="/account"
               />
-
-              {/* <SidebarItem
-                icon={IconCreditCard}
-                text="Billing Information"
-                href="/account/billing"
-              /> */}
             </SidebarAccordion>
 
             <SidebarItem icon={IconCalendar} text="Calendar" href="/calendar" />
@@ -115,36 +113,61 @@ export default function Sidebar() {
             />
           </ul>
 
-          <h2 className="mt-8 mb-4 text-sm font-medium text-gray-400">Tags</h2>
-          <ul className="grid">
-            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
-              <span className="mr-2 h-2 w-2 rounded-sm bg-red-500"></span>
-              <span className="text-sm text-gray-500">Red</span>
-            </li>
-            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
-              <span className="mr-2 h-2 w-2 rounded-sm bg-green-500"></span>
-              <span className="text-sm text-gray-500">Green</span>
-            </li>
-            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
-              <span className="mr-2 h-2 w-2 rounded-sm bg-purple-500"></span>
-              <span className="text-sm text-gray-500">Purple</span>
-            </li>
-            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
-              <span className="mr-2 h-2 w-2 rounded-sm bg-yellow-500"></span>
-              <span className="text-sm text-gray-500">Review</span>
-            </li>
-            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
-              <span className="mr-2 h-2 w-2 rounded-sm bg-orange-500"></span>
-              <span className="text-sm text-gray-500">Meetings</span>
-            </li>
-          </ul>
+          <div>
+            <h2 className="mt-8 mb-4 text-sm font-medium text-gray-400">
+              Tags
+            </h2>
+            <ul className="grid">
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+                <span className="mr-2 h-2 w-2 rounded-sm bg-red-500"></span>
+                <span className="text-sm text-gray-500">Red</span>
+              </li>
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+                <span className="mr-2 h-2 w-2 rounded-sm bg-green-500"></span>
+                <span className="text-sm text-gray-500">Green</span>
+              </li>
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+                <span className="mr-2 h-2 w-2 rounded-sm bg-purple-500"></span>
+                <span className="text-sm text-gray-500">Purple</span>
+              </li>
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+                <span className="mr-2 h-2 w-2 rounded-sm bg-yellow-500"></span>
+                <span className="text-sm text-gray-500">Review</span>
+              </li>
+              <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
+                <span className="mr-2 h-2 w-2 rounded-sm bg-orange-500"></span>
+                <span className="text-sm text-gray-500">Meetings</span>
+              </li>
+            </ul>
+          </div>
         </nav>
 
-        <ul className="mt-96">
-          <button className="mt-auto w-full px-6" onClick={handleLogout}>
-            <SidebarItem icon={IconUserCircle} text="Logout" />
-          </button>
-        </ul>
+        <div>
+          <ul className="absolute bottom-0 w-full border-t border-gray-800 bg-gray-800 py-3">
+            <div className="flex items-center justify-center">
+              <img
+                src={user?.picture}
+                alt=""
+                className="mr-4 h-6 w-6 rounded-full"
+              />
+              <div className="grid">
+                <span className="text-sm font-medium text-gray-100">
+                  {user?.name}
+                </span>
+                <span className="text-xs text-gray-400">{user?.email}</span>
+              </div>
+            </div>
+          </ul>
+          {/* <ul className="absolute bottom-0">
+            <div className="grid cursor-pointer rounded px-4 text-left hover:bg-gray-300">
+              <span className="text-sm text-gray-800">{user?.name}</span>
+              <span className="text-xs text-gray-500">{user?.email}</span>
+            </div>
+            <button className="w-full px-6" onClick={handleLogout}>
+              <SidebarItem icon={IconUserCircle} text="Logout" />
+            </button>
+          </ul> */}
+        </div>
       </div>
     </>
   );

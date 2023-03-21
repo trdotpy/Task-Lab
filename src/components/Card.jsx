@@ -83,6 +83,7 @@ export default function Card({
           status={status}
           showModal={showModal}
           setShowModal={setShowModal}
+          taskId={taskId}
         />
       )}
     </>

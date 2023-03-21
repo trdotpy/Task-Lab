@@ -1,5 +1,5 @@
 import { IconX } from "@tabler/icons-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "./Breadcrumb";
 import Comments from "./Comments";
 import Dropdown from "./StatusDropdown";
@@ -10,10 +10,27 @@ export default function TaskModal({
   status,
   setShowModal,
   showModal,
+  taskId,
 }) {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  const [comments, setComments] = useState([]); // state to hold comments
+
+  useEffect(() => {
+    // Fetch comments for the current task
+    const fetchComments = async () => {
+      const res = await fetch(`/api/comments?task=${taskId}`);
+      const data = await res.json();
+      if (data.success) {
+        setComments(data.data);
+      }
+    };
+    fetchComments();
+  }, [taskId]); // re-fetch comments whenever the task ID changes
+
+  console.log(comments);
 
   return (
     <div className="flex justify-center">
@@ -57,7 +74,7 @@ export default function TaskModal({
                   <h3 className="text-sm font-medium uppercase text-gray-700">
                     Comments
                   </h3>
-                  <Comments />
+                  <Comments comments={comments} />
                 </div>
               </div>
 
