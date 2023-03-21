@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Column from "./Column";
 import NewTaskModal from "./NewTaskModal";
+import Breadcrumb from "./Breadcrumb";
+import { IconPlus, IconSettings } from "@tabler/icons-react";
 
 const initialColumns = [
   { id: 1, title: "Backlog" },
@@ -15,14 +17,6 @@ export default function KanbanBoard({ title, description, boardId }) {
   const [tasks, setTasks] = useState([]);
   const [newTaskModal, setNewTaskModal] = useState(false);
   console.log(tasks);
-
-  const [boardName, setBoardName] = useState("New Board");
-  const [editingBoardName, setEditingBoardName] = useState(false);
-
-  const [boardDescription, setBoardDescription] = useState(
-    "This is the board and the tasks associated with it. Click to edit!"
-  );
-  const [editingBoardDescription, setEditingBoardDescription] = useState(false);
 
   const openNewTaskModal = () => {
     setNewTaskModal(true);
@@ -51,19 +45,25 @@ export default function KanbanBoard({ title, description, boardId }) {
 
   return (
     <>
-      <div className="pt-6">
+      <div>
+        <Breadcrumb title={title} />
         <div className="py-4">
           <div className="mb-2 flex justify-between">
             <h2 className="cursor-pointer text-2xl font-semibold  text-gray-800">
               {title}
             </h2>
-            <button
-              type="button"
-              className="rounded bg-blue-400 py-2 px-4 text-sm font-medium text-white hover:bg-blue-500"
-              onClick={openNewTaskModal}
-            >
-              New Task
-            </button>
+            <div className="flex items-center">
+              <button
+                type="button"
+                className="rounded-xl p-1 text-gray-500 hover:bg-gray-200"
+                onClick={openNewTaskModal}
+              >
+                <IconPlus size={24} stroke={2.0} />
+              </button>
+              <button className="rounded-xl p-1 text-gray-500 hover:bg-gray-200">
+                <IconSettings size={24} stroke={2.0} />
+              </button>
+            </div>
           </div>
           <div>
             <p className="w-full cursor-pointer bg-gray-50 text-sm text-gray-500">

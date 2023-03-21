@@ -1,9 +1,8 @@
 import Head from "next/head";
-import NewLayout from "@/layouts/NewLayout";
+import LandingLayout from "@/layouts/LandingLayout";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import ProjectPage from "./projects";
-import LandingPage from "@/components/Landing";
 import { useRouter } from "next/router";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -37,9 +36,9 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
-          <NewLayout>
-            <LandingPage />
-          </NewLayout>
+          <LandingLayout>
+            <Hero />
+          </LandingLayout>
         </main>
       </>
     );

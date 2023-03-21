@@ -1,8 +1,9 @@
 import KanbanBoard from "@/components/KanbanBoard";
 import Layout from "@/layouts/Layout";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 
-export default function Kanban({ board }) {
+export default withPageAuthRequired(function Kanban({ board }) {
   return (
     <Layout>
       <KanbanBoard
@@ -12,7 +13,7 @@ export default function Kanban({ board }) {
       />
     </Layout>
   );
-}
+});
 
 export async function getStaticPaths() {
   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);

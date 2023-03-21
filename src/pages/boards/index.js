@@ -3,8 +3,9 @@ import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import NewBoardModal from "@/components/NewBoardModal";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 
-export default function Boards({ boards }) {
+export default withPageAuthRequired(function Boards({ boards }) {
   const [showBoardModal, setShowBoardModal] = useState(false);
   const [boardList, setBoardList] = useState(boards);
 
@@ -59,7 +60,7 @@ export default function Boards({ boards }) {
       )}
     </>
   );
-}
+});
 
 export async function getStaticProps() {
   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
