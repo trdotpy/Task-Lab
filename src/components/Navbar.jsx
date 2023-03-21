@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Navbar() {
   const { user } = useUser();
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <nav className="sticky top-0 border-b border-gray-200">

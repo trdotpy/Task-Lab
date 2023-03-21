@@ -1,4 +1,5 @@
 import Layout from "@/layouts/Layout";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React from "react";
 
 export default function CalendarPage() {
@@ -8,3 +9,5 @@ export default function CalendarPage() {
     </Layout>
   );
 }
+
+export const getServerSideProps = withPageAuthRequired();

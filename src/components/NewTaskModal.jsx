@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { IconX } from "@tabler/icons-react";
 import axios from "axios";
 
-export default function NewTaskModal({ newTaskModal, setNewTaskModal }) {
+export default function NewTaskModal({
+  newTaskModal,
+  setNewTaskModal,
+  boardTitle,
+  boardId,
+}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
@@ -10,7 +15,11 @@ export default function NewTaskModal({ newTaskModal, setNewTaskModal }) {
   const createTask = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/tasks", { title, description, status });
+      await axios.post(`/api/tasks?boardId=${boardId}`, {
+        title,
+        description,
+        status,
+      });
       setNewTaskModal(false);
     } catch (error) {
       console.error("Error creating task:", error);
@@ -24,7 +33,7 @@ export default function NewTaskModal({ newTaskModal, setNewTaskModal }) {
           <div className="flex flex-col rounded-lg border bg-white py-3 px-4 shadow-sm">
             <div className="flex items-center justify-between border-b py-3 px-4">
               <h3 className="text-xl font-semibold text-gray-700">
-                Create New Task
+                Create New Task in {boardTitle}
               </h3>
               <button
                 type="button"

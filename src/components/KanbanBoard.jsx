@@ -10,10 +10,11 @@ const initialColumns = [
   { id: 4, title: "Completed" },
 ];
 
-export default function KanbanBoard() {
+export default function KanbanBoard({ title, description, boardId }) {
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState([]);
   const [newTaskModal, setNewTaskModal] = useState(false);
+  console.log(tasks);
 
   const [boardName, setBoardName] = useState("New Board");
   const [editingBoardName, setEditingBoardName] = useState(false);
@@ -43,10 +44,10 @@ export default function KanbanBoard() {
   }
 
   useEffect(() => {
-    axios.get("/api/tasks").then((res) => {
+    axios.get(`/api/tasks?boardId=${boardId}`).then((res) => {
       setTasks(res.data.data);
     });
-  }, []);
+  }, [boardId]);
 
   const handleBoardNameClick = () => {
     setEditingBoardName(true);
@@ -73,7 +74,7 @@ export default function KanbanBoard() {
               <input
                 type="text"
                 className="bg-gray-50 text-2xl font-semibold uppercase text-gray-800 focus:outline-none"
-                value={boardName}
+                value={title}
                 onChange={handleBoardNameChange}
               />
             ) : (
@@ -81,7 +82,7 @@ export default function KanbanBoard() {
                 className="cursor-pointer text-2xl font-semibold uppercase text-gray-800"
                 onClick={handleBoardNameClick}
               >
-                {boardName}
+                {title}
               </h2>
             )}
             <button
@@ -116,7 +117,9 @@ export default function KanbanBoard() {
               key={column.id}
               title={column.title}
               id={column.id}
-              columnTasks={tasks.filter((task) => task.status === column.title)}
+              columnTasks={tasks.filter(
+                (task) => task.status === column.title && task.board === boardId
+              )}
               getColumnClass={getColumnClass}
               setTasks={setTasks}
             />
@@ -127,6 +130,8 @@ export default function KanbanBoard() {
         <NewTaskModal
           setNewTaskModal={setNewTaskModal}
           newTaskModal={newTaskModal}
+          boardTitle={title}
+          boardId={boardId}
         />
       )}
     </>

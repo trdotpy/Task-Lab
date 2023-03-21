@@ -2,14 +2,14 @@ import Task from "../../../../models/Task";
 import dbConnect from "../../../../utils/dbConnect";
 
 export default async function handler(req, res) {
-  const { method, body } = req;
+  const { method, body, query } = req;
 
   await dbConnect();
 
   switch (method) {
     case "POST":
       try {
-        const task = await Task.create(body);
+        const task = await Task.create({ ...body, board: query.boardId }); // add board field to the body object
         res.status(201).json({ success: true, data: task });
       } catch (error) {
         res.status(400).json({ success: false });
