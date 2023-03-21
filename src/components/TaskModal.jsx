@@ -11,6 +11,7 @@ export default function TaskModal({
   setShowModal,
   showModal,
   taskId,
+  priority,
 }) {
   const closeModal = () => {
     setShowModal(false);
@@ -74,7 +75,11 @@ export default function TaskModal({
                   <h3 className="text-sm font-medium uppercase text-gray-700">
                     Comments
                   </h3>
-                  <Comments comments={comments} />
+                  <Comments
+                    comments={comments.filter(
+                      (comment) => comment.task === taskId
+                    )}
+                  />
                 </div>
               </div>
 
@@ -117,7 +122,18 @@ export default function TaskModal({
                   <h3 className="text-sm font-medium uppercase text-gray-700">
                     Priority
                   </h3>
-                  <p>❗️</p>
+
+                  <span
+                    className={`rounded px-2 py-1 text-sm text-white ${
+                      priority === "High"
+                        ? "bg-red-400"
+                        : priority === "Medium"
+                        ? "bg-yellow-400"
+                        : "bg-blue-400"
+                    }`}
+                  >
+                    {priority}
+                  </span>
                 </div>
 
                 <div className="mt-4">

@@ -30,7 +30,7 @@ export default function Comments({ comments }) {
           ) : (
             <img
               className="mr-3 h-6 w-6 rounded-lg"
-              src="https://randomuser.me/api/portraits/men/11.jpg"
+              src="https://randomuser.me/api/portraits/men/9.jpg"
               alt="User avatar"
             />
           )}

@@ -84,6 +84,7 @@ export default function Card({
           showModal={showModal}
           setShowModal={setShowModal}
           taskId={taskId}
+          priority={priority}
         />
       )}
     </>

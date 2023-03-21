@@ -16,15 +16,6 @@ export default async function handler(req, res) {
       }
       break;
 
-    // case "GET":
-    //   try {
-    //     const comments = await Comment.find({});
-    //     res.status(200).json({ success: true, data: comments });
-    //   } catch (error) {
-    //     res.status(400).json({ success: false });
-    //   }
-    //   break;
-
     case "GET":
       try {
         const comments = await Comment.find({})
@@ -51,7 +42,7 @@ export default async function handler(req, res) {
         res.status(400).json({ success: false });
       }
       break;
-			
+
     case "DELETE":
       try {
         const { id } = req.query;
