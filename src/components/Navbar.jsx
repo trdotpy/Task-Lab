@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
 
 export default function Navbar() {
+  const { user } = useUser();
+
+  console.log(user);
+
   return (
     <nav className="sticky top-0 border-b border-gray-200">
       <div className="px-2 sm:px-6 lg:px-12">
@@ -31,9 +37,14 @@ export default function Navbar() {
           </div>
           <div className="flex items-center">
             <div className="grid cursor-pointer rounded px-4 text-right hover:bg-gray-300">
-              <span className="text-sm text-gray-800">Founder</span>
-              <span className="ml-1 text-sm text-gray-500">Free</span>
+              <span className="text-sm text-gray-800">{user?.name}</span>
+              <span className="text-xs text-gray-500">{user?.email}</span>
             </div>
+            <img
+              src={user?.picture}
+              alt={user?.name}
+              className="h-8 w-8 rounded-full"
+            />
           </div>
         </div>
       </div>

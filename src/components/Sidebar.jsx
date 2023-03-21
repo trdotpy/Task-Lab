@@ -13,6 +13,7 @@ import {
   IconUserCircle,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const SidebarItem = ({ icon: Icon, text, href }) => (
   <li>
@@ -51,6 +52,12 @@ const SidebarAccordion = ({ titleIcon: TitleIcon, title, children }) => (
 );
 
 export default function Sidebar() {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    router.push("/api/auth/logout");
+  };
+
   return (
     <>
       <div
@@ -110,28 +117,34 @@ export default function Sidebar() {
 
           <h2 className="mt-8 mb-4 text-sm font-medium text-gray-400">Tags</h2>
           <ul className="grid">
-            <li className="flex items-center rounded-lg py-2 px-4 text-center">
+            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
               <span className="mr-2 h-2 w-2 rounded-sm bg-red-500"></span>
               <span className="text-sm text-gray-500">Red</span>
             </li>
-            <li className="flex items-center rounded-lg py-2 px-4 text-center">
+            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
               <span className="mr-2 h-2 w-2 rounded-sm bg-green-500"></span>
               <span className="text-sm text-gray-500">Green</span>
             </li>
-            <li className="flex items-center rounded-lg py-2 px-4 text-center">
+            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
               <span className="mr-2 h-2 w-2 rounded-sm bg-purple-500"></span>
               <span className="text-sm text-gray-500">Purple</span>
             </li>
-            <li className="flex items-center rounded-lg py-2 px-4 text-center">
+            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
               <span className="mr-2 h-2 w-2 rounded-sm bg-yellow-500"></span>
               <span className="text-sm text-gray-500">Review</span>
             </li>
-            <li className="flex items-center rounded-lg py-2 px-4 text-center">
+            <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-gray-300">
               <span className="mr-2 h-2 w-2 rounded-sm bg-orange-500"></span>
               <span className="text-sm text-gray-500">Meetings</span>
             </li>
           </ul>
         </nav>
+
+        <ul className="mt-96">
+          <button className="mt-auto w-full px-6" onClick={handleLogout}>
+            <SidebarItem icon={IconUserCircle} text="Logout" />
+          </button>
+        </ul>
       </div>
     </>
   );

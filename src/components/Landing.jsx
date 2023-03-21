@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 
-export default function Landing() {
+export default function LandingPage() {
   return (
     <>
       <Header />
