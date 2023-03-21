@@ -15,11 +15,11 @@ export default function KanbanBoard() {
   const [tasks, setTasks] = useState([]);
   const [newTaskModal, setNewTaskModal] = useState(false);
 
-  const [boardName, setBoardName] = useState("Frontend Board");
+  const [boardName, setBoardName] = useState("New Board");
   const [editingBoardName, setEditingBoardName] = useState(false);
 
   const [boardDescription, setBoardDescription] = useState(
-    "Board description. This is the board and the tasks associated with it."
+    "This is the board and the tasks associated with it. Click to edit!"
   );
   const [editingBoardDescription, setEditingBoardDescription] = useState(false);
 

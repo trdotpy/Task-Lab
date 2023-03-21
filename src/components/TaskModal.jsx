@@ -16,9 +16,9 @@ export default function TaskModal({
   };
 
   return (
-    <>
+    <div className="flex justify-center">
       <div className="fixed top-0 left-0 z-50 h-full w-full overflow-y-auto overflow-x-hidden">
-        <div className="m-3 mt-0 flex min-h-[calc(100%-3.5rem)] items-center justify-center transition-all ease-out sm:mx-auto sm:w-full sm:max-w-7xl">
+        <div className="m-3 mt-0 flex min-h-[calc(100%-3.5rem)] items-center justify-center transition-all ease-out sm:mx-auto sm:w-full sm:max-w-4xl">
           <div className="flex flex-col rounded-lg border bg-white px-4 py-2 shadow-sm">
             <div className="py-3 px-4">
               <div className="flex items-center justify-between">
@@ -135,6 +135,6 @@ export default function TaskModal({
           showModal ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
-    </>
+    </div>
   );
 }
