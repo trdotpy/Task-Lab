@@ -21,21 +21,29 @@ export default function Comments({ comments }) {
 
       {comments.map((comment) => (
         <div className="mt-3 flex items-center" key={comment._id}>
-          <img
-            className="mr-3 h-6 w-6 rounded-lg"
-            src="https://randomuser.me/api/portraits/men/11.jpg"
-            alt="User avatar"
-          />
+          {comment.createdBy.image ? (
+            <img
+              className="mr-3 h-6 w-6 rounded-lg"
+              src={comment.createdBy.image}
+              alt="User avatar"
+            />
+          ) : (
+            <img
+              className="mr-3 h-6 w-6 rounded-lg"
+              src="https://randomuser.me/api/portraits/men/11.jpg"
+              alt="User avatar"
+            />
+          )}
 
           <div className="flex-1">
-            <div className="flex">{comment.createdBy.name}</div>
+            <h2 className="text-sm">{comment.createdBy.name}</h2>
             <div className="rounded-lg border p-3">
               <p className="text-xs text-gray-600">{comment.text}</p>
             </div>
 
             <div className="mt-2 flex justify-end">
               <span className="text-xs text-gray-400">
-                {comment.createdAt.toLocaleString()}
+                {new Date(comment.createdAt).toLocaleString()}
               </span>
             </div>
           </div>

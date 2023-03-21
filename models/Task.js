@@ -19,6 +19,8 @@ const taskSchema = new mongoose.Schema({
     ref: "Board",
     required: true,
   },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
 export default mongoose.models.Task || mongoose.model("Task", taskSchema);
