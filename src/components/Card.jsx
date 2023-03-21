@@ -45,7 +45,7 @@ export default function Card({
                 <IconTrash
                   size={20}
                   stroke={1.5}
-                  className="text-gray-400 hover:text-gray-800"
+                  className="text-gray-400 hover:text-red-500"
                   onClick={handleDelete}
                 />
               )}
