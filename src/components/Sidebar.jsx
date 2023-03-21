@@ -55,11 +55,11 @@ const SidebarAccordion = ({ titleIcon: TitleIcon, title, children }) => (
 );
 
 export default function Sidebar() {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleLogout = async () => {
-    router.push("/api/auth/logout");
-  };
+  // const handleLogout = async () => {
+  //   router.push("/api/auth/logout");
+  // };
 
   const { user } = useUser();
 
@@ -70,13 +70,14 @@ export default function Sidebar() {
         className="hs-overlay scrollbar-y fixed top-0 left-0 bottom-0 z-[60] w-60 -translate-x-full transform overflow-y-auto bg-gray-100 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
       >
         <div className="px-6">
-          <Link className="flex items-center space-x-4" href="/">
-            <IconCircleDashed className="h-8 w-auto text-violet-400" />
-            <h1 className="text-xl font-semibold tracking-tight text-gray-800">
+          <Link className="flex items-center" href="/">
+            <IconCircleDashed className="h-8 w-auto text-bitter-500" />
+            <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-gray-800 hover:bg-gray-600">
               TaskLab
             </h1>
           </Link>
         </div>
+
         <nav
           className="hs-accordion-group flex w-full flex-col flex-wrap p-6"
           data-hs-accordion-always-open
@@ -88,7 +89,7 @@ export default function Sidebar() {
               <SidebarItem
                 icon={IconLayoutKanban}
                 text="Project Boards"
-                href="/projects"
+                href="/boards"
               />
               <SidebarItem
                 icon={IconSettings}
@@ -165,16 +166,16 @@ const UserAccordion = ({ title, children, user }) => (
     <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3.5 rounded-md py-2 px-2.5 text-sm text-slate-700 hover:bg-gray-100 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent ">
       <Image
         src={user?.picture}
-        alt=""
+        alt={user?.name}
         className="rounded"
-        height={24}
-        width={24}
+        height={20}
+        width={20}
       />
       <div className="grid">
         <p className="text-sm font-medium text-gray-700">{user?.name}</p>
       </div>
-      <IconChevronUp className="ml-3 hidden h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:block dark:text-gray-400" />
-      <IconChevronDown className="ml-3 block h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:hidden dark:text-gray-400" />
+      <IconChevronUp className="ml-4 hidden h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:block dark:text-gray-400" />
+      <IconChevronDown className="ml-4 block h-5 w-5 text-gray-600 group-hover:text-gray-500 hs-accordion-active:hidden dark:text-gray-400" />
     </div>
     <div
       id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}
