@@ -25,13 +25,13 @@ export default function KanbanBoard({ title, description, boardId }) {
   function getColumnClass(columnId) {
     switch (columnId) {
       case "Backlog":
-        return "bg-blue-500";
+        return "bg-bice-400";
       case "In Progress":
-        return "bg-orange-500";
+        return "bg-bitter-500";
       case "Testing":
-        return "bg-violet-500";
+        return "bg-plum-500";
       case "Completed":
-        return "bg-green-500";
+        return "bg-seagreen-500";
       default:
         return "";
     }
@@ -49,24 +49,24 @@ export default function KanbanBoard({ title, description, boardId }) {
         <Breadcrumb title={title} />
         <div className="py-4">
           <div className="mb-2 flex justify-between">
-            <h2 className="cursor-pointer text-2xl font-semibold text-gray-800">
+            <h2 className="cursor-pointer text-2xl font-medium text-jet-800">
               {title}
             </h2>
             <div className="flex items-center">
               <button
                 type="button"
-                className="rounded-xl p-1 text-gray-500 hover:bg-gray-200"
+                className="rounded-xl p-1 text-jet-400 hover:bg-jet-100"
                 onClick={openNewTaskModal}
               >
                 <IconPlus size={24} stroke={2.0} />
               </button>
-              <button className="rounded-xl p-1 text-gray-500 hover:bg-gray-200">
+              <button className="rounded-xl p-1 text-jet-400 hover:bg-jet-100">
                 <IconSettings size={24} stroke={2.0} />
               </button>
             </div>
           </div>
           <div>
-            <p className="w-full cursor-pointer bg-gray-50 text-sm text-gray-500">
+            <p className="w-full cursor-pointer bg-gray-50 text-sm text-jet-300">
               {description}
             </p>
           </div>
