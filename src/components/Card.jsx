@@ -41,7 +41,7 @@ export default function Card({
         >
           <div className="max-h-[240px] space-y-2">
             <span
-              className={`rounded px-2 py-1 text-sm text-white ${
+              className={`rounded px-2 py-1 text-xs text-white ${
                 priority === "High"
                   ? "bg-red-400"
                   : priority === "Medium"

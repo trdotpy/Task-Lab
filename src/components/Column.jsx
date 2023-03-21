@@ -8,9 +8,9 @@ export default function Column({
   setTasks,
 }) {
   return (
-    <div className={`h-full min-h-screen w-1/4 rounded p-4`}>
+    <div className={`h-full min-h-screen w-1/4 rounded border-[1px] p-4`}>
       <h2
-        className={`mr-2 mb-4 rounded px-4 py-1.5 text-lg font-medium uppercase text-white ${getColumnClass(
+        className={`mr-2 mb-4 rounded px-4 py-1.5 text-sm font-medium uppercase text-white ${getColumnClass(
           title
         )}`}
       >
