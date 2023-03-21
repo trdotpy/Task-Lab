@@ -1,5 +1,5 @@
-import Task from "../../../../models/Task";
 import dbConnect from "../../../../utils/dbConnect";
+import Board from "../../../../models/Board";
 
 export default async function handler(req, res) {
   const { method, body } = req;
@@ -9,16 +9,16 @@ export default async function handler(req, res) {
   switch (method) {
     case "POST":
       try {
-        const task = await Task.create(body);
-        res.status(201).json({ success: true, data: task });
+        const board = await Board.create(body);
+        res.status(201).json({ success: true, data: board });
       } catch (error) {
         res.status(400).json({ success: false });
       }
       break;
     case "GET":
       try {
-        const tasks = await Task.find({});
-        res.status(200).json({ success: true, data: tasks });
+        const boards = await Board.find({}).populate("createdBy");
+        res.status(200).json({ success: true, data: boards });
       } catch (error) {
         res.status(400).json({ success: false });
       }
