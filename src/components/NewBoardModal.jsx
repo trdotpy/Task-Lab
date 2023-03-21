@@ -6,9 +6,18 @@ export default function NewBoardModal({ showBoardModal, setShowBoardModal }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = { title, description };
+    createBoard(data);
+  };
+
   const createBoard = async (data) => {
     try {
-      const res = await axios.post("/api/boards", data);
+      const res = await axios.post("/api/boards", {
+        title: data.title,
+        description: data.description,
+      });
       console.log(res.data.data);
       setShowBoardModal(false);
     } catch (err) {
@@ -36,7 +45,7 @@ export default function NewBoardModal({ showBoardModal, setShowBoardModal }) {
               </button>
             </div>
 
-            <form className="overflow-y-auto p-4" onSubmit={createBoard}>
+            <form className="overflow-y-auto p-4" onSubmit={handleSubmit}>
               <div className="mb-4 flex">
                 <div className="mr-2 w-full">
                   <label

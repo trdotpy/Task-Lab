@@ -3,7 +3,7 @@ import React from "react";
 export default function Comments({ comments }) {
   return (
     <>
-      <div className="mt-4 flex items-center">
+      <div className="mt-2 flex items-center">
         <div className="flex-1">
           <textarea
             className="block w-full rounded-md border border-gray-300 px-4 py-2 text-xs placeholder-gray-400 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"

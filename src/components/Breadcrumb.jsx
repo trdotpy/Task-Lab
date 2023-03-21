@@ -5,29 +5,29 @@ export default function Breadcrumb({ title }) {
   return (
     <div>
       <ol
-        className="flex min-w-0 items-center whitespace-nowrap"
+        className="flex items-center whitespace-nowrap"
         aria-label="Breadcrumb"
       >
-        <li className="text-sm">
+        <li className="text-xs lg:text-sm">
           <a
-            className="flex items-center text-gray-500 hover:text-blue-600"
+            className="flex items-center text-jet-200 hover:text-bice-600"
             href="#"
           >
             Dashboard
-            <IconChevronRight className="mx-3 h-3.5 w-3.5 flex-shrink-0 overflow-visible text-gray-400" />
+            <IconChevronRight className="mx-3 h-3.5 w-3.5 flex-shrink-0 overflow-visible text-jet-200" />
           </a>
         </li>
-        <li className="text-sm">
+        <li className="text-xs lg:text-sm">
           <a
-            className="flex items-center text-gray-500 hover:text-blue-600"
+            className="flex items-center text-jet-200 hover:text-bice-600"
             href="#"
           >
             Projects
-            <IconChevronRight className="mx-3 h-3.5 w-3.5 flex-shrink-0 overflow-visible text-gray-400" />
+            <IconChevronRight className="mx-3 h-3.5 w-3.5 flex-shrink-0 overflow-visible text-jet-200" />
           </a>
         </li>
         <li
-          className="truncate text-sm font-medium text-gray-600"
+          className="truncate text-xs text-jet-200 lg:text-sm"
           aria-current="page"
         >
           {title}

@@ -1,4 +1,4 @@
-import { IconTrash } from "@tabler/icons-react";
+import { IconTrash, IconFileDots } from "@tabler/icons-react";
 import axios from "axios";
 import { useState } from "react";
 import Draggable from "react-draggable";
@@ -15,7 +15,6 @@ export default function Card({
   priority,
 }) {
   const [showModal, setShowModal] = useState(false);
-  const [trashHover, setTrashHover] = useState(false);
 
   const openModal = () => {
     setShowModal(true);
@@ -34,43 +33,27 @@ export default function Card({
   return (
     <>
       <Draggable>
-        <div
-          className="my-2 cursor-pointer rounded bg-white p-4 shadow hover:bg-gray-200"
-          onMouseEnter={() => setTrashHover(true)}
-          onMouseLeave={() => setTrashHover(false)}
-        >
-          <div className="max-h-[240px] space-y-2">
+        <div className="my-2 cursor-pointer rounded bg-white p-4 shadow hover:bg-gray-200">
+          <div className="max-h-[200px] space-y-2">
             <span
               className={`rounded px-2 py-1 text-xs text-white ${
                 priority === "High"
-                  ? "bg-red-400"
+                  ? "bg-bitter-400"
                   : priority === "Medium"
-                  ? "bg-yellow-400"
-                  : "bg-blue-400"
+                  ? "bg-xanthous-400"
+                  : "bg-bice-400"
               }`}
             >
               {priority}
             </span>
 
             <div className="flex justify-between">
-              <h3 className="text-lg font-medium text-gray-700">{title}</h3>
-              {trashHover && (
-                <IconTrash
-                  size={20}
-                  stroke={1.5}
-                  className="text-gray-400 hover:text-red-500"
-                  onClick={handleDelete}
-                />
-              )}
+              <h3 className="text-base font-medium text-jet-500">{title}</h3>
             </div>
-            <p className="text-sm text-gray-400">{description}</p>
+            {/* <p className="text-sm text-jet-400">{description}</p> */}
             <div className="flex items-center justify-end">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-1.5 px-4 text-xs font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
-                onClick={openModal}
-              >
-                Details
+              <button type="button" onClick={openModal}>
+                <IconFileDots size={18} className="text-jet-400" />
               </button>
             </div>
           </div>
@@ -85,6 +68,7 @@ export default function Card({
           setShowModal={setShowModal}
           taskId={taskId}
           priority={priority}
+          handleDelete={handleDelete}
         />
       )}
     </>
