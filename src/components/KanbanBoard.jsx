@@ -107,14 +107,6 @@ export default function KanbanBoard({ title, description, boardId }) {
           toggleAddTaskModal={toggleAddTaskModal}
         />
       )}
-      {/* {newTaskModal && (
-        <AddTask
-          setNewTaskModal={setNewTaskModal}
-          newTaskModal={newTaskModal}
-          boardTitle={title}
-          boardId={boardId}
-        />
-      )} */}
     </>
   );
 }

@@ -7,32 +7,44 @@ import {
   IconExternalLink,
 } from "@tabler/icons-react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Layout from "@/layouts/Layout";
 import Warning from "@/components/Modal/Warning";
 import Link from "next/link";
 import AddBoard from "@/components/Modal/AddBoard";
 
-export async function getStaticProps() {
-  const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
-  const boards = res.data.data;
+// export async function getStaticProps() {
+//   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
+//   const boards = res.data.data;
 
-  return {
-    props: {
-      boards,
-    },
-  };
-}
+//   return {
+//     props: {
+//       boards,
+//     },
+//   };
+// }
 
-export default withPageAuthRequired(function Projects({ boards }) {
-  const [boardList, setBoardList] = useState(boards);
+export default withPageAuthRequired(function Projects() {
+  const [boardList, setBoardList] = useState([]);
   const [warningModal, setWarningModal] = useState(false);
-
   const [addBoardModal, setAddBoardModal] = useState(false);
 
   const toggleWarningModal = () => setWarningModal(!warningModal);
   const toggleAddBoardModal = () => setAddBoardModal(!addBoardModal);
+
+  const fetchBoards = async () => {
+    try {
+      const res = await axios.get("/api/boards");
+      setBoardList(res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBoards();
+  }, []);
 
   const handleDeleteBoard = async (boardId) => {
     try {
