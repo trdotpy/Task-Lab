@@ -49,7 +49,7 @@ export default function NewTaskModal({
 
             <form className="overflow-y-auto p-4" onSubmit={createTask}>
               <div className="mb-4 flex">
-                <div className="mr-2 w-1/2">
+                <div className="mr-2 w-full">
                   <label
                     className="mb-2 block text-sm font-bold text-gray-700"
                     htmlFor="title"
@@ -65,23 +65,6 @@ export default function NewTaskModal({
                     placeholder="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                  />
-                </div>
-
-                <div className="col-span-1">
-                  <label
-                    className="mb-2 mr-2 block text-sm font-bold text-gray-700"
-                    htmlFor="date"
-                  >
-                    <h3 className="text-sm font-medium uppercase text-gray-700">
-                      Date
-                    </h3>
-                  </label>
-                  <input
-                    className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="date"
-                    type="text"
-                    placeholder="Date"
                   />
                 </div>
               </div>
