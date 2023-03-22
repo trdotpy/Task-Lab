@@ -19,8 +19,6 @@ export default withPageAuthRequired(function Boards({ boards }) {
     }
   };
 
-  console.log(boardList);
-
   return (
     <>
       <Layout>
@@ -33,11 +31,11 @@ export default withPageAuthRequired(function Boards({ boards }) {
             New Board
           </button>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4">
           {boardList.map((board) => (
             <div
               key={board._id}
-              className="w-96 cursor-pointer rounded-lg bg-white p-4 shadow-md hover:bg-gray-100"
+              className="w-full cursor-pointer rounded-lg bg-white p-4 shadow-md hover:bg-gray-100"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
@@ -91,8 +89,8 @@ export default withPageAuthRequired(function Boards({ boards }) {
         <NewBoardModal
           showBoardModal={showBoardModal}
           setShowBoardModal={setShowBoardModal}
-					boardList={boardList}
-					setBoardList={setBoardList}
+          boardList={boardList}
+          setBoardList={setBoardList}
         />
       )}
     </>

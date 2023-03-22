@@ -67,7 +67,7 @@ export default function Sidebar() {
     <>
       <div
         id="docs-sidebar"
-        className="hs-overlay scrollbar-y fixed top-0 left-0 bottom-0 z-[60] w-60 -translate-x-full transform overflow-y-auto bg-jet-800 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 lg:right-auto lg:bottom-0 lg:block lg:translate-x-0"
+        className="hs-overlay scrollbar-y fixed top-0 left-0 bottom-0 z-[60] w-60 -translate-x-full transform overflow-y-auto bg-jet-800 pt-4 pb-10 transition-all duration-300 hs-overlay-open:translate-x-0 sm:right-auto sm:bottom-0 sm:block sm:translate-x-0"
       >
         <div className="px-6">
           <Link className="flex items-center" href="/">
