@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { IconChevronDown, IconX } from "@tabler/icons-react";
 import axios from "axios";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 export default function NewTaskModal({
   newTaskModal,
@@ -8,25 +10,12 @@ export default function NewTaskModal({
   boardTitle,
   boardId,
 }) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
-  const [priority, setPriority] = useState("");
-
-  const createTask = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(`/api/tasks?boardId=${boardId}`, {
-        title,
-        description,
-        status,
-        priority,
-      });
-      setNewTaskModal(false);
-    } catch (error) {
-      console.error("Error creating task:", error);
-    }
-  };
+  const validationSchema = Yup.object({
+    title: Yup.string().required("Title is required"),
+    description: Yup.string().required("Description is required"),
+    status: Yup.string().required("Status is required"),
+    priority: Yup.string().required("Priority is required"),
+  });
 
   return (
     <>
@@ -46,105 +35,111 @@ export default function NewTaskModal({
                 <IconX />
               </button>
             </div>
-
-            <form className="overflow-y-auto p-4" onSubmit={createTask}>
-              <div className="mb-4 flex">
-                <div className="mr-2 w-full">
-                  <label
-                    className="mb-2 block text-sm font-bold text-gray-700"
-                    htmlFor="title"
-                  >
-                    <h3 className="text-sm font-medium uppercase text-gray-700">
-                      Title
-                    </h3>
-                  </label>
-                  <input
-                    className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="title"
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <label
-                  className="mb-2 block text-sm font-bold text-gray-700"
-                  htmlFor="description"
+            <Formik
+              initialValues={{
+                title: "",
+                description: "",
+                status: "",
+                priority: "",
+              }}
+              validationSchema={validationSchema}
+              onSubmit={async (values, actions) => {
+                try {
+                  await axios.post(`/api/tasks?boardId=${boardId}`, values);
+                  setNewTaskModal(false);
+                } catch (error) {
+                  console.error("Error creating task:", error);
+                }
+              }}
+            >
+              {(formik) => (
+                <form
+                  className="overflow-y-auto p-4"
+                  onSubmit={formik.handleSubmit}
                 >
-                  <h3 className="text-sm font-medium uppercase text-gray-700">
-                    Description
-                  </h3>
-                </label>
-                <textarea
-                  className="focus:shadow-outline h-32 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  id="description"
-                  placeholder="Description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-              </div>
+                  <div className="mb-4 flex">
+                    <div className="mr-2 w-full">
+                      <h3 className="text-sm font-medium uppercase text-gray-700">
+                        Title
+                      </h3>
+                      <Field
+                        name="title"
+                        type="text"
+                        placeholder="Title"
+                        className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        {...formik.getFieldProps("title")}
+                      />
+                      <ErrorMessage name="title" className="text-red-500" />
+                    </div>
+                  </div>
 
-              <div className="mt-2 grid grid-cols-2 gap-2">
-                <div className="col-span-1">
-                  <label
-                    className="mb-2 block text-sm font-bold text-gray-700"
-                    htmlFor="status"
-                  >
+                  <div className="mb-4">
                     <h3 className="text-sm font-medium uppercase text-gray-700">
-                      Status
+                      Description
                     </h3>
-                  </label>
-                  <select
-                    className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="status"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                  >
-                    <option value="">Select Status</option>
-                    <option value="Backlog">Backlog</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Testing">Testing</option>
-                    <option value="Completed">Completed</option>
-                  </select>
-                </div>
+                    <Field
+                      name="description"
+                      component="textarea"
+                      placeholder="Description"
+                      className="focus:shadow-outline h-32 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                      {...formik.getFieldProps("description")}
+                    />
+                    <ErrorMessage name="description" className="text-red-500" />
+                  </div>
 
-                <div className="col-span-1">
-                  <label
-                    className="mb-2 mr-2 block text-sm font-bold text-gray-700"
-                    htmlFor="priority"
-                  >
-                    <h3 className="text-sm font-medium uppercase text-gray-700">
-                      Priority
-                    </h3>
-                  </label>
-                  <select
-                    className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="priority"
-                    value={priority}
-                    onChange={(e) => setPriority(e.target.value)}
-                  >
-                    <option value="">Select Priority</option>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                  </select>
-                </div>
-              </div>
-              <div
-                className="mt-3 flex items-center justify-end gap-x-2 py-3 
+                  <div className="mt-2 grid grid-cols-2 gap-2">
+                    <div className="col-span-1">
+                      <h3 className="text-sm font-medium uppercase text-gray-700">
+                        Status
+                      </h3>
+                      <Field
+                        name="status"
+                        as="select"
+                        className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        {...formik.getFieldProps("status")}
+                      >
+                        <option value="">Select Status</option>
+                        <option value="Backlog">Backlog</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Completed">Completed</option>
+                      </Field>
+                      <ErrorMessage name="status" className="text-red-500" />
+                    </div>
+
+                    <div className="col-span-1">
+                      <h3 className="text-sm font-medium uppercase text-gray-700">
+                        Priority
+                      </h3>
+                      <Field
+                        name="priority"
+                        as="select"
+                        className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        {...formik.getFieldProps("priority")}
+                      >
+                        <option value="">Select Priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                      </Field>
+                      <ErrorMessage name="priority" className="text-red-500" />
+                    </div>
+                  </div>
+                  <div
+                    className="mt-3 flex items-center justify-end gap-x-2 py-3 
 							px-4"
-              >
-                <button
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  type="submit"
-                >
-                  Create
-                </button>
-              </div>
-            </form>
+                  >
+                    <button
+                      className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-400 py-2 px-4 text-sm font-semibold text-white transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      type="submit"
+                      disabled={!formik.isValid}
+                    >
+                      Create
+                    </button>
+                  </div>
+                </form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>

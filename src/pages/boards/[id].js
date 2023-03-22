@@ -15,29 +15,43 @@ export default withPageAuthRequired(function Kanban({ board }) {
   );
 });
 
-export async function getStaticPaths() {
-  const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
-  const boards = res.data.data;
 
-  const paths = boards.map((board) => ({
-    params: { id: board._id },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const res = await axios.get(
-    `${process.env.BASE_URL}/api/boards/${params.id}`
-  );
-  const board = res.data.data;
+		`${process.env.BASE_URL}/api/boards/${params.id}`
+		);
+		const board = res.data.data;
 
-  return {
+		return {
     props: {
       board,
     },
   };
 }
+
+// export async function getStaticPaths() {
+//   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
+//   const boards = res.data.data;
+
+//   const paths = boards.map((board) => ({
+//     params: { id: board._id },
+//   }));
+
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
+
+// export async function getStaticProps({ params }) {
+//   const res = await axios.get(
+//     `${process.env.BASE_URL}/api/boards/${params.id}`
+//   );
+//   const board = res.data.data;
+
+//   return {
+//     props: {
+//       board,
+//     },
+//   };
+// }

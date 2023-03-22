@@ -16,7 +16,6 @@ export default function KanbanBoard({ title, description, boardId }) {
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState([]);
   const [newTaskModal, setNewTaskModal] = useState(false);
-  console.log(tasks);
 
   const openNewTaskModal = () => {
     setNewTaskModal(true);
@@ -41,7 +40,7 @@ export default function KanbanBoard({ title, description, boardId }) {
     axios.get(`/api/tasks?boardId=${boardId}`).then((res) => {
       setTasks(res.data.data);
     });
-  }, [boardId]);
+  }, [boardId, tasks]);
 
   return (
     <>
