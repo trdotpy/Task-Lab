@@ -10,9 +10,9 @@ import axios from "axios";
 import { useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Layout from "@/layouts/Layout";
-import NewBoardModal from "@/components/NewBoardModal";
 import Warning from "@/components/Modal/Warning";
 import Link from "next/link";
+import AddBoard from "@/components/Modal/AddBoard";
 
 export async function getStaticProps() {
   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
@@ -30,9 +30,10 @@ export default withPageAuthRequired(function Projects({ boards }) {
   const [showBoardModal, setShowBoardModal] = useState(false);
   const [warningModal, setWarningModal] = useState(false);
 
-  const toggleWarningModal = () => setWarningModal(!warningModal);
+  const [addBoardModal, setAddBoardModal] = useState(false);
 
-  console.log(boardList);
+  const toggleWarningModal = () => setWarningModal(!warningModal);
+  const toggleAddBoardModal = () => setAddBoardModal(!addBoardModal);
 
   const handleDeleteBoard = async (boardId) => {
     try {
@@ -69,7 +70,8 @@ export default withPageAuthRequired(function Projects({ boards }) {
 
               <button
                 className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
-                onClick={() => setShowBoardModal(true)}
+                // onClick={() => setShowBoardModal(true)}
+                onClick={toggleAddBoardModal}
               >
                 <IconSquareRoundedPlus size={20} />
 
@@ -126,7 +128,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
                           scope="col"
                           className="px-12 py-3.5 text-left text-sm font-normal text-gray-500"
                         >
-                          Date Created
+                          Start Date
                         </th>
 
                         <th
@@ -154,7 +156,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
                         key={board._id}
                       >
                         <tr>
-                          <td className="whitespace-nowrap px-4 py-4 text-sm font-medium">
+                          <td className="whitespace-nowrap p-4 text-sm font-medium">
                             <Link href={`/boards/${board._id}`}>
                               <h2 className="text-base font-normal text-jet-700 underline-offset-8 hover:underline">
                                 {board.title}
@@ -192,7 +194,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
                             </div>
                           </td>
 
-                          <td className="whitespace-nowrap px-4 py-4 text-sm">
+                          <td className="whitespace-nowrap p-4 text-sm">
                             <div>
                               <div className="h-1.5 w-48 overflow-hidden rounded-full bg-seagreen-200">
                                 <div
@@ -213,7 +215,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
                             </p>
                           </td>
 
-                          <td className="whitespace-nowrap px-4 py-4 text-sm">
+                          <td className="whitespace-nowrap p-4 text-sm">
                             <div class="hs-dropdown relative inline-flex gap-x-2">
                               <button
                                 id="hs-dropdown-custom-icon-trigger"
@@ -232,7 +234,6 @@ export default withPageAuthRequired(function Projects({ boards }) {
                                 </button>
                                 <button
                                   class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
-                                  // onClick={() => handleDeleteBoard(board._id)}
                                   onClick={toggleWarningModal}
                                 >
                                   Delete
@@ -263,8 +264,8 @@ export default withPageAuthRequired(function Projects({ boards }) {
           </div>
 
           <div className="mt-6 sm:flex sm:items-center sm:justify-between ">
-            <p className="text-sm text-gray-500 ">
-              Page <span className="font-medium text-gray-700 ">1 of 1</span>
+            <p className="text-sm text-jet-300">
+              Page <span className="font-medium text-jet-300">1 of 1</span>
             </p>
 
             <div className="mt-4 flex items-center gap-x-4 sm:mt-0">
@@ -277,17 +278,10 @@ export default withPageAuthRequired(function Projects({ boards }) {
           </div>
         </section>
       </Layout>
-      {/* {warningModal && (
-        <Warning
-          toggleWarningModal={toggleWarningModal}
-          handleDeleteBoard={handleDeleteBoard}
-					warningModal={warningModal}
-        />
-      )} */}
-      {showBoardModal && (
-        <NewBoardModal
-          showBoardModal={showBoardModal}
-          setShowBoardModal={setShowBoardModal}
+      {addBoardModal && (
+        <AddBoard
+          addBoardModal={addBoardModal}
+          toggleAddBoardModal={toggleAddBoardModal}
           boardList={boardList}
           setBoardList={setBoardList}
         />
