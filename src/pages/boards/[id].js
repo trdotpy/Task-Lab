@@ -29,40 +29,10 @@ export default withPageAuthRequired(function Kanban() {
   return (
     <Layout>
       <KanbanBoard
-        title={board.title}
-        description={board.description}
+        boardTitle={board.title}
+        boardDescription={board.description}
         boardId={board._id}
       />
     </Layout>
   );
 });
-
-// import KanbanBoard from "@/components/KanbanBoard";
-// import Layout from "@/layouts/Layout";
-// import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
-// import axios from "axios";
-
-// export async function getServerSideProps({ params }) {
-//   const res = await axios.get(
-//     `${process.env.BASE_URL}/api/boards/${params.id}`
-//   );
-//   const board = res.data.data;
-
-//   return {
-//     props: {
-//       board,
-//     },
-//   };
-// }
-
-// export default withPageAuthRequired(function Kanban({ board }) {
-//   return (
-//     <Layout>
-//       <KanbanBoard
-//         title={board.title}
-//         description={board.description}
-//         boardId={board._id}
-//       />
-//     </Layout>
-//   );
-// });

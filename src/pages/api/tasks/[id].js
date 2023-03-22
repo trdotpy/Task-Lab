@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import Task from "../../../../models/Task";
 import dbConnect from "../../../../utils/dbConnect";
 

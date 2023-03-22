@@ -18,17 +18,12 @@ const initialColumns = [
   { id: 4, title: "Completed" },
 ];
 
-export default function KanbanBoard({ title, description, boardId }) {
+export default function KanbanBoard({ boardTitle, boardDescription, boardId }) {
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState([]);
-  const [newTaskModal, setNewTaskModal] = useState(false);
   const [addTaskModal, setAddTaskModal] = useState(false);
 
   const toggleAddTaskModal = () => setAddTaskModal(!addTaskModal);
-
-  const openNewTaskModal = () => {
-    setNewTaskModal(true);
-  };
 
   function getColumnClass(columnId) {
     switch (columnId) {
@@ -49,17 +44,19 @@ export default function KanbanBoard({ title, description, boardId }) {
     axios.get(`/api/tasks?boardId=${boardId}`).then((res) => {
       setTasks(res.data.data);
     });
-  }, [boardId, tasks]);
+  }, [boardId]);
+
+  console.log(tasks);
 
   return (
     <>
       <div>
-        <Breadcrumb title={title} />
+        <Breadcrumb title={boardTitle} />
         <div className="py-4">
           <div className="mb-2 flex justify-between">
             <div>
               <h2 className="cursor-pointer text-2xl font-medium text-jet-800">
-                {title}
+                {boardTitle}
               </h2>
             </div>
             <div className="flex items-center gap-x-3 ">
@@ -80,7 +77,7 @@ export default function KanbanBoard({ title, description, boardId }) {
           </div>
           <div>
             <p className="w-1/2 cursor-pointer bg-gray-50 text-sm text-jet-300">
-              {description}
+              {boardDescription}
             </p>
           </div>
         </div>
@@ -102,7 +99,7 @@ export default function KanbanBoard({ title, description, boardId }) {
       {addTaskModal && (
         <AddTask
           addTaskModal={addTaskModal}
-          boardTitle={title}
+          boardTitle={boardTitle}
           boardId={boardId}
           toggleAddTaskModal={toggleAddTaskModal}
         />
