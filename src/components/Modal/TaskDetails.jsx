@@ -84,7 +84,7 @@ export default function TaskDetails({
                       status === "Backlog"
                         ? "bg-bice-400"
                         : status === "In Progress"
-                        ? "bg-bitter-400"
+                        ? "bg-xanthous-400"
                         : status === "Testing"
                         ? "bg-plum-400"
                         : "bg-seagreen-400"
@@ -93,12 +93,12 @@ export default function TaskDetails({
                     {status}
                   </span>
                   <span
-                    className={`rounded px-2 py-1 text-xs text-white ${
+                    className={`rounded px-2 py-1 text-xs ${
                       priority === "High"
-                        ? "bg-bitter-400"
+                        ? "bg-bitter-100 text-bitter-600"
                         : priority === "Medium"
-                        ? "bg-xanthous-400"
-                        : "bg-bice-400"
+                        ? "bg-xanthous-100 text-xanthous-600"
+                        : "bg-bice-100 text-bice-600"
                     }`}
                   >
                     {priority}
