@@ -1,4 +1,4 @@
-import { IconBrandGithubFilled, IconCircleDashed } from "@tabler/icons-react";
+import { IconBrandGithubFilled } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +11,6 @@ export default function Footer() {
           <div className="flex flex-col items-center sm:flex-row sm:justify-between">
             <div className="flex flex-col items-center text-center">
               <Link className="flex items-center" href="/">
-                {/* <IconCircleDashed className="h-6 w-auto text-[#FF6663]" /> */}
                 <Image
                   src="https://res.cloudinary.com/drij60fru/image/upload/v1679375340/tasklab_qjjn6r.png"
                   alt="TaskLab"

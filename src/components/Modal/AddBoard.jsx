@@ -3,6 +3,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function AddBoard({
   showBoardModal,
@@ -16,6 +17,24 @@ export default function AddBoard({
     title: Yup.string().required("Title is required"),
     description: Yup.string().required("Description is required"),
   });
+
+  const { user, isLoading } = useUser();
+
+  const handleAddBoard = async (values, actions) => {
+    if (!user || isLoading) {
+      return;
+    }
+    try {
+      const res = await axios.post("/api/boards", {
+        title: values.title,
+        description: values.description,
+      });
+      setBoardList([...boardList, res.data.data]);
+      toggleAddBoardModal();
+    } catch (err) {
+      console.error("Error creating board:", err);
+    }
+  };
 
   return (
     <>
@@ -50,18 +69,7 @@ export default function AddBoard({
                 <Formik
                   initialValues={{ title: "", description: "" }}
                   validationSchema={validationSchema}
-                  onSubmit={async (values, actions) => {
-                    try {
-                      const res = await axios.post("/api/boards", {
-                        title: values.title,
-                        description: values.description,
-                      });
-                      setBoardList([...boardList, res.data.data]);
-                      toggleAddBoardModal();
-                    } catch (err) {
-                      console.error("Error creating board:", err);
-                    }
-                  }}
+                  onSubmit={handleAddBoard}
                 >
                   {(formik) => (
                     <form className="mt-4" onSubmit={formik.handleSubmit}>

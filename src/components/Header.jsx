@@ -1,6 +1,5 @@
 import {
   IconCategory2,
-  IconCircleDashed,
   IconPlayerPlayFilled,
   IconUser,
   IconUserCircle,
@@ -20,7 +19,6 @@ export default function Header() {
         >
           <div className="flex items-center justify-between">
             <Link className="flex items-center" href="/">
-              {/* <IconCircleDashed className="h-7 w-auto text-[#FF6663]" /> */}
               <Image
                 src="https://res.cloudinary.com/drij60fru/image/upload/v1679461574/tasklab-white_p7r8mt.png"
                 alt="TaskLab"

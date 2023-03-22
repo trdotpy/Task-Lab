@@ -5,7 +5,6 @@ import {
   IconCalendar,
   IconChevronDown,
   IconChevronUp,
-  IconCircleDashed,
   IconCreditCard,
   IconHome,
   IconLayoutKanban,
@@ -63,6 +62,8 @@ export default function Sidebar() {
 
   const { user } = useUser();
 
+	// console.log(user)
+
   return (
     <>
       <div
@@ -71,7 +72,6 @@ export default function Sidebar() {
       >
         <div className="px-6">
           <Link className="flex items-center" href="/">
-            {/* <IconCircleDashed className="h-7 w-auto text-bitter-500" /> */}
             <Image
               src="https://res.cloudinary.com/drij60fru/image/upload/v1679461574/tasklab-white_p7r8mt.png"
               alt="TaskLab"

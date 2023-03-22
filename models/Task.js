@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const taskSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  description: String,
+  description: { type: String, required: true },
   createdBy: String,
   status: { type: String, required: true },
   createdAt: {
@@ -18,7 +18,12 @@ const taskSchema = new mongoose.Schema({
     ref: "Board",
     required: true,
   },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
   assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
