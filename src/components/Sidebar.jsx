@@ -71,7 +71,13 @@ export default function Sidebar() {
       >
         <div className="px-6">
           <Link className="flex items-center" href="/">
-            <IconCircleDashed className="h-7 w-auto text-bitter-500" />
+            {/* <IconCircleDashed className="h-7 w-auto text-bitter-500" /> */}
+            <Image
+              src="https://res.cloudinary.com/drij60fru/image/upload/v1679461574/tasklab-white_p7r8mt.png"
+              alt="TaskLab"
+              height={25}
+              width={25}
+            />
             <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-snow-100 hover:bg-gray-600">
               TaskLab
             </h1>

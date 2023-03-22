@@ -6,6 +6,7 @@ import {
   IconUserCircle,
   IconX,
 } from "@tabler/icons-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -19,7 +20,13 @@ export default function Header() {
         >
           <div className="flex items-center justify-between">
             <Link className="flex items-center" href="/">
-              <IconCircleDashed className="h-7 w-auto text-[#FF6663]" />
+              {/* <IconCircleDashed className="h-7 w-auto text-[#FF6663]" /> */}
+              <Image
+                src="https://res.cloudinary.com/drij60fru/image/upload/v1679461574/tasklab-white_p7r8mt.png"
+                alt="TaskLab"
+                height={25}
+                width={25}
+              />
               <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-white hover:bg-gray-600">
                 TaskLab
               </h1>
