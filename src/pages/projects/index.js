@@ -4,6 +4,7 @@ import {
   IconSquareRoundedPlus,
   IconUpload,
   IconSearch,
+  IconExternalLink,
 } from "@tabler/icons-react";
 import axios from "axios";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Layout from "@/layouts/Layout";
 import NewBoardModal from "@/components/NewBoardModal";
 import Warning from "@/components/Modal/Warning";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
@@ -138,13 +140,6 @@ export default withPageAuthRequired(function Projects({ boards }) {
                           scope="col"
                           className="px-4 py-3.5 text-left text-sm font-normal text-gray-500"
                         >
-                          Team
-                        </th>
-
-                        <th
-                          scope="col"
-                          className="px-4 py-3.5 text-left text-sm font-normal text-gray-500"
-                        >
                           Description
                         </th>
 
@@ -160,38 +155,12 @@ export default withPageAuthRequired(function Projects({ boards }) {
                       >
                         <tr>
                           <td className="whitespace-nowrap px-4 py-4 text-sm font-medium">
-                            <div>
-                              <h2 className="text-base font-normal text-jet-700">
+                            <Link href={`/boards/${board._id}`}>
+                              <h2 className="text-base font-normal text-jet-700 underline-offset-8 hover:underline">
                                 {board.title}
                               </h2>
-                              {/* <h2 className="font-medium text-gray-800 "></h2> */}
-                            </div>
-                          </td>
-                          <td className="whitespace-nowrap px-12 py-4 text-sm font-medium">
-                            <div className="inline gap-x-2 rounded  px-3 py-1 text-sm font-normal">
-                              {new Date(board.createdAt).toLocaleDateString()}
-                            </div>
-                          </td>
-
-                          {/* Progress bar */}
-                          <td className="whitespace-nowrap px-4 py-4 text-sm">
-                            <div>
-                              <div className="h-1.5 w-48 overflow-hidden rounded-full bg-seagreen-200">
-                                <div
-                                  className="h-1.5 bg-seagreen-400"
-                                  style={{
-                                    width: `${Math.floor(
-                                      Math.random() * 100
-                                    )}%`,
-                                  }}
-                                ></div>
-                              </div>
-                            </div>
-                          </td>
-
-                          {/* End progress bar */}
-                          <td className="whitespace-nowrap px-4 py-4 text-sm">
-                            <div className="flex items-center">
+                            </Link>
+                            <div className="mt-4 flex items-center justify-start">
                               <img
                                 className="-mx-1 h-6 w-6 shrink-0 rounded-full border-2 border-white object-cover"
                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
@@ -217,15 +186,35 @@ export default withPageAuthRequired(function Projects({ boards }) {
                               </p>
                             </div>
                           </td>
+                          <td className="whitespace-nowrap px-12 py-4 text-sm font-medium">
+                            <div className="inline gap-x-2 rounded  px-3 py-1 text-sm font-normal">
+                              {new Date(board.createdAt).toLocaleDateString()}
+                            </div>
+                          </td>
 
-                          <td className="p-8">
+                          <td className="whitespace-nowrap px-4 py-4 text-sm">
+                            <div>
+                              <div className="h-1.5 w-48 overflow-hidden rounded-full bg-seagreen-200">
+                                <div
+                                  className="h-1.5 bg-seagreen-400"
+                                  style={{
+                                    width: `${Math.floor(
+                                      Math.random() * 100
+                                    )}%`,
+                                  }}
+                                ></div>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td className="p-4">
                             <p className="text-xs text-jet-300">
                               {board.description}
                             </p>
                           </td>
 
                           <td className="whitespace-nowrap px-4 py-4 text-sm">
-                            <div class="hs-dropdown relative inline-flex">
+                            <div class="hs-dropdown relative inline-flex gap-x-2">
                               <button
                                 id="hs-dropdown-custom-icon-trigger"
                                 type="button"
@@ -249,6 +238,11 @@ export default withPageAuthRequired(function Projects({ boards }) {
                                   Delete
                                 </button>
                               </div>
+                              <Link href={`/boards/${board._id}`}>
+                                <button className="inline-flex items-center justify-center gap-2 rounded-md border bg-white p-1 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white">
+                                  <IconExternalLink className="h-5 w-5 text-jet-400" />
+                                </button>
+                              </Link>
                             </div>
                           </td>
                           {warningModal && (
