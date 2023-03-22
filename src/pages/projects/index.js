@@ -3,12 +3,14 @@ import {
   IconDotsVertical,
   IconSquareRoundedPlus,
   IconUpload,
+  IconSearch,
 } from "@tabler/icons-react";
 import axios from "axios";
 import { useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Layout from "@/layouts/Layout";
 import NewBoardModal from "@/components/NewBoardModal";
+import Warning from "@/components/Modal/Warning";
 
 export async function getStaticProps() {
   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
@@ -22,8 +24,11 @@ export async function getStaticProps() {
 }
 
 export default withPageAuthRequired(function Projects({ boards }) {
-  const [showBoardModal, setShowBoardModal] = useState(false);
   const [boardList, setBoardList] = useState(boards);
+  const [showBoardModal, setShowBoardModal] = useState(false);
+  const [warningModal, setWarningModal] = useState(false);
+
+  const toggleWarningModal = () => setWarningModal(!warningModal);
 
   console.log(boardList);
 
@@ -31,6 +36,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
     try {
       await axios.delete(`/api/boards/${boardId}`);
       setBoardList(boardList.filter((board) => board._id !== boardId));
+      toggleWarningModal();
     } catch (error) {
       console.error(error);
     }
@@ -48,7 +54,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
                 </span>
               </div>
 
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
+              <p className="mt-1 text-sm text-jet-300">
                 These boards have been created in the last 12 months.
               </p>
             </div>
@@ -71,7 +77,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
           </div>
 
           <div className="mt-6 md:flex md:items-center md:justify-between">
-            <div className="inline-flex divide-x overflow-hidden rounded-lg border bg-white rtl:flex-row-reverse ">
+            <div className="inline-flex divide-x overflow-hidden rounded-lg border bg-white">
               <button className="bg-gray-100 px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200  sm:text-sm">
                 View all
               </button>
@@ -86,28 +92,15 @@ export default withPageAuthRequired(function Projects({ boards }) {
             </div>
 
             <div className="relative mt-4 flex items-center md:mt-0">
-              <span className="absolute">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="mx-3 h-5 w-5 text-gray-400 "
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                  />
-                </svg>
-              </span>
+              <div className="absolute">
+                <IconSearch className="mx-3 h-5 w-5 text-jet-300" />
+              </div>
 
               <input
                 type="text"
                 value="Search"
                 placeholder="Search"
-                className="block w-full rounded-lg border border-gray-200 bg-white py-1.5 pr-5 pl-11 text-gray-700 placeholder-gray-400/70 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 rtl:pr-11 rtl:pl-5 md:w-80"
+                className="block w-full rounded-lg border border-gray-200 bg-white py-1.5 pr-5 pl-11 text-gray-700 placeholder-gray-400/70 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 md:w-80"
               />
             </div>
           </div>
@@ -250,13 +243,22 @@ export default withPageAuthRequired(function Projects({ boards }) {
                                 </button>
                                 <button
                                   class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
-                                  onClick={() => handleDeleteBoard(board._id)}
+                                  // onClick={() => handleDeleteBoard(board._id)}
+                                  onClick={toggleWarningModal}
                                 >
                                   Delete
                                 </button>
                               </div>
                             </div>
                           </td>
+                          {warningModal && (
+                            <Warning
+                              toggleWarningModal={toggleWarningModal}
+                              handleDeleteBoard={handleDeleteBoard}
+                              warningModal={warningModal}
+                              boardId={board._id}
+                            />
+                          )}
                         </tr>
                       </tbody>
                     ))}
@@ -275,12 +277,19 @@ export default withPageAuthRequired(function Projects({ boards }) {
               <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize text-jet-100 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
                 <span>Next</span>
 
-                <IconArrowRight className="h-3 w-3 rtl:-scale-x-100" />
+                <IconArrowRight className="h-3 w-3" />
               </button>
             </div>
           </div>
         </section>
       </Layout>
+      {/* {warningModal && (
+        <Warning
+          toggleWarningModal={toggleWarningModal}
+          handleDeleteBoard={handleDeleteBoard}
+					warningModal={warningModal}
+        />
+      )} */}
       {showBoardModal && (
         <NewBoardModal
           showBoardModal={showBoardModal}

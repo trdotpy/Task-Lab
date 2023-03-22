@@ -38,13 +38,16 @@ export default function Navbar() {
               <p className="text-sm font-medium text-jet-400">{user?.name}</p>
               <span className="text-xs text-jet-400">{user?.email}</span>
             </div>
-            <Image
-              src={user?.picture}
-              alt={user?.name}
-              className="h-8 w-8 rounded"
-              height={32}
-              width={32}
-            />
+            <div className="relative">
+              <Image
+                src={user?.picture}
+                alt={user?.name}
+                className="h-8 w-8 rounded"
+                height={32}
+                width={32}
+              />
+              <span class="absolute right-0 bottom-0 h-2.5 w-2.5 rounded-full bg-green-500 ring-1 ring-gray-100"></span>
+            </div>
           </div>
         </div>
       </div>
