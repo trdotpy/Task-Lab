@@ -43,9 +43,8 @@ export default withPageAuthRequired(function Projects({ boards }) {
             <div>
               <div className="flex items-center gap-x-3">
                 <h2 className="text-lg font-medium text-gray-800 ">Projects</h2>
-
                 <span className="rounded bg-bice-100 px-3 py-1 text-xs text-bice-700">
-                  3 boards
+                  {boardList.length} boards
                 </span>
               </div>
 
@@ -61,7 +60,7 @@ export default withPageAuthRequired(function Projects({ boards }) {
               </button>
 
               <button
-                className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-blue-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500 sm:w-auto"
+                className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
                 onClick={() => setShowBoardModal(true)}
               >
                 <IconSquareRoundedPlus size={20} />
