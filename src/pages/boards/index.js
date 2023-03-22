@@ -91,6 +91,8 @@ export default withPageAuthRequired(function Boards({ boards }) {
         <NewBoardModal
           showBoardModal={showBoardModal}
           setShowBoardModal={setShowBoardModal}
+					boardList={boardList}
+					setBoardList={setBoardList}
         />
       )}
     </>

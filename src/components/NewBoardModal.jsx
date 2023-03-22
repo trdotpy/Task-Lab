@@ -2,7 +2,12 @@ import { IconX } from "@tabler/icons-react";
 import axios from "axios";
 import React, { useState } from "react";
 
-export default function NewBoardModal({ showBoardModal, setShowBoardModal }) {
+export default function NewBoardModal({
+  showBoardModal,
+  setShowBoardModal,
+  boardList,
+  setBoardList,
+}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -18,7 +23,7 @@ export default function NewBoardModal({ showBoardModal, setShowBoardModal }) {
         title: data.title,
         description: data.description,
       });
-      console.log(res.data.data);
+      setBoardList([...boardList, res.data.data]);
       setShowBoardModal(false);
     } catch (err) {
       console.error("Error creating board:", err);
