@@ -34,7 +34,7 @@ export default function AddBoard({
               &#8203;
             </span>
 
-            <div className="relative inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all rtl:text-right sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
+            <div className="relative inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
               <div>
                 <h3
                   className="text-lg font-medium leading-6 text-gray-800 "
