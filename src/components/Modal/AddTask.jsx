@@ -28,7 +28,7 @@ export default function AddTask({
         >
           <div className="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <span
-              class="hidden sm:inline-block sm:h-screen sm:align-middle"
+              className="hidden sm:inline-block sm:h-screen sm:align-middle"
               aria-hidden="true"
             >
               &#8203;
@@ -37,12 +37,12 @@ export default function AddTask({
             <div className="relative inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all rtl:text-right sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
               <div>
                 <h3
-                  class="text-lg font-medium leading-6 text-gray-800 "
+                  className="text-lg font-medium leading-6 text-gray-800 "
                   id="modal-title"
                 >
                   Add Task
                 </h3>
-                <p class="mt-2 text-sm text-gray-500 ">
+                <p className="mt-2 text-sm text-gray-500 ">
                   Describe the task you want to add to{" "}
                   <span className="text-bitter-400">{boardTitle}</span> below.
                 </p>
@@ -65,7 +65,7 @@ export default function AddTask({
                   }}
                 >
                   {(formik) => (
-                    <form class="mt-4" onSubmit={formik.handleSubmit}>
+                    <form className="mt-4" onSubmit={formik.handleSubmit}>
                       <Field
                         name="title"
                         type="text"
@@ -128,25 +128,25 @@ export default function AddTask({
 
                       <button
                         type="button"
-                        class="mt-2 flex items-center rounded py-1.5 px-2 text-sm text-blue-600 transition-colors duration-300 hover:text-blue-400 focus:outline-none"
+                        className="mt-2 flex items-center rounded py-1.5 px-2 text-sm text-blue-600 transition-colors duration-300 hover:text-blue-400 focus:outline-none"
                       >
-                        <IconPlus class="h-4 w-4" />
+                        <IconPlus className="h-4 w-4" />
 
-                        <span class="mx-2 text-sm">Add Team Members</span>
+                        <span className="mx-2 text-sm">Add Team Members</span>
                       </button>
 
-                      <div class="mt-4 sm:-mx-2 sm:flex sm:items-center">
+                      <div className="mt-4 sm:-mx-2 sm:flex sm:items-center">
                         <button
                           type="button"
                           onClick={toggleAddTaskModal}
-                          class="w-full transform rounded-md border border-gray-200 px-4 py-2 text-sm font-medium capitalize tracking-wide text-gray-700 transition-colors duration-300 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40  sm:mx-2 sm:w-1/2"
+                          className="w-full transform rounded-md border border-gray-200 px-4 py-2 text-sm font-medium capitalize tracking-wide text-gray-700 transition-colors duration-300 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40  sm:mx-2 sm:w-1/2"
                         >
                           Cancel
                         </button>
 
                         <button
                           type="submit"
-                          class="mt-3 w-full transform rounded-md bg-blue-600 px-4 py-2 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 sm:mx-2 sm:mt-0 sm:w-1/2"
+                          className="mt-3 w-full transform rounded-md bg-blue-600 px-4 py-2 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 sm:mx-2 sm:mt-0 sm:w-1/2"
                           disabled={!formik.isValid}
                         >
                           Create Project

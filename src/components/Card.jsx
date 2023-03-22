@@ -2,7 +2,7 @@ import { IconTrash, IconFileDots } from "@tabler/icons-react";
 import axios from "axios";
 import { useState } from "react";
 import Draggable from "react-draggable";
-import TaskModal from "./TaskModal";
+import TaskDetails from "./Modal/TaskDetails";
 
 export default function Card({
   id,
@@ -60,7 +60,7 @@ export default function Card({
         </div>
       </Draggable>
       {showModal && (
-        <TaskModal
+        <TaskDetails
           title={title}
           description={description}
           status={status}

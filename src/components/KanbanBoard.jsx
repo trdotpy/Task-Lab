@@ -57,29 +57,29 @@ export default function KanbanBoard({ title, description, boardId }) {
         <Breadcrumb title={title} />
         <div className="py-4">
           <div className="mb-2 flex justify-between">
-            <h2 className="cursor-pointer text-2xl font-medium text-jet-800">
-              {title}
-            </h2>
-            <div className="flex items-center">
-              <div className="mt-4 flex items-center gap-x-3">
-                <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
-                  <IconUpload size={16} />
-                  <span>Share</span>
-                </button>
+            <div>
+              <h2 className="cursor-pointer text-2xl font-medium text-jet-800">
+                {title}
+              </h2>
+            </div>
+            <div className="flex items-center gap-x-3 ">
+              <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
+                <IconUpload size={16} />
+                <span>Share</span>
+              </button>
 
-                <button
-                  className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
-                  onClick={toggleAddTaskModal}
-                >
-                  <IconSquareRoundedPlus size={20} />
+              <button
+                className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
+                onClick={toggleAddTaskModal}
+              >
+                <IconSquareRoundedPlus size={20} />
 
-                  <span>Add Task</span>
-                </button>
-              </div>
+                <span>Add Task</span>
+              </button>
             </div>
           </div>
           <div>
-            <p className="w-full cursor-pointer bg-gray-50 text-sm text-jet-300">
+            <p className="w-1/2 cursor-pointer bg-gray-50 text-sm text-jet-300">
               {description}
             </p>
           </div>

@@ -27,7 +27,6 @@ export async function getStaticProps() {
 
 export default withPageAuthRequired(function Projects({ boards }) {
   const [boardList, setBoardList] = useState(boards);
-  const [showBoardModal, setShowBoardModal] = useState(false);
   const [warningModal, setWarningModal] = useState(false);
 
   const [addBoardModal, setAddBoardModal] = useState(false);
@@ -215,24 +214,24 @@ export default withPageAuthRequired(function Projects({ boards }) {
                           </td>
 
                           <td className="whitespace-nowrap p-4 text-sm">
-                            <div class="hs-dropdown relative inline-flex gap-x-2">
+                            <div className="hs-dropdown relative inline-flex gap-x-2">
                               <button
                                 id="hs-dropdown-custom-icon-trigger"
                                 type="button"
-                                class="hs-dropdown-toggle inline-flex items-center justify-center gap-2 rounded-md border bg-white p-1 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white"
+                                className="hs-dropdown-toggle inline-flex items-center justify-center gap-2 rounded-md border bg-white p-1 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white"
                               >
-                                <IconDotsVertical class="h-5 w-5 text-jet-200" />
+                                <IconDotsVertical className="h-5 w-5 text-jet-200" />
                               </button>
 
                               <div
-                                class="hs-dropdown-menu duration z-20 mt-2 hidden rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
+                                className="hs-dropdown-menu duration z-20 mt-2 hidden rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
                                 aria-labelledby="hs-dropdown-custom-icon-trigger"
                               >
-                                <button class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500">
+                                <button className="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500">
                                   Edit Project
                                 </button>
                                 <button
-                                  class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                                  className="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
                                   onClick={toggleWarningModal}
                                 >
                                   Delete

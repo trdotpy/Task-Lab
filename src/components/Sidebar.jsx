@@ -71,7 +71,7 @@ export default function Sidebar() {
       >
         <div className="px-6">
           <Link className="flex items-center" href="/">
-            <IconCircleDashed className="h-8 w-auto text-bitter-500" />
+            <IconCircleDashed className="h-7 w-auto text-bitter-500" />
             <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-snow-100 hover:bg-gray-600">
               TaskLab
             </h1>
@@ -133,11 +133,11 @@ export default function Sidebar() {
               </li>
               <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-jet-600">
                 <span className="mr-2 h-2 w-2 rounded-sm bg-yellow-500"></span>
-                <span className="text-sm text-jet-200">Review</span>
+                <span className="text-sm text-jet-200">Yellow</span>
               </li>
               <li className="flex cursor-pointer items-center rounded-lg py-2 px-4 text-center hover:bg-jet-600">
                 <span className="mr-2 h-2 w-2 rounded-sm bg-orange-500"></span>
-                <span className="text-sm text-jet-200">Meetings</span>
+                <span className="text-sm text-jet-200">Orange</span>
               </li>
             </ul>
           </div>

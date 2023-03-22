@@ -46,7 +46,7 @@ export default function Navbar() {
                 height={32}
                 width={32}
               />
-              <span class="absolute right-0 bottom-0 h-2.5 w-2.5 rounded-full bg-green-500 ring-1 ring-gray-100"></span>
+              <span className="absolute right-0 bottom-0 h-2.5 w-2.5 rounded-full bg-green-500 ring-1 ring-gray-100"></span>
             </div>
           </div>
         </div>

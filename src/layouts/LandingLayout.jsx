@@ -11,7 +11,7 @@ export default function LandingLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex min-h-screen flex-col bg-gray-50">
+      <div className="flex min-h-screen flex-col">
         <Header />
         <div className="flex w-full flex-col">
           <main className="flex-grow px-20">{children}</main>

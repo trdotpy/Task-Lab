@@ -3,6 +3,7 @@ import LandingLayout from "@/layouts/LandingLayout";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
 import Hero from "@/components/Hero";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -12,11 +13,11 @@ export default function Home() {
     return (
       <div>
         <div
-          class="inline-block h-6 w-6 animate-spin rounded-full border-[3px] border-current border-t-transparent text-purple-600"
+          className="inline-block h-6 w-6 animate-spin rounded-full border-[3px] border-current border-t-transparent text-purple-600"
           role="status"
           aria-label="loading"
         >
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
       </div>
     );
@@ -38,6 +39,7 @@ export default function Home() {
         <main>
           <LandingLayout>
             <Hero />
+            <Footer />
           </LandingLayout>
         </main>
       </>

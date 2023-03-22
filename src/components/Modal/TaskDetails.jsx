@@ -1,11 +1,11 @@
 import { IconDots, IconTrash, IconX } from "@tabler/icons-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import Breadcrumb from "./Breadcrumb";
-import Comments from "./Comments";
-import Dropdown from "./StatusDropdown";
+import Breadcrumb from "../Breadcrumb";
+import Comments from "../Comments";
+import Dropdown from "../StatusDropdown";
 
-export default function TaskModal({
+export default function TaskDetails({
   title,
   description,
   status,

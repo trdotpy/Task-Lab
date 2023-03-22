@@ -13,7 +13,7 @@ export default function Breadcrumb({ title }) {
             className="flex items-center text-jet-200 hover:text-bice-600"
             href="#"
           >
-            Dashboard
+            Home
             <IconChevronRight className="mx-3 h-3.5 w-3.5 flex-shrink-0 overflow-visible text-jet-200" />
           </a>
         </li>

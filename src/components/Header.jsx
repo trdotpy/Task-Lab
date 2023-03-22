@@ -19,7 +19,7 @@ export default function Header() {
         >
           <div className="flex items-center justify-between">
             <Link className="flex items-center" href="/">
-              <IconCircleDashed className="h-8 w-auto text-[#FF6663]" />
+              <IconCircleDashed className="h-7 w-auto text-[#FF6663]" />
               <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-white hover:bg-gray-600">
                 TaskLab
               </h1>
