@@ -13,16 +13,15 @@ export default function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen bg-gray-50">
-        <aside className="w-60 p-4">
+        <aside className="p-4">
           <Sidebar />
         </aside>
 
-        <div className="flex w-full flex-col">
+        <div className="relative flex w-full flex-col sm:ml-60">
           <header>
             <Navbar />
           </header>
-
-          <main className="flex-grow px-20 py-8">{children}</main>
+          <main className="flex-grow py-8 px-4">{children}</main>
         </div>
       </div>
     </>

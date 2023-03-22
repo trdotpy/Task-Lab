@@ -19,6 +19,8 @@ export default withPageAuthRequired(function Boards({ boards }) {
     }
   };
 
+  console.log(boardList);
+
   return (
     <>
       <Layout>
@@ -35,13 +37,18 @@ export default withPageAuthRequired(function Boards({ boards }) {
           {boardList.map((board) => (
             <div
               key={board._id}
-              className="cursor-pointer rounded-lg bg-white p-4 shadow-md hover:bg-gray-100"
+              className="w-96 cursor-pointer rounded-lg bg-white p-4 shadow-md hover:bg-gray-100"
             >
               <div>
-                <div className="flex items-center justify-between">
-                  <h2 className="mb-2 text-lg font-medium text-jet-600">
-                    {board.title}
-                  </h2>
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <h2 className="mb-2 text-lg font-medium text-jet-600">
+                      {board.title}
+                    </h2>
+                    <p className="text-xs text-jet-400">
+                      {new Date(board.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
                   <div class="hs-dropdown relative inline-flex">
                     <button
                       id="hs-dropdown-custom-icon-trigger"

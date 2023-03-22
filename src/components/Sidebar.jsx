@@ -82,11 +82,9 @@ export default function Sidebar() {
           className="hs-accordion-group flex w-full flex-col flex-wrap p-6"
           data-hs-accordion-always-open
         >
-          <h2 className="mt-8 mb-4 text-sm font-medium text-jet-100">
-            Dashboard
-          </h2>
+          <h2 className="my-4 text-sm font-medium text-jet-100">Home</h2>
           <ul className="space-y-1.5">
-            {/* <SidebarItem icon={IconHome} text="Dashboard" href="/" /> */}
+            <SidebarItem icon={IconHome} text="Dashboard" href="/" />
 
             <SidebarAccordion titleIcon={IconBrandAsana} title="Projects">
               <SidebarItem
@@ -164,7 +162,7 @@ const UserAccordion = ({ title, children, user }) => (
     className="hs-accordion"
     id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}
   >
-    <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3 rounded-md py-2 px-2 text-sm text-jet-100 hover:bg-jet-600 ">
+    <div className="hs-accordion-toggle flex cursor-pointer items-center gap-x-3 rounded-md py-2 px-2 text-sm text-jet-100 hover:bg-jet-600">
       <Image
         src={user?.picture}
         alt={user?.name}
@@ -175,8 +173,8 @@ const UserAccordion = ({ title, children, user }) => (
       <div className="grid">
         <p className="text-sm font-medium text-jet-100">{user?.name}</p>
       </div>
-      <IconChevronUp className="ml-4 hidden h-5 w-5 text-jet-200 hs-accordion-active:block " />
-      <IconChevronDown className="ml-4 block h-5 w-5 text-jet-200  hs-accordion-active:hidden " />
+      <IconChevronDown className="ml-4 hidden h-5 w-5 text-jet-200 hs-accordion-active:block" />
+      <IconChevronUp className="ml-4 block h-5 w-5 text-jet-200  hs-accordion-active:hidden" />
     </div>
     <div
       id={`${title.toLowerCase().replace(/ /g, "-")}-accordion`}

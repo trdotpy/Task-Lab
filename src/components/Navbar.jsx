@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 border-b border-gray-200">
-      <div className="px-2 sm:px-6 lg:px-12">
+      <div className="px-4">
         <div className="relative flex h-14 items-center justify-between">
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
@@ -20,23 +20,23 @@ export default function Navbar() {
               <div className="flex space-x-4">
                 <Link
                   href="https://github.com/trdotpy/Task-Lab"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-300 hover:text-gray-900"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-jet-300 hover:bg-jet-100 hover:text-jet-600"
                 >
                   Documentation
                 </Link>
                 <Link
                   href="/contact"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-300 hover:text-gray-900"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-jet-300 hover:bg-jet-100 hover:text-jet-600"
                 >
-                  API
+                  Releases
                 </Link>
               </div>
             </div>
           </div>
-          <div className="flex items-center">
-            <div className="grid cursor-pointer rounded px-4 text-right hover:bg-gray-300">
-              <span className="text-sm text-gray-800">{user?.name}</span>
-              <span className="text-xs text-gray-500">{user?.email}</span>
+          <div className="flex items-center rounded hover:bg-jet-100">
+            <div className="grid cursor-pointer px-4 text-right ">
+              <p className="text-sm font-medium text-jet-400">{user?.name}</p>
+              <span className="text-xs text-jet-400">{user?.email}</span>
             </div>
             <Image
               src={user?.picture}
