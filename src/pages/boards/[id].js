@@ -15,14 +15,13 @@ export default withPageAuthRequired(function Kanban({ board }) {
   );
 });
 
-
 export async function getServerSideProps({ params }) {
   const res = await axios.get(
-		`${process.env.BASE_URL}/api/boards/${params.id}`
-		);
-		const board = res.data.data;
+    `${process.env.BASE_URL}/api/boards/${params.id}`
+  );
+  const board = res.data.data;
 
-		return {
+  return {
     props: {
       board,
     },

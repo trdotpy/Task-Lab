@@ -1,101 +1,18 @@
-import Layout from "@/layouts/Layout";
+import {
+  IconArrowRight,
+  IconDotsVertical,
+  IconSquareRoundedPlus,
+  IconUpload,
+  IconSearch,
+  IconExternalLink,
+} from "@tabler/icons-react";
 import axios from "axios";
-import Link from "next/link";
 import { useState } from "react";
-import NewBoardModal from "@/components/NewBoardModal";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
-import { IconDots } from "@tabler/icons-react";
-
-export default withPageAuthRequired(function Boards({ boards }) {
-  const [showBoardModal, setShowBoardModal] = useState(false);
-  const [boardList, setBoardList] = useState(boards);
-
-  const handleDeleteBoard = async (boardId) => {
-    try {
-      await axios.delete(`/api/boards/${boardId}`);
-      setBoardList(boardList.filter((board) => board._id !== boardId));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    <>
-      <Layout>
-        <div className="mb-4 flex items-center justify-between">
-          <h1 className="mb-4 text-2xl font-semibold">All Project Boards</h1>
-          <button
-            className="rounded-md bg-blue-400 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-            onClick={() => setShowBoardModal(true)}
-          >
-            New Board
-          </button>
-        </div>
-        <div className="grid grid-cols-1 gap-4">
-          {boardList.map((board) => (
-            <div
-              key={board._id}
-              className="w-full cursor-pointer rounded-lg bg-white p-4 shadow-md hover:bg-gray-100"
-            >
-              <div>
-                <div className="mb-4 flex items-center justify-between">
-                  <div>
-                    <h2 className="mb-2 text-lg font-medium text-jet-600">
-                      {board.title}
-                    </h2>
-                    <p className="text-xs text-jet-400">
-                      {new Date(board.createdAt).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <div class="hs-dropdown relative inline-flex">
-                    <button
-                      id="hs-dropdown-custom-icon-trigger"
-                      type="button"
-                      class="hs-dropdown-toggle inline-flex items-center justify-center gap-2 rounded-md border bg-white p-1 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white"
-                    >
-                      <IconDots class="h-5 w-5 text-jet-200" />
-                    </button>
-
-                    <div
-                      class="hs-dropdown-menu duration mt-2 hidden rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
-                      aria-labelledby="hs-dropdown-custom-icon-trigger"
-                    >
-                      <button class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500">
-                        Edit Project
-                      </button>
-                      <button
-                        class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
-                        onClick={() => handleDeleteBoard(board._id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm text-jet-300">{board.description}</p>
-              </div>
-              <div className="flex justify-end">
-                <Link href={`/boards/${board._id}`}>
-                  <button className="rounded-md bg-bice-400 px-4 py-2 text-xs font-semibold text-white shadow-md hover:bg-bice-600 focus:outline-none focus:ring-2 focus:ring-bice-500">
-                    Details
-                  </button>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Layout>
-      {showBoardModal && (
-        <NewBoardModal
-          showBoardModal={showBoardModal}
-          setShowBoardModal={setShowBoardModal}
-          boardList={boardList}
-          setBoardList={setBoardList}
-        />
-      )}
-    </>
-  );
-});
+import Layout from "@/layouts/Layout";
+import Warning from "@/components/Modal/Warning";
+import Link from "next/link";
+import AddBoard from "@/components/Modal/AddBoard";
 
 export async function getStaticProps() {
   const res = await axios.get(`${process.env.BASE_URL}/api/boards`);
@@ -107,3 +24,267 @@ export async function getStaticProps() {
     },
   };
 }
+
+export default withPageAuthRequired(function Projects({ boards }) {
+  const [boardList, setBoardList] = useState(boards);
+  const [showBoardModal, setShowBoardModal] = useState(false);
+  const [warningModal, setWarningModal] = useState(false);
+
+  const [addBoardModal, setAddBoardModal] = useState(false);
+
+  const toggleWarningModal = () => setWarningModal(!warningModal);
+  const toggleAddBoardModal = () => setAddBoardModal(!addBoardModal);
+
+  const handleDeleteBoard = async (boardId) => {
+    try {
+      await axios.delete(`/api/boards/${boardId}`);
+      setBoardList(boardList.filter((board) => board._id !== boardId));
+      toggleWarningModal();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  return (
+    <>
+      <Layout>
+        <section className="container mx-auto px-4">
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <div>
+              <div className="flex items-center gap-x-3">
+                <h2 className="text-lg font-medium text-gray-800 ">Projects</h2>
+                <span className="rounded bg-bice-100 px-3 py-1 text-xs text-bice-700">
+                  {boardList.length} boards
+                </span>
+              </div>
+
+              <p className="mt-1 text-sm text-jet-300">
+                These boards have been created in the last 12 months.
+              </p>
+            </div>
+
+            <div className="mt-4 flex items-center gap-x-3">
+              <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
+                <IconUpload size={16} />
+                <span>Share</span>
+              </button>
+
+              <button
+                className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
+                onClick={toggleAddBoardModal}
+              >
+                <IconSquareRoundedPlus size={20} />
+
+                <span>Add board</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-6 md:flex md:items-center md:justify-between">
+            <div className="inline-flex divide-x overflow-hidden rounded-lg border bg-white">
+              <button className="bg-gray-100 px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200  sm:text-sm">
+                View all
+              </button>
+
+              <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:text-sm">
+                Shared
+              </button>
+
+              <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100  sm:text-sm">
+                Archived
+              </button>
+            </div>
+
+            <div className="relative mt-4 flex items-center md:mt-0">
+              <div className="absolute">
+                <IconSearch className="mx-3 h-5 w-5 text-jet-300" />
+              </div>
+
+              <input
+                type="text"
+                value="Search"
+                placeholder="Search"
+                className="block w-full rounded-lg border border-gray-200 bg-white py-1.5 pr-5 pl-11 text-gray-700 placeholder-gray-400/70 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 md:w-80"
+              />
+            </div>
+          </div>
+
+          <div className="mt-6 flex flex-col">
+            <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div className="overflow-hidden border border-gray-200 md:rounded-lg">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="py-3.5 px-4 text-left text-sm font-normal text-gray-500"
+                        >
+                          <button className="flex items-center gap-x-3 focus:outline-none">
+                            <span>Project</span>
+                          </button>
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-12 py-3.5 text-left text-sm font-normal text-gray-500"
+                        >
+                          Start Date
+                        </th>
+
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-left text-sm font-normal text-gray-500"
+                        >
+                          Progress
+                        </th>
+
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-left text-sm font-normal text-gray-500"
+                        >
+                          Description
+                        </th>
+
+                        <th scope="col" className="relative py-3.5 px-4">
+                          <span className="sr-only">Edit</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    {boardList.map((board) => (
+                      <tbody
+                        className="divide-y divide-gray-200 bg-white"
+                        key={board._id}
+                      >
+                        <tr>
+                          <td className="whitespace-nowrap p-4 text-sm font-medium">
+                            <Link href={`/boards/${board._id}`}>
+                              <h2 className="text-base font-normal text-jet-700 underline-offset-8 hover:underline">
+                                {board.title}
+                              </h2>
+                            </Link>
+                            <div className="mt-4 flex items-center justify-start">
+                              <img
+                                className="-mx-1 h-6 w-6 shrink-0 rounded-full border-2 border-white object-cover"
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+                                alt=""
+                              />
+                              <img
+                                className="-mx-1 h-6 w-6 shrink-0 rounded-full border-2 border-white object-cover"
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+                                alt=""
+                              />
+                              <img
+                                className="-mx-1 h-6 w-6 shrink-0 rounded-full border-2 border-white object-cover"
+                                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1256&q=80"
+                                alt=""
+                              />
+                              <img
+                                className="-mx-1 h-6 w-6 shrink-0 rounded-full border-2 border-white object-cover"
+                                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+                                alt=""
+                              />
+                              <p className="-mx-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-blue-100 text-xs text-blue-600">
+                                +4
+                              </p>
+                            </div>
+                          </td>
+                          <td className="whitespace-nowrap px-12 py-4 text-sm font-medium">
+                            <div className="inline gap-x-2 rounded  px-3 py-1 text-sm font-normal">
+                              {new Date(board.createdAt).toLocaleDateString()}
+                            </div>
+                          </td>
+
+                          <td className="whitespace-nowrap p-4 text-sm">
+                            <div>
+                              <div className="h-1.5 w-48 overflow-hidden rounded-full bg-seagreen-200">
+                                <div
+                                  className="h-1.5 bg-seagreen-400"
+                                  style={{
+                                    width: `${Math.floor(
+                                      Math.random() * 100
+                                    )}%`,
+                                  }}
+                                ></div>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td className="p-4">
+                            <p className="text-xs text-jet-300">
+                              {board.description}
+                            </p>
+                          </td>
+
+                          <td className="whitespace-nowrap p-4 text-sm">
+                            <div class="hs-dropdown relative inline-flex gap-x-2">
+                              <button
+                                id="hs-dropdown-custom-icon-trigger"
+                                type="button"
+                                class="hs-dropdown-toggle inline-flex items-center justify-center gap-2 rounded-md border bg-white p-1 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white"
+                              >
+                                <IconDotsVertical class="h-5 w-5 text-jet-200" />
+                              </button>
+
+                              <div
+                                class="hs-dropdown-menu duration z-20 mt-2 hidden rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
+                                aria-labelledby="hs-dropdown-custom-icon-trigger"
+                              >
+                                <button class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500">
+                                  Edit Project
+                                </button>
+                                <button
+                                  class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                                  onClick={toggleWarningModal}
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                              <Link href={`/boards/${board._id}`}>
+                                <button className="inline-flex items-center justify-center gap-2 rounded-md border bg-white p-1 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white">
+                                  <IconExternalLink className="h-5 w-5 text-jet-400" />
+                                </button>
+                              </Link>
+                            </div>
+                          </td>
+                          {warningModal && (
+                            <Warning
+                              toggleWarningModal={toggleWarningModal}
+                              handleDeleteBoard={handleDeleteBoard}
+                              warningModal={warningModal}
+                              boardId={board._id}
+                            />
+                          )}
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 sm:flex sm:items-center sm:justify-between ">
+            <p className="text-sm text-jet-300">
+              Page <span className="font-medium text-jet-300">1 of 1</span>
+            </p>
+
+            <div className="mt-4 flex items-center gap-x-4 sm:mt-0">
+              <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize text-jet-100 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
+                <span>Next</span>
+
+                <IconArrowRight className="h-3 w-3" />
+              </button>
+            </div>
+          </div>
+        </section>
+      </Layout>
+      {addBoardModal && (
+        <AddBoard
+          addBoardModal={addBoardModal}
+          toggleAddBoardModal={toggleAddBoardModal}
+          boardList={boardList}
+          setBoardList={setBoardList}
+        />
+      )}
+    </>
+  );
+});

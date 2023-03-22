@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Column from "./Column";
-import NewTaskModal from "./NewTaskModal";
+
 import Breadcrumb from "./Breadcrumb";
-import { IconPlus, IconSettings } from "@tabler/icons-react";
+import {
+  IconPlus,
+  IconSettings,
+  IconSquareRoundedPlus,
+  IconUpload,
+} from "@tabler/icons-react";
+import AddTask from "./Modal/AddTask";
 
 const initialColumns = [
   { id: 1, title: "Backlog" },
@@ -16,6 +22,9 @@ export default function KanbanBoard({ title, description, boardId }) {
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState([]);
   const [newTaskModal, setNewTaskModal] = useState(false);
+  const [addTaskModal, setAddTaskModal] = useState(false);
+
+  const toggleAddTaskModal = () => setAddTaskModal(!addTaskModal);
 
   const openNewTaskModal = () => {
     setNewTaskModal(true);
@@ -52,16 +61,21 @@ export default function KanbanBoard({ title, description, boardId }) {
               {title}
             </h2>
             <div className="flex items-center">
-              <button
-                type="button"
-                className="rounded-xl p-1 text-jet-400 hover:bg-jet-100"
-                onClick={openNewTaskModal}
-              >
-                <IconPlus size={24} stroke={2.0} />
-              </button>
-              <button className="rounded-xl p-1 text-jet-400 hover:bg-jet-100">
-                <IconSettings size={24} stroke={2.0} />
-              </button>
+              <div className="mt-4 flex items-center gap-x-3">
+                <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
+                  <IconUpload size={16} />
+                  <span>Share</span>
+                </button>
+
+                <button
+                  className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
+                  onClick={toggleAddTaskModal}
+                >
+                  <IconSquareRoundedPlus size={20} />
+
+                  <span>Add Task</span>
+                </button>
+              </div>
             </div>
           </div>
           <div>
@@ -85,14 +99,22 @@ export default function KanbanBoard({ title, description, boardId }) {
           ))}
         </div>
       </div>
-      {newTaskModal && (
-        <NewTaskModal
+      {addTaskModal && (
+        <AddTask
+          addTaskModal={addTaskModal}
+          boardTitle={title}
+          boardId={boardId}
+          toggleAddTaskModal={toggleAddTaskModal}
+        />
+      )}
+      {/* {newTaskModal && (
+        <AddTask
           setNewTaskModal={setNewTaskModal}
           newTaskModal={newTaskModal}
           boardTitle={title}
           boardId={boardId}
         />
-      )}
+      )} */}
     </>
   );
 }
