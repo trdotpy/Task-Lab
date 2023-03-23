@@ -61,12 +61,12 @@ export default function TaskDetails({
 
   return (
     <div className="flex justify-center">
-      <div className="fixed top-0 left-0 z-50 h-full w-full overflow-y-auto overflow-x-hidden">
+      <div className="fixed top-0 left-0 z-[70] h-full w-full overflow-y-auto overflow-x-hidden">
         <div className="m-3 mt-0 flex min-h-[calc(100%-3.5rem)] items-center justify-center transition-all ease-out sm:mx-auto sm:w-full sm:max-w-4xl">
           <div className="flex flex-col rounded-lg border bg-white px-4 py-2 shadow-sm">
             <div className="py-3 px-4">
               <div className="flex items-center justify-between">
-                {/* <Breadcrumb title={title} /> */}
+                <Breadcrumb title={title} />
                 <div className="flex items-center">
                   <button
                     type="button"
@@ -87,7 +87,7 @@ export default function TaskDetails({
                 </div>
               </div>
 
-              <div className="mt-4 items-center">
+              <div className="mt-4 items-center pb-4">
                 <h3 className="text-2xl font-semibold text-gray-700">
                   {title}
                 </h3>
@@ -114,7 +114,7 @@ export default function TaskDetails({
                 <h3 className="text-base font-medium text-jet-700">
                   Description
                 </h3>
-                <p className="text-sm text-gray-400">{description}</p>
+                <p className="mt-1 text-sm text-gray-400">{description}</p>
               </div>
 
               {/* Right */}
@@ -177,7 +177,7 @@ export default function TaskDetails({
               </div>
             </div>
             {/* Bottom */}
-            <div className="mt-2 px-4">
+            <div className="mt-2 border-t px-4 pt-4">
               <h3 className="text-base font-medium text-jet-700">Comments</h3>
               <CommentForm
                 handleAddComment={handleAddComment}

@@ -18,7 +18,7 @@ export default function CommentForm({
             onChange={(event) => setNewComment(event.target.value)}
           ></textarea>
 
-          <div className="mt-2.5 flex items-center justify-end">
+          <div className="pt-3.5 flex items-center justify-end">
             <button
               type="submit"
               // className="flex gap-x-2 rounded-md border border-gray-300 bg-jet-800 py-2 px-4 text-sm font-medium text-jet-100 shadow-sm transition duration-300 hover:bg-jet-500"

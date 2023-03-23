@@ -31,7 +31,6 @@ export default function ProjectTable({ board, handleBoardDelete }) {
         </div>
       </td>
 
-      {/* PROGRESS */}
       <td className="whitespace-nowrap p-4 text-sm">
         <div>
           <div className="h-1.5 w-48 overflow-hidden rounded-full bg-seagreen-200">
