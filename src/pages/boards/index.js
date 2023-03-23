@@ -10,11 +10,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Layout from "@/layouts/Layout";
-import Warning from "@/components/Modal/Warning";
-import Link from "next/link";
 import AddBoard from "@/components/Modal/AddBoard";
 import Spinner from "@/components/Spinner";
 import ProjectTable from "@/components/ProjectTable";
+import Tooltip from "@/components/Tooltip/Tooltip";
 
 export default withPageAuthRequired(function Projects() {
   const [boardList, setBoardList] = useState([]);
@@ -59,9 +58,7 @@ export default withPageAuthRequired(function Projects() {
             <div className="sm:flex sm:items-center sm:justify-between">
               <div>
                 <div className="flex items-center gap-x-3">
-                  <h2 className="text-lg font-medium text-gray-800 ">
-                    Projects
-                  </h2>
+                  <h2 className="text-xl font-medium text-jet-500">Projects</h2>
                   <span className="rounded bg-bice-100 px-3 py-1 text-xs text-bice-700">
                     {boardList.length} boards
                   </span>
@@ -73,9 +70,17 @@ export default withPageAuthRequired(function Projects() {
               </div>
 
               <div className="mt-4 flex items-center gap-x-3">
-                <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
+                <button className="hs-tooltip flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
                   <IconUpload size={16} />
-                  <span>Share</span>
+                  <p class="hs-tooltip-toggle">
+                    Share
+                    <span
+                      class="hs-tooltip-content invisible absolute z-10 inline-block rounded-md bg-jet-500 py-1 px-2 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"
+                      role="tooltip"
+                    >
+                      In development
+                    </span>
+                  </p>
                 </button>
 
                 <button
@@ -95,27 +100,34 @@ export default withPageAuthRequired(function Projects() {
                   View all
                 </button>
 
-                <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:text-sm">
-                  Shared
-                </button>
+                <Tooltip>
+                  {" "}
+                  <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:text-sm">
+                    Teams
+                  </button>
+                </Tooltip>
 
-                <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100  sm:text-sm">
-                  Archived
-                </button>
+                <Tooltip>
+                  {" "}
+                  <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:text-sm">
+                    Archive
+                  </button>
+                </Tooltip>
               </div>
 
-              <div className="relative mt-4 flex items-center md:mt-0">
-                <div className="absolute">
-                  <IconSearch className="mx-3 h-5 w-5 text-jet-300" />
+              <Tooltip>
+                <div className="relative mt-4 flex items-center md:mt-0">
+                  <div className="absolute">
+                    <IconSearch className="mx-3 h-5 w-5 text-jet-300" />
+                  </div>{" "}
+                  <input
+                    type="text"
+                    value="Search"
+                    placeholder="Search"
+                    className="block w-full rounded-lg border border-gray-200 bg-white py-1.5 pr-5 pl-11 text-jet-300 placeholder-jet-200 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 md:w-80"
+                  />
                 </div>
-
-                <input
-                  type="text"
-                  value="Search"
-                  placeholder="Search"
-                  className="block w-full rounded-lg border border-gray-200 bg-white py-1.5 pr-5 pl-11 text-gray-700 placeholder-gray-400/70 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 md:w-80"
-                />
-              </div>
+              </Tooltip>
             </div>
 
             <div className="mt-6 flex flex-col">
