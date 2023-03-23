@@ -51,13 +51,13 @@ export default function KanbanBoard({ boardTitle, boardDescription, boardId }) {
   return (
     <>
       <div>
-        <Breadcrumb title={boardTitle} />
-        <div className="py-4">
+        <div className="pb-4">
           <div className="mb-2 flex justify-between">
             <div>
-              <h2 className="cursor-pointer text-2xl font-medium text-jet-800">
-                {boardTitle}
-              </h2>
+              <h2 className="text-xl font-medium text-jet-500">{boardTitle}</h2>
+              <p className="mt-1 cursor-pointer bg-gray-50 text-sm text-jet-300">
+                {boardDescription}
+              </p>
             </div>
             <div className="flex items-center gap-x-3 ">
               <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
@@ -74,11 +74,6 @@ export default function KanbanBoard({ boardTitle, boardDescription, boardId }) {
                 <span>Add Task</span>
               </button>
             </div>
-          </div>
-          <div>
-            <p className="w-1/2 cursor-pointer bg-gray-50 text-sm text-jet-300">
-              {boardDescription}
-            </p>
           </div>
         </div>
         <div className="flex">

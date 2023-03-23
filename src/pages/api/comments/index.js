@@ -8,21 +8,21 @@ export default withApiAuthRequired(async function handler(req, res) {
   await dbConnect();
 
   switch (method) {
-    case "POST":
-      try {
-        const comment = await Comment.create(req.body);
-        res.status(201).json({ success: true, data: comment });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-
     case "GET":
       try {
         const comments = await Comment.find({})
           .populate("createdBy", "name")
           .exec();
         res.status(200).json({ success: true, data: comments });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+
+    case "POST":
+      try {
+        const comment = await Comment.create(req.body);
+        res.status(201).json({ success: true, data: comment });
       } catch (error) {
         res.status(400).json({ success: false });
       }

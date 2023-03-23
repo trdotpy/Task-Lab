@@ -1,3 +1,4 @@
+import MobileSidebar from "@/components/Sidebar/MobileSidebar";
 import Head from "next/head";
 import React from "react";
 import Navbar from "../components/Navbar";
@@ -13,11 +14,12 @@ export default function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen bg-gray-50">
-        <aside className="p-4">
+        <aside className="px-4">
           <Sidebar />
+          <MobileSidebar />
         </aside>
 
-        <div className="relative flex w-full flex-col sm:ml-60">
+        <div className="relative ml-16 flex w-full flex-col sm:ml-60">
           <header>
             <Navbar />
           </header>
