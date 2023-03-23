@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Head from "next/head";
 import React from "react";
@@ -13,8 +14,11 @@ export default function LandingLayout({ children }) {
       </Head>
       <div className="flex min-h-screen flex-col">
         <Header />
-        <div className="flex w-full flex-col">
+        <div className="flex w-full flex-col min-h-screen">
           <main className="flex-grow px-20">{children}</main>
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     </>

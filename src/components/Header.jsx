@@ -18,14 +18,14 @@ export default function Header() {
           aria-label="Global"
         >
           <div className="flex items-center justify-between">
-            <Link className="flex items-center" href="/">
+            <Link className="flex items-center rounded px-3 py-1" href="/">
               <Image
                 src="https://res.cloudinary.com/drij60fru/image/upload/v1679461574/tasklab-white_p7r8mt.png"
                 alt="TaskLab"
                 height={25}
                 width={25}
               />
-              <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-white hover:bg-gray-600">
+              <h1 className="ml-3 flex-none text-xl font-semibold tracking-tight text-white">
                 TaskLab
               </h1>
             </Link>
@@ -49,19 +49,19 @@ export default function Header() {
             <div className="mt-5 flex flex-col gap-y-4 gap-x-0 sm:mt-0 sm:flex-row sm:items-center sm:gap-y-0 sm:gap-x-7 sm:pl-7">
               <div className="flex items-center gap-x-2 sm:ml-auto">
                 <Link
-                  className="flex items-center gap-x-2 font-medium"
+                  className="flex items-center gap-x-2 rounded  px-2 py-1 font-medium hover:bg-jet-300"
                   href="/api/auth/login"
                 >
-                  <button className="flex items-center gap-x-2 rounded px-2 py-1 font-medium text-gray-300 hover:bg-gray-600">
+                  <button className="text-base font-medium text-white">
                     Log in
                   </button>
                 </Link>
 
                 <Link
-                  className="flex items-center gap-x-2 font-medium text-gray-500"
+                  className="flex items-center gap-x-2 rounded  px-2 py-1 font-medium hover:bg-jet-300"
                   href="/trial"
                 >
-                  <button className="flex items-center gap-x-2 rounded px-2 py-1 font-medium text-gray-300 hover:bg-gray-600">
+                  <button className="text-base font-medium text-white">
                     Trial
                   </button>
                 </Link>

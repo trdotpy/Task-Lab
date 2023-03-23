@@ -9,7 +9,7 @@ export default function Footer() {
       <footer className="relative bottom-0 max-w-7xl">
         <div className="mx-auto px-6 py-8">
           <div className="flex flex-col items-center sm:flex-row sm:justify-between">
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center rounded px-3 py-1 text-center hover:bg-jet-100">
               <Link className="flex items-center" href="/">
                 <Image
                   src="https://res.cloudinary.com/drij60fru/image/upload/v1679375340/tasklab_qjjn6r.png"
@@ -17,7 +17,7 @@ export default function Footer() {
                   height={25}
                   width={25}
                 />
-                <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-jet-600 hover:bg-gray-600">
+                <h1 className="ml-3 flex-none rounded text-xl font-semibold tracking-tight text-jet-600">
                   TaskLab
                 </h1>
               </Link>
@@ -29,7 +29,7 @@ export default function Footer() {
             <div className="-mx-2 flex">
               <Link
                 href="https://github.com/trdotpy/Task-Lab"
-                className="mx-2 flex items-center gap-x-2 rounded px-2 py-1 text-jet-300 transition-colors duration-300 hover:bg-bitter-100 hover:text-bitter-500"
+                className="mx-2 flex items-center gap-x-2 rounded px-3 py-1 text-jet-400 transition-colors duration-200 hover:bg-jet-100 hover:text-bitter-500"
               >
                 <span className="text-sm">Github Repo</span>
                 <IconBrandGithubFilled className="h-5 w-5 fill-current" />
