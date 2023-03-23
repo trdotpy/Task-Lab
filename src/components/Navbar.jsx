@@ -1,18 +1,12 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
-import NavDropdown from "./Navbar/NavDropdown";
-import { IconChevronDown } from "@tabler/icons-react";
+import { IconChevronDown, IconUserPlus, IconLogout } from "@tabler/icons-react";
 import Tooltip from "./Tooltip/Tooltip";
 
 export default function Navbar() {
-  const [navDropdown, setNavDropdown] = useState(false);
   const { user } = useUser();
-
-  const toggleNavDropdown = () => {
-    setNavDropdown(!navDropdown);
-  };
 
   console.log(user);
 
@@ -45,10 +39,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <div
-              className="flex cursor-pointer items-center rounded py-1 px-2 hover:bg-jet-100"
-              onClick={toggleNavDropdown}
-            >
+            <div className="hs-dropdown hs-dropdown-toggle flex cursor-pointer items-center rounded py-1 px-2">
               <div className="relative cursor-pointer">
                 <Image
                   src={user?.picture}
@@ -64,13 +55,29 @@ export default function Navbar() {
                 <span className="text-xs text-jet-400">{user?.email}</span>
               </div>
               <IconChevronDown className="h-5 w-5" stroke={1.0} />
-              {/* {navDropdown && (
-                <NavDropdown
-                  toggleNavDropdown={toggleNavDropdown}
-                  navDropdown={navDropdown}
-                  user={user}
-                />
-              )} */}
+              <div
+                class="hs-dropdown-menu duration mt-2  hidden min-w-[15rem] divide-y divide-gray-200 rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 "
+                aria-labelledby="hs-dropdown-with-dividers"
+              >
+                <div class="py-2 first:pt-0 last:pb-0">
+                  <Tooltip>
+                    <button class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 focus:ring-2 focus:ring-blue-500 ">
+                      <IconUserPlus className="mx-1 h-5 w-5" />
+                      Invite Team Members
+                    </button>
+                  </Tooltip>
+                </div>
+
+                <div class="py-2 first:pt-0 last:pb-0">
+                  <Link
+                    class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-jet-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                    href="/api/auth/logout"
+                  >
+                    <IconLogout className="mx-1 h-5 w-5" />
+                    Sign out
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
