@@ -1,4 +1,4 @@
-
+import { IconMessage2 } from "@tabler/icons-react";
 
 export default function CommentForm({
   handleAddComment,
@@ -6,8 +6,8 @@ export default function CommentForm({
   newComment,
 }) {
   return (
-    <div className="mb-6">
-      <div className="mt-2 flex items-center">
+    <div className="my-6">
+      <div className="flex items-center">
         <form className="flex-1" onSubmit={handleAddComment}>
           <textarea
             // type="text"
@@ -21,9 +21,10 @@ export default function CommentForm({
           <div className="mt-2 flex items-center justify-end">
             <button
               type="submit"
-              className="rounded-md border border-gray-300 py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="flex gap-x-2 rounded-md border border-gray-300 py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              Post
+              <IconMessage2 stroke={1.0} className="text-jet-300" size={20} />
+              Comment
             </button>
           </div>
         </form>
