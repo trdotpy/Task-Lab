@@ -47,6 +47,8 @@ export default withPageAuthRequired(function Projects() {
     }
   }
 
+  console.log(boardList);
+
   return (
     <>
       {loading ? (
@@ -58,13 +60,13 @@ export default withPageAuthRequired(function Projects() {
               <div>
                 <div className="flex items-center gap-x-3">
                   <h2 className="text-xl font-medium text-jet-500">Projects</h2>
-                  <span className="rounded bg-bice-100 px-3 py-1 text-xs text-bice-700">
+                  <p className="mt-1 rounded text-sm text-bice-500">
                     {boardList.length} boards
-                  </span>
+                  </p>
                 </div>
 
                 <p className="mt-1 text-sm text-jet-300">
-                  These boards have been created in the last 12 months.
+                  All your projects - in one place.
                 </p>
               </div>
 
@@ -146,9 +148,9 @@ export default withPageAuthRequired(function Projects() {
                           </th>
                           <th
                             scope="col"
-                            className="px-12 py-3.5 text-left text-sm font-normal text-gray-500"
+                            className="px-20 py-3.5 text-left text-sm font-normal text-gray-500"
                           >
-                            Start Date
+                            Date
                           </th>
 
                           <th
@@ -165,8 +167,11 @@ export default withPageAuthRequired(function Projects() {
                             Description
                           </th>
 
-                          <th scope="col" className="relative py-3.5 px-4">
-                            <span className="sr-only">Edit</span>
+                          <th
+                            scope="col"
+                            className="px-4 py-3.5 text-left text-sm font-normal text-gray-500"
+                          >
+                            Actions
                           </th>
                         </tr>
                       </thead>
