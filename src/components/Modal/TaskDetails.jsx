@@ -1,4 +1,10 @@
-import { IconDots, IconTrash, IconX, IconMessages } from "@tabler/icons-react";
+import {
+  IconDots,
+  IconTrash,
+  IconX,
+  IconMessages,
+  IconMinus,
+} from "@tabler/icons-react";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -59,8 +65,6 @@ export default function TaskDetails({
     }
   }
 
-  console.log("comments", comments);
-
   return (
     <div className="flex justify-center">
       <div className="fixed top-0 left-0 z-50 h-full w-full overflow-y-auto overflow-x-hidden">
@@ -68,20 +72,22 @@ export default function TaskDetails({
           <div className="flex flex-col rounded-lg border bg-white px-4 py-2 shadow-sm">
             <div className="py-3 px-4">
               <div className="flex items-center justify-between">
-                <Breadcrumb title={title} />
-                <div className="flex items-center gap-x-4">
-                  <button>
+                {/* <Breadcrumb title={title} /> */}
+                <div className="flex items-center">
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="cursor-pointer rounded-xl p-2 hover:bg-jet-100"
+                  >
+                    <span className="sr-only">Close</span>
+                    <IconMinus size={20} className="text-jet-300" />
+                  </button>
+
+                  <button className="cursor-pointer rounded-xl p-2 hover:bg-jet-100">
                     <IconTrash
                       size={20}
-                      className="text-jet-300 hover:text-red-500"
+                      className="text-jet-300"
                       onClick={handleDelete}
-                    />
-                  </button>
-                  <button type="button" onClick={closeModal}>
-                    <span className="sr-only">Close</span>
-                    <IconX
-                      size={20}
-                      className="text-jet-300 hover:text-jet-600"
                     />
                   </button>
                 </div>
@@ -120,26 +126,19 @@ export default function TaskDetails({
                 </div>
               </div>
             </div>
-
             <div className="flex overflow-y-auto p-4">
               {/* Left */}
               <div className="w-2/3">
-                <h3 className="text-sm font-medium uppercase text-gray-700">
+                <h3 className="text-sm font-medium text-gray-700">
                   Description
                 </h3>
                 <p className="text-sm text-gray-400">{description}</p>
-
-                <div className="mt-4">
-                  <h3 className="text-sm font-medium uppercase text-gray-700">
-                    Comments
-                  </h3>
-                </div>
               </div>
 
               {/* Right */}
               <div className="ml-8 border-l px-8">
                 <div className="mt-4">
-                  <h3 className="text-sm font-medium uppercase text-gray-700">
+                  <h3 className="text-sm font-medium text-gray-700">
                     Project Lead
                   </h3>
                   <Image
@@ -151,9 +150,7 @@ export default function TaskDetails({
                   />
                 </div>
                 <div className="mt-4">
-                  <h3 className="text-sm font-medium uppercase text-gray-700">
-                    Team
-                  </h3>
+                  <h3 className="text-sm font-medium text-gray-700">Team</h3>
                   <div className="flex -space-x-1">
                     <Image
                       className="inline-block h-8 w-8 rounded-xl"
@@ -181,7 +178,8 @@ export default function TaskDetails({
               </div>
             </div>
             {/* Bottom */}
-            <div>
+            <div className="mt-2 px-4">
+              <h3 className="text-sm font-medium text-gray-700">Comments</h3>
               <CommentForm
                 handleAddComment={handleAddComment}
                 setNewComment={setNewComment}
@@ -193,14 +191,11 @@ export default function TaskDetails({
                 handleDeleteComment={handleDeleteComment}
               />
             </div>
-            <div className="flex justify-end">
-              <div className="mt-4">
-                <h3 className="text-sm font-medium uppercase text-gray-700">
-                  Status
-                </h3>
+            {/* <div className="flex justify-end">
+              <div className="mt-3">
                 <Dropdown status={status} />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

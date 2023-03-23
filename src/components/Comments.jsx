@@ -7,7 +7,7 @@ export default function Comments({ comments, handleDeleteComment }) {
   return (
     <>
       {comments.map((comment) => (
-        <div key={comment._id} className="min-h-[80px] border-b px-2 py-4">
+        <div key={comment._id} className="min-h-[80px] px-2 py-4">
           <div className="flex">
             <div className="flex-shrink-0 overflow-hidden">
               <Image
@@ -62,7 +62,7 @@ export default function Comments({ comments, handleDeleteComment }) {
             </div>
           </div>
           {/* Actions */}
-          <div className="flex items-center justify-end">
+          <div className="mt-2.5 flex items-center justify-end border-b">
             <Tooltip>
               <div className="cursor-pointer rounded-xl p-2 hover:bg-jet-100">
                 <IconStar stroke={1.0} className="text-jet-300" size={20} />{" "}
