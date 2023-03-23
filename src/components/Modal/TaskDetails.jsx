@@ -99,7 +99,7 @@ export default function TaskDetails({
                 </h3>
 
                 <div className="mt-2 flex gap-x-2">
-                  <span
+                  {/* <span
                     className={`rounded px-2 py-1 text-xs text-white ${
                       status === "Backlog"
                         ? "bg-bice-400"
@@ -122,35 +122,107 @@ export default function TaskDetails({
                     }`}
                   >
                     {priority}
-                  </span>
+                  </span> */}
+
+                  <div className="whitespace-nowrap py-1 text-sm">
+                    <div>
+                      <div className="h-1.5 w-48 overflow-hidden rounded-full bg-seagreen-200">
+                        <div
+                          className="h-1.5 bg-seagreen-400"
+                          style={{
+                            width: `${Math.floor(Math.random() * 100)}%`,
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="flex overflow-y-auto p-4">
               {/* Left */}
               <div className="w-2/3">
-                <h3 className="text-sm font-medium text-gray-700">
+                <h3 className="text-base font-medium text-jet-700">
                   Description
                 </h3>
                 <p className="text-sm text-gray-400">{description}</p>
               </div>
 
               {/* Right */}
-              <div className="ml-8 border-l px-8">
-                <div className="mt-4">
-                  <h3 className="text-sm font-medium text-gray-700">
-                    Project Lead
-                  </h3>
-                  <Image
-                    className="inline-block h-8 w-8 rounded-xl"
-                    src="https://res.cloudinary.com/drij60fru/image/upload/v1677113313/Mark-Zuckerberg-2019_wptrtn.jpg"
-                    alt="lead"
-                    height={40}
-                    width={40}
-                  />
+              <div className="ml-6 border-l px-6">
+                <div className="grid grid-cols-2 gap-x-8">
+                  <div className="grid gap-y-3">
+                    <h3 className="text-base font-medium text-jet-700">
+                      Assignee
+                    </h3>
+                    <h3 className="text-base font-medium text-jet-700">Date</h3>
+                    <h3 className="text-base font-medium text-jet-700">Tags</h3>
+                  </div>
+                  <div className="grid gap-y-3">
+                    <div className="flex items-center gap-x-2">
+                      <h3 className="text-sm font-medium text-jet-600">
+                        Adele J.
+                      </h3>
+                      <div className="relative">
+                        <Image
+                          className="inline-block h-6 w-6 rounded-full"
+                          src="https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                          alt="assignee"
+                          height={40}
+                          width={40}
+                        />
+                        <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-plum-400 ring-1 ring-white"></span>
+                      </div>
+                    </div>
+                    <h3 className="text-sm font-medium text-jet-600">
+                      12 Feb 2024
+                    </h3>
+                    <div className="flex gap-x-2">
+                      <span
+                        className={`rounded px-2 py-1 text-xs text-white ${
+                          status === "Backlog"
+                            ? "bg-bice-400"
+                            : status === "In Progress"
+                            ? "bg-xanthous-400"
+                            : status === "Testing"
+                            ? "bg-plum-400"
+                            : "bg-seagreen-400"
+                        }`}
+                      >
+                        {status}
+                      </span>
+                      <span
+                        className={`rounded px-2 py-1 text-xs ${
+                          priority === "High"
+                            ? "bg-bitter-100 text-bitter-600"
+                            : priority === "Medium"
+                            ? "bg-xanthous-100 text-xanthous-600"
+                            : "bg-bice-100 text-bice-600"
+                        }`}
+                      >
+                        {priority}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-4">
-                  <h3 className="text-sm font-medium text-gray-700">Team</h3>
+                {/* <div className="flex">
+                  <div className="flex-shrink-0">
+                    <Image
+                      className="mr-2 inline-block h-9 w-9 rounded"
+                      src="https://res.cloudinary.com/drij60fru/image/upload/v1677113313/Mark-Zuckerberg-2019_wptrtn.jpg"
+                      alt="lead"
+                      height={40}
+                      width={40}
+                    />
+                  </div>
+                  <div>
+                    <p className="text-base text-jet-600">Marketh Zuckering</p>
+                    <p className="text-sm text-jet-600">mark@meta.com</p>
+                    <p className="text-sm text-jet-600">111-111-1111</p>
+                  </div>
+                </div> */}
+                {/* <div className="mt-4">
+                  <h3 className="text-base font-medium text-gray-700">Team</h3>
                   <div className="flex -space-x-1">
                     <Image
                       className="inline-block h-8 w-8 rounded-xl"
@@ -174,12 +246,12 @@ export default function TaskDetails({
                       width={40}
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             {/* Bottom */}
             <div className="mt-2 px-4">
-              <h3 className="text-sm font-medium text-gray-700">Comments</h3>
+              <h3 className="text-base font-medium text-jet-700">Comments</h3>
               <CommentForm
                 handleAddComment={handleAddComment}
                 setNewComment={setNewComment}
