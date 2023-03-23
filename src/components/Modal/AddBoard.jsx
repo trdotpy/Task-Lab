@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import Tooltip from "../Tooltip/Tooltip";
 
 export default function AddBoard({
   boardList,
@@ -57,7 +58,7 @@ export default function AddBoard({
                   className="text-lg font-medium leading-6 text-gray-800 "
                   id="modal-title"
                 >
-                  Add New Project
+                  Add New Project Board
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 ">
                   Your next project is just a click away. Just fill in the
@@ -87,14 +88,13 @@ export default function AddBoard({
                         {...formik.getFieldProps("description")}
                       />
 
-                      <button
+                      {/* <button
                         type="button"
                         className="mt-2 flex items-center rounded py-1.5 px-2 text-sm text-blue-600 transition-colors duration-300 hover:text-blue-400 focus:outline-none"
                       >
                         <IconPlus className="h-4 w-4" />
-
                         <span className="mx-2 text-sm">Add Team Members</span>
-                      </button>
+                      </button> */}
 
                       <div className="mt-4 sm:-mx-2 sm:flex sm:items-center">
                         <button

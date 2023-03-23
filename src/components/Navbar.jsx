@@ -56,12 +56,12 @@ export default function Navbar() {
               </div>
               <IconChevronDown className="h-5 w-5" stroke={1.0} />
               <div
-                class="hs-dropdown-menu duration mt-2  hidden min-w-[15rem] divide-y divide-gray-200 rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 "
+                class="hs-dropdown-menu duration mt-2 hidden min-w-[10rem] divide-y divide-gray-200 rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 "
                 aria-labelledby="hs-dropdown-with-dividers"
               >
                 <div class="py-2 first:pt-0 last:pb-0">
                   <Tooltip>
-                    <button class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 focus:ring-2 focus:ring-blue-500 ">
+                    <button class="flex items-center gap-x-3.5 rounded-md py-1 px-3 text-sm text-gray-400 focus:ring-2 focus:ring-blue-500">
                       <IconUserPlus className="mx-1 h-5 w-5" />
                       Invite Team Members
                     </button>
@@ -70,7 +70,7 @@ export default function Navbar() {
 
                 <div class="py-2 first:pt-0 last:pb-0">
                   <Link
-                    class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-jet-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                    class="flex items-center gap-x-3.5 rounded-md py-1 px-3 text-sm text-jet-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
                     href="/api/auth/logout"
                   >
                     <IconLogout className="mx-1 h-5 w-5" />
