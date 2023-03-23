@@ -16,6 +16,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Tooltip from "../Tooltip/Tooltip";
 
 const MobileSidebarItem = ({ icon: Icon, href }) => (
   <li>
@@ -51,9 +52,13 @@ export default function MobileSidebar() {
             <MobileSidebarItem icon={IconHome} href="/" />
             <MobileSidebarItem icon={IconBrandAsana} href="/projects" />
             <MobileSidebarItem icon={IconLayoutKanban} href="/boards" />
-            <MobileSidebarItem icon={IconSettings} href="/projects/settings" />
+            <Tooltip>
+              <MobileSidebarItem icon={IconSettings} href="#" />
+            </Tooltip>
             <MobileSidebarItem icon={IconUser} href="/account" />
-            <MobileSidebarItem icon={IconCalendar} href="/calendar" />
+            <Tooltip>
+              <MobileSidebarItem icon={IconCalendar} href="/#" />
+            </Tooltip>
             <MobileSidebarItem
               icon={IconBook}
               href="https://github.com/trdotpy/Task-Lab"

@@ -37,9 +37,9 @@ export default function Card({
           className="my-2 cursor-pointer rounded bg-white p-4 shadow hover:bg-gray-200"
           onClick={openModal}
         >
-          <div className="max-h-[200px] space-y-2">
+          <div className="max-h-[400px] space-y-2">
             <div className="flex justify-between">
-              <h3 className="text-base font-medium text-jet-500">{title}</h3>
+              <h3 className="text-base text-jet-600">{title}</h3>
             </div>
             <p className="text-xs text-jet-300">{description}</p>
 

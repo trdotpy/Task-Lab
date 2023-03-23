@@ -4,6 +4,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import NavDropdown from "./Navbar/NavDropdown";
 import { IconChevronDown } from "@tabler/icons-react";
+import Tooltip from "./Tooltip/Tooltip";
 
 export default function Navbar() {
   const [navDropdown, setNavDropdown] = useState(false);
@@ -13,6 +14,8 @@ export default function Navbar() {
     setNavDropdown(!navDropdown);
   };
 
+  console.log(user);
+
   return (
     <>
       <nav className="sticky top-0 border-b border-gray-200">
@@ -21,7 +24,7 @@ export default function Navbar() {
             <div className="flex flex-1 items-center justify-start">
               <div className="flex flex-shrink-0 items-center">
                 <Link href="/" className="text-lg font-semibold text-gray-600">
-                  Dashboard
+                  {user?.given_name}&apos;s Lab
                 </Link>
               </div>
               <div className="hidden sm:ml-6 sm:block">
@@ -33,10 +36,10 @@ export default function Navbar() {
                     Documentation
                   </Link>
                   <Link
-                    href="/contact"
+                    href="#"
                     className="rounded-md px-3 py-2 text-sm font-medium text-jet-300 hover:bg-jet-100 hover:text-jet-600"
                   >
-                    Releases
+                    <Tooltip>API</Tooltip>
                   </Link>
                 </div>
               </div>

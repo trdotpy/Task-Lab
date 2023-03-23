@@ -21,9 +21,10 @@ export default function CommentForm({
           <div className="mt-2.5 flex items-center justify-end">
             <button
               type="submit"
-              className="flex gap-x-2 rounded-md border border-gray-300 bg-jet-800 py-2 px-4 text-sm font-medium text-jet-100 shadow-sm transition duration-300 hover:bg-jet-500"
+              // className="flex gap-x-2 rounded-md border border-gray-300 bg-jet-800 py-2 px-4 text-sm font-medium text-jet-100 shadow-sm transition duration-300 hover:bg-jet-500"
+              className="flex shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-bitter-600 sm:w-auto"
             >
-              <IconMessage2 stroke={1.0} size={20} />
+              <IconMessage2 stroke={1.5} size={20} />
               <p>Reply</p>
             </button>
           </div>

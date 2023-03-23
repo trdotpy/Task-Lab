@@ -83,7 +83,7 @@ export default withPageAuthRequired(function Projects() {
                 </button>
 
                 <button
-                  className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
+                  className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-bitter-600 sm:w-auto"
                   onClick={toggleAddBoardModal}
                 >
                   <IconSquareRoundedPlus size={20} />

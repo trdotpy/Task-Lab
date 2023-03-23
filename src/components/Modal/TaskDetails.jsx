@@ -1,10 +1,4 @@
-import {
-  IconDots,
-  IconTrash,
-  IconX,
-  IconMessages,
-  IconMinus,
-} from "@tabler/icons-react";
+import { IconDots, IconTrash, IconX, IconMinus } from "@tabler/icons-react";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -99,34 +93,9 @@ export default function TaskDetails({
                 </h3>
 
                 <div className="mt-2 flex gap-x-2">
-                  {/* <span
-                    className={`rounded px-2 py-1 text-xs text-white ${
-                      status === "Backlog"
-                        ? "bg-bice-400"
-                        : status === "In Progress"
-                        ? "bg-xanthous-400"
-                        : status === "Testing"
-                        ? "bg-plum-400"
-                        : "bg-seagreen-400"
-                    }`}
-                  >
-                    {status}
-                  </span>
-                  <span
-                    className={`rounded px-2 py-1 text-xs ${
-                      priority === "High"
-                        ? "bg-bitter-100 text-bitter-600"
-                        : priority === "Medium"
-                        ? "bg-xanthous-100 text-xanthous-600"
-                        : "bg-bice-100 text-bice-600"
-                    }`}
-                  >
-                    {priority}
-                  </span> */}
-
-                  <div className="whitespace-nowrap py-1 text-sm">
+                  <div className="whitespace-nowrap py-1">
                     <div>
-                      <div className="h-1.5 w-48 overflow-hidden rounded-full bg-seagreen-200">
+                      <div className="h-1.5 w-96 overflow-hidden rounded-full bg-seagreen-200">
                         <div
                           className="h-1.5 bg-seagreen-400"
                           style={{
@@ -150,7 +119,7 @@ export default function TaskDetails({
 
               {/* Right */}
               <div className="ml-6 border-l px-6">
-                <div className="grid grid-cols-2 gap-x-8">
+                <div className="grid grid-cols-2">
                   <div className="grid gap-y-3">
                     <h3 className="text-base font-medium text-jet-700">
                       Assignee
@@ -179,14 +148,14 @@ export default function TaskDetails({
                     </h3>
                     <div className="flex gap-x-2">
                       <span
-                        className={`rounded px-2 py-1 text-xs text-white ${
+                        className={`whitespace-nowrap rounded px-2 py-1 text-xs text-white ${
                           status === "Backlog"
-                            ? "bg-bice-400"
+                            ? "bg-bice-200 text-bice-700"
                             : status === "In Progress"
-                            ? "bg-xanthous-400"
+                            ? "bg-xanthous-200 text-xanthous-700"
                             : status === "Testing"
-                            ? "bg-plum-400"
-                            : "bg-seagreen-400"
+                            ? "bg-plum-200 text-plum-700"
+                            : "bg-seagreen-200 text-seagreen-700"
                         }`}
                       >
                         {status}
@@ -205,48 +174,6 @@ export default function TaskDetails({
                     </div>
                   </div>
                 </div>
-                {/* <div className="flex">
-                  <div className="flex-shrink-0">
-                    <Image
-                      className="mr-2 inline-block h-9 w-9 rounded"
-                      src="https://res.cloudinary.com/drij60fru/image/upload/v1677113313/Mark-Zuckerberg-2019_wptrtn.jpg"
-                      alt="lead"
-                      height={40}
-                      width={40}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-base text-jet-600">Marketh Zuckering</p>
-                    <p className="text-sm text-jet-600">mark@meta.com</p>
-                    <p className="text-sm text-jet-600">111-111-1111</p>
-                  </div>
-                </div> */}
-                {/* <div className="mt-4">
-                  <h3 className="text-base font-medium text-gray-700">Team</h3>
-                  <div className="flex -space-x-1">
-                    <Image
-                      className="inline-block h-8 w-8 rounded-xl"
-                      src="https://res.cloudinary.com/drij60fru/image/upload/v1677040807/keanu_lbdxqq.webp"
-                      alt="assignee"
-                      height={40}
-                      width={40}
-                    />
-                    <Image
-                      className="inline-block h-8 w-8 rounded-xl"
-                      src="https://res.cloudinary.com/drij60fru/image/upload/v1677040687/drake_nhpiyb.jpg"
-                      alt="assignee"
-                      height={40}
-                      width={40}
-                    />
-                    <Image
-                      className="inline-block h-8 w-8 rounded-xl"
-                      src="https://res.cloudinary.com/drij60fru/image/upload/v1677040714/01ebfc40ecc194a2abc81e82ab877af4_400x400_l8zmzd.jpg"
-                      alt="assignee"
-                      height={40}
-                      width={40}
-                    />
-                  </div>
-                </div> */}
               </div>
             </div>
             {/* Bottom */}
@@ -263,11 +190,16 @@ export default function TaskDetails({
                 handleDeleteComment={handleDeleteComment}
               />
             </div>
-            {/* <div className="flex justify-end">
-              <div className="mt-3">
-                <Dropdown status={status} />
+            <div className="flex justify-end">
+              <div className="py-3">
+                <Image
+                  src="https://res.cloudinary.com/drij60fru/image/upload/v1679375340/tasklab_qjjn6r.png"
+                  alt="TaskLab"
+                  height={25}
+                  width={25}
+                />
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

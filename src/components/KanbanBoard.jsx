@@ -10,6 +10,7 @@ import {
   IconUpload,
 } from "@tabler/icons-react";
 import AddTask from "./Modal/AddTask";
+import Tooltip from "./Tooltip/Tooltip";
 
 const initialColumns = [
   { id: 1, title: "Backlog" },
@@ -60,17 +61,18 @@ export default function KanbanBoard({ boardTitle, boardDescription, boardId }) {
               </p>
             </div>
             <div className="flex items-center gap-x-3 ">
-              <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
-                <IconUpload size={16} />
-                <span>Share</span>
-              </button>
+              <Tooltip>
+                <button className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100  sm:w-auto">
+                  <IconUpload size={16} />
+                  <span>Share</span>
+                </button>
+              </Tooltip>
 
               <button
-                className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 sm:w-auto"
+                className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-bitter-600 sm:w-auto"
                 onClick={toggleAddTaskModal}
               >
                 <IconSquareRoundedPlus size={20} />
-
                 <span>Add Task</span>
               </button>
             </div>

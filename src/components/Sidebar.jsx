@@ -16,6 +16,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Tooltip from "./Tooltip/Tooltip";
 
 const SidebarItem = ({ icon: Icon, text, href }) => (
   <li>
@@ -98,11 +99,14 @@ export default function Sidebar() {
                 text="Project Boards"
                 href="/boards"
               />
-              <SidebarItem
-                icon={IconSettings}
-                text="Project Settings"
-                href="/projects/settings"
-              />
+
+              <Tooltip>
+                <SidebarItem
+                  icon={IconSettings}
+                  text="Project Settings"
+                  href="#"
+                />
+              </Tooltip>
             </SidebarAccordion>
 
             <SidebarAccordion titleIcon={IconUser} title="Account">
@@ -113,7 +117,9 @@ export default function Sidebar() {
               />
             </SidebarAccordion>
 
-            <SidebarItem icon={IconCalendar} text="Calendar" href="/calendar" />
+            <Tooltip>
+              <SidebarItem icon={IconCalendar} text="Calendar" href="#" />
+            </Tooltip>
 
             <SidebarItem
               icon={IconBook}
