@@ -1,7 +1,8 @@
 import Comment from "../../../../models/Comment";
 import dbConnect from "../../../../utils/dbConnect";
+import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 
-export default async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req, res) {
   const { method } = req;
 
   await dbConnect();
@@ -59,4 +60,4 @@ export default async function handler(req, res) {
       res.status(400).json({ success: false });
       break;
   }
-}
+});

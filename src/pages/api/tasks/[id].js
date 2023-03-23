@@ -1,7 +1,8 @@
+import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 import Task from "../../../../models/Task";
 import dbConnect from "../../../../utils/dbConnect";
 
-export default async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req, res) {
   const { method } = req;
   const { id } = req.query;
 
@@ -34,4 +35,4 @@ export default async function handler(req, res) {
       res.status(400).json({ success: false });
       break;
   }
-}
+});

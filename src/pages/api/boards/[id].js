@@ -1,7 +1,8 @@
 import dbConnect from "../../../../utils/dbConnect";
 import Board from "../../../../models/Board";
+import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 
-export default async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req, res) {
   const { method, body } = req;
   const { id } = req.query;
 
@@ -39,4 +40,4 @@ export default async function handler(req, res) {
       res.status(400).json({ success: false });
       break;
   }
-}
+});
