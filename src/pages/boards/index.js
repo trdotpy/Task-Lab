@@ -17,7 +17,6 @@ import Tooltip from "@/components/Tooltip/Tooltip";
 
 export default withPageAuthRequired(function Projects() {
   const [boardList, setBoardList] = useState([]);
-  const [warningModal, setWarningModal] = useState(false);
   const [addBoardModal, setAddBoardModal] = useState(false);
   const [loading, setLoading] = useState(false);
 

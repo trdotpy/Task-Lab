@@ -17,6 +17,7 @@ export default withApiAuthRequired(async function handler(req, res) {
         res.status(400).json({ success: false });
       }
       break;
+
     case "PUT":
       try {
         const board = await Board.findByIdAndUpdate(id, body, {
@@ -28,6 +29,7 @@ export default withApiAuthRequired(async function handler(req, res) {
         res.status(400).json({ success: false });
       }
       break;
+			
     case "DELETE":
       try {
         const board = await Board.findByIdAndDelete(id);

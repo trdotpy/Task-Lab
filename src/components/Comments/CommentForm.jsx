@@ -6,7 +6,7 @@ export default function CommentForm({
   newComment,
 }) {
   return (
-    <div>
+    <div className="mb-6">
       <div className="mt-2 flex items-center">
         <form className="flex-1" onSubmit={handleAddComment}>
           <textarea

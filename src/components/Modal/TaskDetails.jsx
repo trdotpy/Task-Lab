@@ -1,4 +1,4 @@
-import { IconDots, IconTrash, IconX } from "@tabler/icons-react";
+import { IconDots, IconTrash, IconX, IconMessages } from "@tabler/icons-react";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -46,6 +46,17 @@ export default function TaskDetails({
     });
     setComments([...comments, response.data.data]);
     setNewComment("");
+  }
+
+  async function handleDeleteComment(commentId) {
+    try {
+      await axios.delete(`/api/comments/${commentId}`);
+      setComments((prev) =>
+        prev.filter((comment) => comment._id !== commentId)
+      );
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   console.log("comments", comments);
@@ -122,17 +133,6 @@ export default function TaskDetails({
                   <h3 className="text-sm font-medium uppercase text-gray-700">
                     Comments
                   </h3>
-                  <CommentForm
-                    handleAddComment={handleAddComment}
-                    setNewComment={setNewComment}
-                    newComment={newComment}
-                  />
-                  {/* <Comments
-                    comments={comments.filter(
-                      (comment) => comment.task === taskId
-                    )}
-                  /> */}
-                  <Comments comments={comments} />
                 </div>
               </div>
 
@@ -181,6 +181,18 @@ export default function TaskDetails({
               </div>
             </div>
             {/* Bottom */}
+            <div>
+              <CommentForm
+                handleAddComment={handleAddComment}
+                setNewComment={setNewComment}
+                newComment={newComment}
+              />
+
+              <Comments
+                comments={comments}
+                handleDeleteComment={handleDeleteComment}
+              />
+            </div>
             <div className="flex justify-end">
               <div className="mt-4">
                 <h3 className="text-sm font-medium uppercase text-gray-700">
