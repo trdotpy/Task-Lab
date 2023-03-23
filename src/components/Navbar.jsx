@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 border-b border-gray-200">
+      <nav className="sticky top-0 border-b border-gray-200 bg-gray-50">
         <div className="px-4">
           <div className="relative flex h-14 items-center justify-between">
             <div className="flex flex-1 items-center justify-start">
@@ -56,21 +56,21 @@ export default function Navbar() {
               </div>
               <IconChevronDown className="h-5 w-5" stroke={1.0} />
               <div
-                class="hs-dropdown-menu duration mt-2 hidden min-w-[10rem] divide-y divide-gray-200 rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 "
+                className="hs-dropdown-menu duration mt-2 hidden min-w-[10rem] divide-y divide-gray-200 rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 "
                 aria-labelledby="hs-dropdown-with-dividers"
               >
-                <div class="py-2 first:pt-0 last:pb-0">
+                <div className="py-2 first:pt-0 last:pb-0">
                   <Tooltip>
-                    <button class="flex items-center gap-x-3.5 rounded-md py-1 px-3 text-sm text-gray-400 focus:ring-2 focus:ring-blue-500">
+                    <button className="flex items-center gap-x-3.5 rounded-md py-1 px-3 text-sm text-gray-400 focus:ring-2 focus:ring-blue-500">
                       <IconUserPlus className="mx-1 h-5 w-5" />
                       Invite Team Members
                     </button>
                   </Tooltip>
                 </div>
 
-                <div class="py-2 first:pt-0 last:pb-0">
+                <div className="py-2 first:pt-0 last:pb-0">
                   <Link
-                    class="flex items-center gap-x-3.5 rounded-md py-1 px-3 text-sm text-jet-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                    className="flex items-center gap-x-3.5 rounded-md py-1 px-3 text-sm text-jet-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
                     href="/api/auth/logout"
                   >
                     <IconLogout className="mx-1 h-5 w-5" />

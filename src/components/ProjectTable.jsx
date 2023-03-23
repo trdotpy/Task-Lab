@@ -19,7 +19,7 @@ export default function ProjectTable({ board, handleBoardDelete }) {
         </Link>
         <div className="mt-2 w-1/2">
           <div className="">
-            <p className="rounded bg-bitter-500 py-1 text-center align-middle text-sm text-white">
+            <p className="rounded bg-bitter-100 py-1 text-center align-middle text-xs font-light text-bitter-500">
               Tasks: {board?.tasks.length}
             </p>
           </div>

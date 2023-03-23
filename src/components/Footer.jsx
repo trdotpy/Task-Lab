@@ -8,7 +8,7 @@ export default function Footer() {
     <>
       <footer className="relative bottom-0 max-w-7xl">
         <div className="mx-auto px-6 py-8">
-          <div className="flex flex-col items-center sm:flex-row sm:justify-between">
+          <div className="flex flex-row items-center justify-between sm:flex-row">
             <div className="flex flex-col items-center rounded px-3 py-1 text-center hover:bg-jet-100">
               <Link className="flex items-center" href="/">
                 <Image
@@ -22,7 +22,7 @@ export default function Footer() {
                 </h1>
               </Link>
             </div>
-            <p className="text-sm text-gray-500 dark:text-gray-300">
+            <p className="hidden text-sm text-jet-400 sm:block">
               © Copyright 2023. All Rights Reserved.
             </p>
 

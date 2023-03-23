@@ -60,7 +60,7 @@ export default withPageAuthRequired(function Projects() {
               <div>
                 <div className="flex items-center gap-x-3">
                   <h2 className="text-xl font-medium text-jet-500">Projects</h2>
-                  <p className="mt-1 rounded text-sm text-bice-500">
+                  <p className="mt-1 rounded text-sm font-medium text-bice-500">
                     {boardList.length} boards
                   </p>
                 </div>
@@ -71,7 +71,7 @@ export default withPageAuthRequired(function Projects() {
               </div>
 
               <div className="mt-4 flex items-center gap-x-3">
-                <button className="hs-tooltip flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
+                <button className="hs-tooltip hidden sm:flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
                   <IconUpload size={16} />
                   <p className="hs-tooltip-toggle">
                     Share

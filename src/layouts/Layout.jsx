@@ -23,7 +23,7 @@ export default function Layout({ children }) {
           <header>
             <Navbar />
           </header>
-          <main className="flex-grow py-8 px-4">{children}</main>
+          <main className="flex-grow py-8 px-4 bg-gray-50">{children}</main>
         </div>
       </div>
     </>

@@ -9,11 +9,11 @@ export default function Hero() {
       <div className="mx-auto mt-16 min-h-screen max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
           <div>
-            <h1 className="block text-3xl font-bold text-jet-800 sm:text-4xl lg:text-6xl lg:leading-tight">
+            <h1 className="block text-center text-4xl font-bold text-jet-800 sm:text-left sm:text-5xl lg:text-6xl lg:leading-tight">
               Revolutionize your team&apos;s workflow with{" "}
               <span className="text-bitter-500">TaskLab</span>
             </h1>
-            <p className="mt-3 text-lg text-jet-300">
+            <p className="mt-3 text-base sm:text-lg text-jet-300 text-center sm:text-left">
               Ready to see what TaskLab can do for your team? Sign up for a free
               trial today and experience the power of effortless project
               management.
@@ -21,7 +21,7 @@ export default function Hero() {
 
             <div className="mt-7 grid w-full gap-3 sm:inline-flex">
               <Link
-                className="inline-flex items-center justify-center gap-x-3 rounded-md border border-transparent bg-bitter-500 py-3 px-4 text-center text-sm font-medium text-white transition hover:bg-bitter-600 focus:outline-none focus:ring-2 focus:ring-bitter-600 focus:ring-offset-2 focus:ring-offset-white  lg:text-base"
+                className="inline-flex items-center justify-center gap-x-3 rounded-md border border-transparent bg-bitter-500 py-3 px-4 text-center text-sm font-medium text-white transition hover:bg-bitter-600 focus:outline-none focus:ring-2 focus:ring-bitter-600 focus:ring-offset-2 focus:ring-offset-white lg:text-base"
                 href="/trial"
               >
                 Get Your Free Trial
