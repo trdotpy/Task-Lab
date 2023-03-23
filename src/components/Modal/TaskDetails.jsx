@@ -1,8 +1,10 @@
 import { IconDots, IconTrash, IconX } from "@tabler/icons-react";
+import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Breadcrumb from "../Breadcrumb";
 import Comments from "../Comments";
+import CommentForm from "../Comments/CommentForm";
 import Dropdown from "../StatusDropdown";
 
 export default function TaskDetails({
@@ -15,37 +17,38 @@ export default function TaskDetails({
   priority,
   handleDelete,
 }) {
-  const [comments, setComments] = useState([]); // state to hold comments
-  // const [newComment, setNewComment] = useState(""); // state to hold new comment
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
 
   const closeModal = () => {
     setShowModal(false);
   };
 
   useEffect(() => {
-    // Fetch comments for the current task
-    const fetchComments = async () => {
-      const res = await fetch(`/api/comments?task=${taskId}`);
-      const data = await res.json();
-      if (data.success) {
-        setComments(data.data);
+    async function fetchComments() {
+      try {
+        const res = await axios.get(`/api/comments?taskId=${taskId}`);
+        if (res.data.success) {
+          setComments(res.data.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch comments:", err);
       }
-    };
+    }
     fetchComments();
-  }, [taskId]); // re-fetch comments whenever the task ID changes
+  }, [taskId]);
 
-  // const createComment = async (e) => {
-  //   e.preventDefault();
-  //   const res = await axios.post("/api/comments", {
-  //     task: taskId, // task ID
-  //     comment: newComment, // comment text
-  //     createdBy: user,
-  //   });
-  //   if (res.data.success) {
-  //     setComments((prev) => [...prev, res.data.data]);
-  //     setNewComment("");
-  //   }
-  // };
+  async function handleAddComment(event) {
+    event.preventDefault();
+    const response = await axios.post("/api/comments", {
+      taskId,
+      text: newComment,
+    });
+    setComments([...comments, response.data.data]);
+    setNewComment("");
+  }
+
+  console.log("comments", comments);
 
   return (
     <div className="flex justify-center">
@@ -119,11 +122,17 @@ export default function TaskDetails({
                   <h3 className="text-sm font-medium uppercase text-gray-700">
                     Comments
                   </h3>
-                  <Comments
+                  <CommentForm
+                    handleAddComment={handleAddComment}
+                    setNewComment={setNewComment}
+                    newComment={newComment}
+                  />
+                  {/* <Comments
                     comments={comments.filter(
                       (comment) => comment.task === taskId
                     )}
-                  />
+                  /> */}
+                  <Comments comments={comments} />
                 </div>
               </div>
 

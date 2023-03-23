@@ -25,28 +25,28 @@ export default function NavDropdown({ toggleNavDropdown, navDropdown }) {
 
           <a
             href="#"
-            class="flex transform items-center p-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
+            className="flex transform items-center p-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
           >
-            <IconUsers class="mx-1 h-5 w-5" />
-            <span class="mx-1">Team</span>
+            <IconUsers className="mx-1 h-5 w-5" />
+            <span className="mx-1">Team</span>
           </a>
 
           <a
             href="#"
-            class="flex transform items-center p-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
+            className="flex transform items-center p-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
           >
-            <IconUserPlus class="mx-1 h-5 w-5" />
-            <span class="mx-1">Invite colleagues</span>
+            <IconUserPlus className="mx-1 h-5 w-5" />
+            <span className="mx-1">Invite colleagues</span>
           </a>
 
-          <hr class="border-gray-200 dark:border-gray-700 " />
+          <hr className="border-gray-200 dark:border-gray-700 " />
 
           <a
             href="#"
-            class="flex transform items-center p-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
+            className="flex transform items-center p-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100"
           >
-            <IconLogout class="mx-1 h-5 w-5" />
-            <span class="mx-1">Sign Out</span>
+            <IconLogout className="mx-1 h-5 w-5" />
+            <span className="mx-1">Sign Out</span>
           </a>
         </div>
       </div>

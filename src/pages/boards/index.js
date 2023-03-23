@@ -72,10 +72,10 @@ export default withPageAuthRequired(function Projects() {
               <div className="mt-4 flex items-center gap-x-3">
                 <button className="hs-tooltip flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
                   <IconUpload size={16} />
-                  <p class="hs-tooltip-toggle">
+                  <p className="hs-tooltip-toggle">
                     Share
                     <span
-                      class="hs-tooltip-content invisible absolute z-10 inline-block rounded-md bg-jet-500 py-1 px-2 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"
+                      className="hs-tooltip-content invisible absolute z-10 inline-block rounded-md bg-jet-500 py-1 px-2 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"
                       role="tooltip"
                     >
                       In development

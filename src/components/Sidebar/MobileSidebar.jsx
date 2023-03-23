@@ -20,7 +20,7 @@ import { useRouter } from "next/router";
 const MobileSidebarItem = ({ icon: Icon, href }) => (
   <li>
     <Link href={href || "#"}>
-      <div className="flex items-center justify-center rounded-md p-2 text-jet-100 hover:bg-jet-100">
+      <div className="flex items-center justify-center rounded-md p-2 text-jet-100 hover:bg-jet-600">
         <Icon className="h-4 w-auto" />
       </div>
     </Link>
