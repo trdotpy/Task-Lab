@@ -14,11 +14,10 @@ export default function LandingLayout({ children }) {
       </Head>
       <div className="flex min-h-screen flex-col">
         <Header />
-        <div className="flex w-full flex-col min-h-screen">
-          <main className="flex-grow px-20">{children}</main>
-        </div>
-        <div>
-          <Footer />
+        <div className="flex min-h-screen w-full flex-col">
+          <main className="flex-grow px-20">
+            {children} <Footer />
+          </main>
         </div>
       </div>
     </>
