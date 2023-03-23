@@ -1,10 +1,10 @@
 ![Logo](./public/assets/tasklab-logo-blk.png)
 
-# Task Lab
+# TaskLab
 
 ### <a href="https://task-lab.vercel.app/">Live Site</a>
 
-A lightweight project management platform, similar to JIRA.
+TaskLab is a lightweight issue tracking and project management system for teams to manage their projects, tasks, and workflows. TaskLab allows teams to create and create projects, track tasks, and collaborate on projects in real-time.
 
 ## Tech Stack
 
@@ -57,7 +57,6 @@ Start the server
 ```bash
   npm run dev
 ```
-
 
 ## Contact
 
