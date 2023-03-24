@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Head from "next/head";
 import React from "react";
 
-export default function LandingLayout({ children }) {
+export default function HomeLayout({ children }) {
   return (
     <>
       <Head>

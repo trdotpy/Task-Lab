@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
-export default function Layout({ children }) {
+export default function AppLayout({ children }) {
   return (
     <>
       <Head>
@@ -23,7 +23,7 @@ export default function Layout({ children }) {
           <header>
             <Navbar />
           </header>
-          <main className="flex-grow py-8 px-4 bg-gray-50">{children}</main>
+          <main className="flex-grow bg-gray-50 py-8 px-4">{children}</main>
         </div>
       </div>
     </>

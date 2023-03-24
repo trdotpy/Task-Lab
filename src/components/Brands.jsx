@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Brands() {
   return (
-    <div className="mt-8 w-full">
+    <div className="sm:mt-20 mt-8 w-full">
       <div className="flex flex-wrap-reverse items-center justify-around rounded py-4 px-8 sm:flex-row">
         <div>
           <Image

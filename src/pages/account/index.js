@@ -1,13 +1,13 @@
 import AccountSettings from "@/components/AccountSettings";
-import Layout from "@/layouts/Layout";
+import AppLayout from "@/layouts/AppLayout";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React from "react";
 
 export default function AccountPage() {
   return (
-    <Layout>
+    <AppLayout>
       <AccountSettings />
-    </Layout>
+    </AppLayout>
   );
 }
 

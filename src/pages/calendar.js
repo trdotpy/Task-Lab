@@ -1,12 +1,12 @@
-import Layout from "@/layouts/Layout";
+import AppLayout from "@/layouts/AppLayout";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import React from "react";
 
 export default function CalendarPage() {
   return (
-    <Layout>
+    <AppLayout>
       <div>CalendarPage</div>
-    </Layout>
+    </AppLayout>
   );
 }
 

@@ -22,7 +22,7 @@ const MobileSidebarItem = ({ icon: Icon, href }) => (
   <li>
     <Link href={href || "#"}>
       <div className="flex items-center justify-center rounded-md p-2 text-jet-100 hover:bg-jet-600">
-        <Icon className="h-4 w-auto" />
+        <Icon className="h-6 w-auto" />
       </div>
     </Link>
   </li>
@@ -42,8 +42,8 @@ export default function MobileSidebar() {
             <Image
               src="/assets/tasklab-logo-white.png"
               alt="TaskLab"
-              height={25}
-              width={25}
+              height={30}
+              width={30}
             />
           </Link>
         </div>

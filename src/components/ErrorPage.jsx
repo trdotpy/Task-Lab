@@ -4,7 +4,7 @@ export default function ErrorPage() {
   return (
     <div>
       <section className="bg-white">
-        <div className="container mx-auto flex min-h-screen items-center px-6 py-12">
+        <div className="mx-auto flex min-h-screen items-center px-6 py-12">
           <div className="mx-auto flex max-w-sm flex-col items-center text-center">
             <p className="rounded-full bg-blue-50 p-3 text-sm font-medium text-blue-500 ">
               <svg

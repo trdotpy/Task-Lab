@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import KanbanBoard from "@/components/KanbanBoard";
-import Layout from "@/layouts/Layout";
+import AppLayout from "@/layouts/AppLayout";
 import { useRouter } from "next/router";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
@@ -23,16 +23,16 @@ export default withPageAuthRequired(function Kanban() {
   }, [id]);
 
   if (!board) {
-    return <Layout>Loading...</Layout>;
+    return <AppLayout>Loading...</AppLayout>;
   }
 
   return (
-    <Layout>
+    <AppLayout>
       <KanbanBoard
         boardTitle={board.title}
         boardDescription={board.description}
         boardId={board._id}
       />
-    </Layout>
+    </AppLayout>
   );
 });

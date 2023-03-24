@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
-import Layout from "@/layouts/Layout";
+import AppLayout from "@/layouts/AppLayout";
 import AddBoard from "@/components/Modal/AddBoard";
 import Spinner from "@/components/Spinner";
 import ProjectTable from "@/components/ProjectTable";
@@ -54,8 +54,8 @@ export default withPageAuthRequired(function Projects() {
       {loading ? (
         <Spinner />
       ) : (
-        <Layout>
-          <section className="container mx-auto px-4">
+        <AppLayout>
+          <section className="mx-auto px-4">
             <div className="sm:flex sm:items-center sm:justify-between">
               <div>
                 <div className="flex items-center gap-x-3">
@@ -71,18 +71,12 @@ export default withPageAuthRequired(function Projects() {
               </div>
 
               <div className="mt-4 flex items-center gap-x-3">
-                <button className="hs-tooltip hidden sm:flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
-                  <IconUpload size={16} />
-                  <p className="hs-tooltip-toggle">
-                    Share
-                    <span
-                      className="hs-tooltip-content invisible absolute z-10 inline-block rounded-md bg-jet-500 py-1 px-2 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100"
-                      role="tooltip"
-                    >
-                      In development
-                    </span>
-                  </p>
-                </button>
+                <Tooltip>
+                  <button className="hidden w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:flex sm:w-auto">
+                    <IconUpload size={16} />
+                    <p className="">Share</p>
+                  </button>
+                </Tooltip>
 
                 <button
                   className="flex w-1/2 shrink-0 items-center justify-center gap-x-2 rounded bg-bitter-500 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-bitter-600 sm:w-auto"
@@ -206,7 +200,7 @@ export default withPageAuthRequired(function Projects() {
               </div>
             </div>
           </section>
-        </Layout>
+        </AppLayout>
       )}
       {addBoardModal && (
         <AddBoard
