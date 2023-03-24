@@ -4,7 +4,6 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
 import Hero from "@/components/Hero";
 import Spinner from "@/components/Spinner";
-import Brands from "@/components/Brands";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -29,7 +28,6 @@ export default function Home() {
         <main>
           <LandingLayout>
             <Hero />
-            <Brands />
           </LandingLayout>
         </main>
       </>

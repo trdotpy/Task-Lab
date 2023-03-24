@@ -46,6 +46,7 @@ export default function Hero() {
             {/* <div className="absolute inset-0 -z-[1] mt-4 -mb-4 mr-4 -ml-4 h-full w-full rounded-md bg-gradient-to-tr from-bice-600 via-white/0 to-white/0 lg:mt-6 lg:-mb-6 lg:mr-6 lg:-ml-6"></div> */}
           </div>
         </div>
+					<Brands />
       </div>
     </>
   );
