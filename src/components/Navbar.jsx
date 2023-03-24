@@ -18,7 +18,9 @@ export default function Navbar() {
             <div className="flex flex-1 items-center justify-start">
               <div className="flex flex-shrink-0 items-center">
                 <Link href="/" className="text-lg font-semibold text-gray-600">
-                  {user?.given_name}&apos;s Lab
+                  {user?.given_name
+                    ? `${user.given_name}'s Lab`
+                    : `Trial User's Lab`}
                 </Link>
               </div>
               <div className="hidden sm:ml-6 sm:block">
