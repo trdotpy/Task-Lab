@@ -16,7 +16,7 @@ export default function Trial() {
   const password = "rde0QHY_rnj5hjz5upw";
 
   return (
-    <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="h-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <div className="grid gap-10 md:grid-cols-2">
         <div className="md:col-span-1">
           <div className="max-w-xs">
@@ -55,10 +55,12 @@ export default function Trial() {
                   <CopyToClipboard text={username}>
                     <button
                       type="button"
-                      className="inline-flex w-full items-center justify-between gap-2 rounded-md border border-transparent bg-bitter-500 py-3 px-4 text-sm font-medium text-white transition-all hover:bg-bitter-600"
+                      className="inline-flex w-full items-center justify-between gap-x-3.5 rounded-md border py-2 px-4 text-center text-sm font-medium shadow-sm transition hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white lg:text-base"
                     >
                       <p>demo@tasklab.com</p>
-                      <IconClipboard className="h-5 w-5" />
+                      <div className="rounded p-2 hover:bg-gray-200">
+                        <IconClipboard className="h-5 w-5" />
+                      </div>
                     </button>
                   </CopyToClipboard>
                 </div>
@@ -89,7 +91,7 @@ export default function Trial() {
                   <CopyToClipboard text={password}>
                     <button
                       type="button"
-                      className="inline-flex w-full items-center justify-between gap-2 rounded-md border border-transparent bg-bitter-500 py-3 px-4 text-sm font-medium text-white transition-all hover:bg-bitter-600"
+                      className="inline-flex w-full items-center justify-between gap-x-3.5 rounded-md border py-2 px-4 text-center text-sm font-medium shadow-sm transition hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white lg:text-base"
                     >
                       <p>rde0QHY_rnj5hjz5upw</p>
                       <IconClipboard className="h-5 w-5" />
@@ -126,7 +128,7 @@ export default function Trial() {
                 <Link href="/api/auth/login">
                   <button
                     type="button"
-                    className="inline-flex w-full items-center justify-between gap-2 rounded-md border border-transparent bg-bitter-500 py-3 px-4 text-sm font-medium text-white transition-all hover:bg-bitter-600"
+                    className="inline-flex w-full items-center justify-between gap-x-3.5 rounded-md border py-2 px-4 text-center text-sm font-medium shadow-sm transition hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white lg:text-base"
                   >
                     <p>Sign in</p>
                     <IconExternalLink className="h-5 w-5" />

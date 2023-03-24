@@ -40,7 +40,7 @@ export default function MobileSidebar() {
         <div className="mb-6 flex flex-col items-center">
           <Link href="/">
             <Image
-              src="https://res.cloudinary.com/drij60fru/image/upload/v1679461574/tasklab-white_p7r8mt.png"
+              src="/assets/tasklab-logo-white.png"
               alt="TaskLab"
               height={25}
               width={25}

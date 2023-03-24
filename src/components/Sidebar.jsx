@@ -55,15 +55,7 @@ const SidebarAccordion = ({ titleIcon: TitleIcon, title, children }) => (
 );
 
 export default function Sidebar() {
-  // const router = useRouter();
-
-  // const handleLogout = async () => {
-  //   router.push("/api/auth/logout");
-  // };
-
   const { user } = useUser();
-
-  // console.log(user)
 
   return (
     <>
@@ -74,13 +66,13 @@ export default function Sidebar() {
         <div className="px-6">
           <Link className="flex items-center" href="/">
             <Image
-              src="https://res.cloudinary.com/drij60fru/image/upload/v1679461574/tasklab-white_p7r8mt.png"
+              src="/assets/tasklab-logo-white.png"
               alt="TaskLab"
               height={25}
               width={25}
             />
-            <h1 className="flex-none rounded px-3 py-1 text-xl font-semibold tracking-tight text-snow-100 hover:bg-gray-600">
-              TaskLab
+            <h1 className="flex-none rounded px-3 py-1 text-xl leading-3 text-white hover:bg-gray-600">
+              Task Lab
             </h1>
           </Link>
         </div>

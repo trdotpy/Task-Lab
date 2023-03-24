@@ -3,24 +3,14 @@ import LandingLayout from "@/layouts/LandingLayout";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
 import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
+import Spinner from "@/components/Spinner";
+import Brands from "@/components/Brands";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
 
-  if (isLoading)
-    return (
-      <div>
-        <div
-          className="inline-block h-6 w-6 animate-spin rounded-full border-[3px] border-current border-t-transparent text-purple-600"
-          role="status"
-          aria-label="loading"
-        >
-          <span className="sr-only">Loading...</span>
-        </div>
-      </div>
-    );
+  if (isLoading) return <Spinner />;
   if (error) return <div>{error.message}</div>;
 
   if (user) {
@@ -39,6 +29,7 @@ export default function Home() {
         <main>
           <LandingLayout>
             <Hero />
+            <Brands />
           </LandingLayout>
         </main>
       </>
