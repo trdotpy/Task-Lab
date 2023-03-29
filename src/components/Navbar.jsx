@@ -3,7 +3,7 @@ import React from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import { IconChevronDown, IconUserPlus, IconLogout } from "@tabler/icons-react";
-import Tooltip from "./Tooltip/Tooltip";
+import Tooltip from "./Shared/Tooltip";
 
 export default function Navbar() {
   const { user } = useUser();

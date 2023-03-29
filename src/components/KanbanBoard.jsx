@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Column from "./Column";
-
-import Breadcrumb from "./Breadcrumb";
-import {
-  IconPlus,
-  IconSettings,
-  IconSquareRoundedPlus,
-  IconUpload,
-} from "@tabler/icons-react";
+import { IconSquareRoundedPlus, IconUpload } from "@tabler/icons-react";
 import AddTask from "./Modal/AddTask";
-import Tooltip from "./Tooltip/Tooltip";
+import Tooltip from "./Shared/Tooltip";
 import TeamGroup from "./TeamGroup";
 
 const initialColumns = [
@@ -42,19 +35,21 @@ export default function KanbanBoard({ boardTitle, boardDescription, boardId }) {
     }
   }
 
-  useEffect(() => {
+  const fetchTasks = useCallback(() => {
     axios.get(`/api/tasks?boardId=${boardId}`).then((res) => {
       setTasks(res.data.data);
     });
   }, [boardId]);
 
-  console.log(tasks);
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
   return (
     <>
       <div>
         <div className="pb-4">
-          <div className="mb-2 flex flex-col sm:flex-row justify-between">
+          <div className="mb-2 flex flex-col justify-between sm:flex-row">
             <div className="pr-4">
               <h2 className="text-xl font-medium text-jet-500">{boardTitle}</h2>
 
@@ -62,11 +57,11 @@ export default function KanbanBoard({ boardTitle, boardDescription, boardId }) {
                 {boardDescription}
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row flex-shrink-0 items-center gap-x-3 border-l px-8">
+            <div className="flex flex-shrink-0 flex-col items-center gap-x-3 border-l px-8 sm:flex-row">
               <TeamGroup />
 
               <Tooltip>
-                <button className="hidden sm:flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:w-auto">
+                <button className="hidden w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:flex sm:w-auto">
                   <IconUpload size={16} />
                   <span>Share</span>
                 </button>
@@ -103,6 +98,7 @@ export default function KanbanBoard({ boardTitle, boardDescription, boardId }) {
           boardTitle={boardTitle}
           boardId={boardId}
           toggleAddTaskModal={toggleAddTaskModal}
+          fetchTasks={fetchTasks}
         />
       )}
     </>

@@ -9,6 +9,7 @@ export default function AddTask({
   boardTitle,
   boardId,
   toggleAddTaskModal,
+  fetchTasks,
 }) {
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
@@ -59,6 +60,7 @@ export default function AddTask({
                     try {
                       await axios.post(`/api/tasks?boardId=${boardId}`, values);
                       toggleAddTaskModal();
+                      fetchTasks();
                     } catch (error) {
                       console.error("Error creating task:", error);
                     }

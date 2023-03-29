@@ -1,7 +1,7 @@
 import { IconBookmark, IconDots, IconStar } from "@tabler/icons-react";
 import moment from "moment/moment";
 import Image from "next/image";
-import Tooltip from "./Tooltip/Tooltip";
+import Tooltip from "./Shared/Tooltip";
 
 export default function Comments({ comments, handleDeleteComment }) {
   return (

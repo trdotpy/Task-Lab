@@ -13,7 +13,7 @@ import AppLayout from "@/layouts/AppLayout";
 import AddBoard from "@/components/Modal/AddBoard";
 import Spinner from "@/components/Spinner";
 import ProjectTable from "@/components/ProjectTable";
-import Tooltip from "@/components/Tooltip/Tooltip";
+import Tooltip from "@/components/Shared/Tooltip";
 
 export default withPageAuthRequired(function Projects() {
   const [boardList, setBoardList] = useState([]);
@@ -26,7 +26,7 @@ export default withPageAuthRequired(function Projects() {
     fetchBoards();
   }, []);
 
-  const fetchBoards = async () => {
+  async function fetchBoards() {
     setLoading(true);
     try {
       const res = await axios.get("/api/boards");
@@ -35,7 +35,7 @@ export default withPageAuthRequired(function Projects() {
       console.error(error);
     }
     setLoading(false);
-  };
+  }
 
   async function handleBoardDelete(boardId) {
     try {

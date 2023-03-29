@@ -16,7 +16,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Tooltip from "./Tooltip/Tooltip";
+import Tooltip from "./Shared/Tooltip";
 
 const SidebarItem = ({ icon: Icon, text, href }) => (
   <li>
