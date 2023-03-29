@@ -23,18 +23,19 @@ export default withPageAuthRequired(function Projects() {
   const toggleAddBoardModal = () => setAddBoardModal(!addBoardModal);
 
   useEffect(() => {
-    const fetchBoards = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get("/api/boards");
-        setBoardList(res.data.data);
-      } catch (error) {
-        console.error(error);
-      }
-      setLoading(false);
-    };
     fetchBoards();
   }, []);
+
+  const fetchBoards = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get("/api/boards");
+      setBoardList(res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+    setLoading(false);
+  };
 
   async function handleBoardDelete(boardId) {
     try {
@@ -208,6 +209,7 @@ export default withPageAuthRequired(function Projects() {
           toggleAddBoardModal={toggleAddBoardModal}
           boardList={boardList}
           setBoardList={setBoardList}
+          fetchBoards={fetchBoards}
         />
       )}
     </>

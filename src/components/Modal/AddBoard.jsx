@@ -4,13 +4,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Tooltip from "../Tooltip/Tooltip";
 
 export default function AddBoard({
   boardList,
   setBoardList,
   addBoardModal,
   toggleAddBoardModal,
+  fetchBoards,
 }) {
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
@@ -30,6 +30,7 @@ export default function AddBoard({
       });
       setBoardList([...boardList, res.data.data]);
       toggleAddBoardModal();
+      fetchBoards();
     } catch (err) {
       console.error("Error creating board:", err);
     }
@@ -87,8 +88,8 @@ export default function AddBoard({
                         className="mt-3 block h-28 w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                         {...formik.getFieldProps("description")}
                       />
-
-                      {/* <button
+                      {/* 
+                      <button
                         type="button"
                         className="mt-2 flex items-center rounded py-1.5 px-2 text-sm text-blue-600 transition-colors duration-300 hover:text-blue-400 focus:outline-none"
                       >
