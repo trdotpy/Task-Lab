@@ -1,11 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Column from "./Column";
-import {
-  IconSettings,
-  IconSquareRoundedPlus,
-  IconUpload,
-} from "@tabler/icons-react";
+import { IconSettings, IconSquareRoundedPlus } from "@tabler/icons-react";
 import AddTask from "./Modal/AddTask";
 import TeamGroup from "./TeamGroup";
 import EditBoard from "./Modal/EditBoard";
