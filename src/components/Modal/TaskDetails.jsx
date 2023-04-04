@@ -16,6 +16,7 @@ export default function TaskDetails({
   taskId,
   priority,
   handleDelete,
+  boardTitle,
 }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -66,7 +67,7 @@ export default function TaskDetails({
           <div className="flex flex-col rounded-lg border bg-white px-4 py-2 shadow-sm">
             <div className="py-3 px-4">
               <div className="flex items-center justify-between">
-                <Breadcrumb title={title} />
+                <Breadcrumb taskTitle={title} boardTitle={boardTitle} />
                 <div className="flex items-center">
                   <button
                     type="button"

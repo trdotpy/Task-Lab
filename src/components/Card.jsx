@@ -13,6 +13,7 @@ export default function Card({
   taskId,
   setTasks,
   priority,
+  boardTitle,
 }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -69,6 +70,7 @@ export default function Card({
           taskId={taskId}
           priority={priority}
           handleDelete={handleDelete}
+          boardTitle={boardTitle}
         />
       )}
     </>

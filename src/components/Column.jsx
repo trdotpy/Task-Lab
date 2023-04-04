@@ -6,6 +6,7 @@ export default function Column({
   id,
   getColumnClass,
   setTasks,
+  boardTitle,
 }) {
   return (
     <div className={`h-full min-h-screen w-full rounded border-t-[1px] p-4`}>
@@ -28,6 +29,7 @@ export default function Column({
           index={index}
           setTasks={setTasks}
           priority={task.priority}
+          boardTitle={boardTitle}
         />
       ))}
     </div>
