@@ -62,9 +62,11 @@ export default function KanbanBoard({
               <p className="mt-1 cursor-pointer bg-gray-50 text-sm text-jet-300">
                 {boardDescription}
               </p>
+              <div className="pt-4">
+                <TeamGroup />
+              </div>
             </div>
             <div className="flex flex-shrink-0 flex-col items-center gap-x-3 border-l px-8 sm:flex-row">
-              <TeamGroup />
               <button
                 className="hidden w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-white px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-gray-100 sm:flex sm:w-auto"
                 onClick={toggleEditBoardModal}
