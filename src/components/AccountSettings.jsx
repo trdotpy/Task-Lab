@@ -27,7 +27,7 @@ export default function AccountSettings() {
         <div className="mb-4">
           <div className="items-center">
             <h2 className="mb-2 block text-lg font-bold text-gray-700">Name</h2>
-            <p className="block font-semibold text-gray-700">{user?.name}</p>
+            <p className="block text-gray-700">{user?.name}</p>
           </div>
         </div>
         <div className="mb-4">
@@ -35,19 +35,19 @@ export default function AccountSettings() {
             <h2 className="mb-2 block text-lg font-bold text-gray-700">
               Email Address
             </h2>
-            <p className="block font-semibold text-gray-700">{user?.email}</p>
+            <p className="block text-gray-700">{user?.email}</p>
           </div>
         </div>
-        <div className="mb-4">
-          <div className="items-center">
-            <h2 className="mb-2 block text-lg font-bold text-gray-700">
-              Language
-            </h2>
-            <p className="block font-semibold uppercase text-gray-700">
-              {user?.locale}
-            </p>
+        {user?.locale && (
+          <div className="mb-4">
+            <div className="items-center">
+              <h2 className="mb-2 block text-lg font-bold text-gray-700">
+                Language
+              </h2>
+              <p className="block uppercase text-gray-700">{user?.locale}</p>
+            </div>
           </div>
-        </div>
+        )}
         <div className="mb-4">
           <div className="items-center">
             <h2 className="mb-2 block text-lg font-bold text-gray-700">
