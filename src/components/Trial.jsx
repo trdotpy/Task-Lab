@@ -121,7 +121,7 @@ export default function Trial() {
                 className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three"
               >
-                <p className="text-gray-600 ">
+                <p className="pb-3 text-gray-600">
                   That&apos;s it! Take your account credentials to the login
                   page to securely sign in.
                 </p>

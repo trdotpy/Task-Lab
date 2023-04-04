@@ -39,7 +39,7 @@ export default function Header() {
           >
             <div className="mt-5 flex flex-col gap-y-4 gap-x-0 sm:mt-0 sm:flex-row sm:items-center sm:gap-y-0 sm:gap-x-7 sm:pl-7">
               <div className="flex flex-col justify-center sm:flex-row">
-                <button className="rounded px-3 py-1.5 text-base text-jet-800 hover:bg-gray-100">
+                {/* <button className="rounded px-3 py-1.5 text-base text-jet-800 hover:bg-gray-100">
                   Home
                 </button>
                 <button className="rounded px-3 py-1.5 text-base text-jet-800 hover:bg-gray-100">
@@ -47,7 +47,7 @@ export default function Header() {
                 </button>
                 <button className="rounded px-3 py-1.5 text-base text-jet-800 hover:bg-gray-100">
                   Contact
-                </button>
+                </button> */}
               </div>
               <div className="flex items-center justify-center gap-x-2 sm:ml-auto">
                 <Link href="/api/auth/login">
