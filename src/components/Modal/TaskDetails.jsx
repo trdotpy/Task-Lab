@@ -1,11 +1,10 @@
-import { IconDots, IconTrash, IconX, IconMinus } from "@tabler/icons-react";
+import { IconTrash, IconMinus } from "@tabler/icons-react";
 import axios from "axios";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Breadcrumb from "../Breadcrumb";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
-import Dropdown from "../StatusDropdown";
 
 export default function TaskDetails({
   title,
@@ -25,18 +24,15 @@ export default function TaskDetails({
     setShowModal(false);
   };
 
-  useEffect(() => {
-    async function fetchComments() {
-      try {
-        const res = await axios.get(`/api/comments?taskId=${taskId}`);
-        if (res.data.success) {
-          setComments(res.data.data);
-        }
-      } catch (err) {
-        console.error("Failed to fetch comments:", err);
+  const fetchComments = useCallback(async () => {
+    try {
+      const res = await axios.get(`/api/comments?taskId=${taskId}`);
+      if (res.data.success) {
+        setComments(res.data.data);
       }
+    } catch (err) {
+      console.error("Failed to fetch comments:", err);
     }
-    fetchComments();
   }, [taskId]);
 
   async function handleAddComment(event) {
@@ -47,6 +43,7 @@ export default function TaskDetails({
     });
     setComments([...comments, response.data.data]);
     setNewComment("");
+    fetchComments();
   }
 
   async function handleDeleteComment(commentId) {
@@ -59,6 +56,10 @@ export default function TaskDetails({
       console.error(error);
     }
   }
+
+  useEffect(() => {
+    fetchComments();
+  }, [taskId, fetchComments]);
 
   return (
     <div className="flex justify-center">
