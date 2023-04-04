@@ -16,7 +16,7 @@ export default function Trial() {
   const password = "rde0QHY_rnj5hjz5upw";
 
   return (
-    <div className="h-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="min-h-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <div className="grid gap-10 md:grid-cols-2">
         <div className="md:col-span-1">
           <div className="max-w-xs">

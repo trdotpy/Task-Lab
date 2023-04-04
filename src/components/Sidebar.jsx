@@ -72,7 +72,7 @@ export default function Sidebar() {
               width={25}
             />
             <h1 className="flex-none rounded px-3 py-1 text-xl leading-3 text-white hover:bg-gray-600">
-              Task Lab
+              TaskLab
             </h1>
           </Link>
         </div>
@@ -91,14 +91,6 @@ export default function Sidebar() {
                 text="Project Boards"
                 href="/boards"
               />
-
-              <Tooltip>
-                <SidebarItem
-                  icon={IconSettings}
-                  text="Project Settings"
-                  href="#"
-                />
-              </Tooltip>
             </SidebarAccordion>
 
             <SidebarAccordion titleIcon={IconUser} title="Account">

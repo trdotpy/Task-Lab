@@ -1,10 +1,4 @@
-import {
-  IconDotsVertical,
-  IconExternalLink,
-  IconLayoutDashboard,
-  IconLayoutKanban,
-  IconSettings,
-} from "@tabler/icons-react";
+import { IconLayoutDashboard, IconSettings } from "@tabler/icons-react";
 import Link from "next/link";
 import moment from "moment";
 
@@ -89,12 +83,8 @@ export default function ProjectTable({ board, handleBoardDelete }) {
             className="hs-dropdown-menu duration z-20 mt-2 hidden rounded-lg bg-white p-2 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
             aria-labelledby="hs-dropdown-custom-icon-trigger"
           >
-            <button className="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500">
-              Edit Project
-            </button>
-
             <button
-              className="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+              className="flex items-center gap-x-2 rounded-md py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
               onClick={() => handleBoardDelete(board._id)}
             >
               Delete Project
